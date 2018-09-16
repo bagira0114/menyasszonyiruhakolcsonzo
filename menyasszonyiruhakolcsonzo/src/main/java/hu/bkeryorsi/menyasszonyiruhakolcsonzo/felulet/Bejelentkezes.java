@@ -130,8 +130,11 @@ public class Bejelentkezes extends javax.swing.JFrame {
           String felhasznalomezo = felhasznalonev.getText();   // Collecting the input
        char[] jelszokar = jelszo.getPassword(); // Collecting the input
        String jelszomezo = String.copyValueOf(jelszokar);  // converting from array to string
-       if(bejelenkezes_ellenorzes(felhasznalomezo,jelszomezo))
-          JOptionPane.showMessageDialog(null, "Helyes bejelentkezési adatok");        
+       if(bejelenkezes_ellenorzes(felhasznalomezo,jelszomezo)){
+          JOptionPane.showMessageDialog(null, "Helyes bejelentkezési adatok");
+          FoPanel fopanel = new FoPanel();
+          fopanel.setVisible(true);
+        }
        else
           JOptionPane.showMessageDialog(null, "Helytelen bejelentkezési adatok");   
         }
