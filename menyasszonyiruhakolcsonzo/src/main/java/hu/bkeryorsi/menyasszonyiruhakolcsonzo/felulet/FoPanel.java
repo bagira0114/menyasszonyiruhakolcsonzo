@@ -50,11 +50,20 @@ public class FoPanel extends javax.swing.JFrame {
         kijelentkezes = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jobboldali_panel = new javax.swing.JPanel();
+        ruhaink_ablak = new javax.swing.JPanel();
+        fatylak_ablak = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         foreteg.setBackground(new java.awt.Color(255, 255, 255));
         foreteg.setForeground(new java.awt.Color(0, 0, 0));
+        foreteg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         baloldali_menu.setBackground(new java.awt.Color(0, 51, 51));
         baloldali_menu.setForeground(new java.awt.Color(0, 0, 0));
@@ -95,8 +104,8 @@ public class FoPanel extends javax.swing.JFrame {
             ugyfelekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ugyfelekLayout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
         );
         ugyfelekLayout.setVerticalGroup(
@@ -144,7 +153,7 @@ public class FoPanel extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ruhainkLayout.setVerticalGroup(
             ruhainkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,13 +199,12 @@ public class FoPanel extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(40, 40, 40))
         );
         fatylakLayout.setVerticalGroup(
             fatylakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fatylakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         kesztyuk.setBackground(new java.awt.Color(0, 102, 102));
@@ -235,8 +243,8 @@ public class FoPanel extends javax.swing.JFrame {
             kesztyukLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kesztyukLayout.createSequentialGroup()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
         );
         kesztyukLayout.setVerticalGroup(
@@ -282,8 +290,8 @@ public class FoPanel extends javax.swing.JFrame {
             kolcsonzesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kolcsonzesLayout.createSequentialGroup()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
         );
         kolcsonzesLayout.setVerticalGroup(
@@ -329,8 +337,8 @@ public class FoPanel extends javax.swing.JFrame {
             kijelentkezesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kijelentkezesLayout.createSequentialGroup()
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
         );
         kijelentkezesLayout.setVerticalGroup(
@@ -344,12 +352,12 @@ public class FoPanel extends javax.swing.JFrame {
         baloldali_menu.setLayout(baloldali_menuLayout);
         baloldali_menuLayout.setHorizontalGroup(
             baloldali_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ruhaink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(fatylak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(kesztyuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(ugyfelek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(kolcsonzes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(kijelentkezes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(kesztyuk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fatylak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ruhaink, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kolcsonzes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kijelentkezes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         baloldali_menuLayout.setVerticalGroup(
             baloldali_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,7 +365,7 @@ public class FoPanel extends javax.swing.JFrame {
                 .addGap(90, 90, 90)
                 .addComponent(ruhaink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(fatylak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fatylak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(3, 3, 3)
                 .addComponent(kesztyuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
@@ -365,27 +373,50 @@ public class FoPanel extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addComponent(kolcsonzes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(kijelentkezes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(kijelentkezes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(168, 168, 168))
         );
 
-        javax.swing.GroupLayout foretegLayout = new javax.swing.GroupLayout(foreteg);
-        foreteg.setLayout(foretegLayout);
-        foretegLayout.setHorizontalGroup(
-            foretegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(foretegLayout.createSequentialGroup()
-                .addComponent(baloldali_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 848, Short.MAX_VALUE))
+        foreteg.add(baloldali_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 603));
+
+        jobboldali_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ruhaink_ablak.setBackground(new java.awt.Color(255, 255, 255));
+        ruhaink_ablak.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout ruhaink_ablakLayout = new javax.swing.GroupLayout(ruhaink_ablak);
+        ruhaink_ablak.setLayout(ruhaink_ablakLayout);
+        ruhaink_ablakLayout.setHorizontalGroup(
+            ruhaink_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
-        foretegLayout.setVerticalGroup(
-            foretegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(baloldali_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        ruhaink_ablakLayout.setVerticalGroup(
+            ruhaink_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        jobboldali_panel.add(ruhaink_ablak, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 900, 600));
+
+        javax.swing.GroupLayout fatylak_ablakLayout = new javax.swing.GroupLayout(fatylak_ablak);
+        fatylak_ablak.setLayout(fatylak_ablakLayout);
+        fatylak_ablakLayout.setHorizontalGroup(
+            fatylak_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        fatylak_ablakLayout.setVerticalGroup(
+            fatylak_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jobboldali_panel.add(fatylak_ablak, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 0, 900, 610));
+
+        foreteg.add(jobboldali_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 0, 890, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(foreteg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(foreteg, javax.swing.GroupLayout.PREFERRED_SIZE, 1084, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,15 +482,15 @@ public class FoPanel extends javax.swing.JFrame {
             fatylak.setBackground(new Color(0, 102, 102));    }//GEN-LAST:event_fatylakMouseExited
     }
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
-         this.kesztyukMouseEntered(evt);
+        this.kesztyukMouseEntered(evt);
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
-       this.kesztyukMouseExited(evt);
+        this.kesztyukMouseExited(evt);
     }//GEN-LAST:event_jLabel10MouseExited
 
     private void kesztyukMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kesztyukMouseEntered
-       kesztyuk.setBackground(new Color(30, 144, 255));
+        kesztyuk.setBackground(new Color(30, 144, 255));
     }//GEN-LAST:event_kesztyukMouseEntered
 
     private void kesztyukMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kesztyukMouseExited
@@ -477,17 +508,17 @@ public class FoPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel12MouseExited
 
     private void kolcsonzesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kolcsonzesMouseEntered
-       kolcsonzes.setBackground(new Color(30, 144, 255));
+        kolcsonzes.setBackground(new Color(30, 144, 255));
     }//GEN-LAST:event_kolcsonzesMouseEntered
 
     private void kolcsonzesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kolcsonzesMouseExited
         if (!(active.equalsIgnoreCase("kolcsonzes"))) {
 
-            kolcsonzes.setBackground(new Color(0, 102, 102)); 
+            kolcsonzes.setBackground(new Color(0, 102, 102));
     }//GEN-LAST:event_kolcsonzesMouseExited
     }
     private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
-         this.kijelentkezesMouseExited(evt);
+        this.kijelentkezesMouseExited(evt);
     }//GEN-LAST:event_jLabel14MouseEntered
 
     private void jLabel14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseExited
@@ -501,12 +532,16 @@ public class FoPanel extends javax.swing.JFrame {
     private void kijelentkezesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kijelentkezesMouseExited
         if (!(active.equalsIgnoreCase("kijelentkezes"))) {
 
-            kijelentkezes.setBackground(new Color(0, 102, 102)); 
+            kijelentkezes.setBackground(new Color(0, 102, 102));
+        }
     }//GEN-LAST:event_kijelentkezesMouseExited
-    }
-    /**
-     * @param args the command line arguments
-     */
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
+        /**
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -550,6 +585,7 @@ public class FoPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel baloldali_menu;
     private javax.swing.JPanel fatylak;
+    private javax.swing.JPanel fatylak_ablak;
     private javax.swing.JPanel foreteg;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -563,10 +599,12 @@ public class FoPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jobboldali_panel;
     private javax.swing.JPanel kesztyuk;
     private javax.swing.JPanel kijelentkezes;
     private javax.swing.JPanel kolcsonzes;
     private javax.swing.JPanel ruhaink;
+    private javax.swing.JPanel ruhaink_ablak;
     private javax.swing.JPanel ugyfelek;
     // End of variables declaration//GEN-END:variables
 }

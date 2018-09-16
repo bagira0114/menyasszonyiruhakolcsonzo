@@ -6,6 +6,8 @@
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Felhasznalo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +20,7 @@ public class Bejelentkezes extends javax.swing.JFrame {
      */
     public Bejelentkezes() {
         initComponents();
+        
     }
 
     /**
@@ -32,9 +35,9 @@ public class Bejelentkezes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        felhasznalonev = new javax.swing.JTextField();
+        bejelentkezes_gomb = new javax.swing.JButton();
+        jelszo = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,21 +45,20 @@ public class Bejelentkezes extends javax.swing.JFrame {
 
         jLabel2.setText("Jelszó");
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        felhasznalonev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                felhasznalonevActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("jTextField2");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        bejelentkezes_gomb.setText("Ok");
+        bejelentkezes_gomb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                bejelentkezes_gombActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Ok");
+        jelszo.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,11 +70,11 @@ public class Bejelentkezes extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                 .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                        .addComponent(jTextField2))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(felhasznalonev, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bejelentkezes_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jelszo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(325, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -81,13 +83,13 @@ public class Bejelentkezes extends javax.swing.JFrame {
                 .addGap(128, 128, 128)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(felhasznalonev, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(jelszo))
                 .addGap(49, 49, 49)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bejelentkezes_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(210, Short.MAX_VALUE))
         );
 
@@ -110,13 +112,30 @@ public class Bejelentkezes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void felhasznalonevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_felhasznalonevActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_felhasznalonevActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void bejelentkezes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bejelentkezes_gombActionPerformed
+        String felhasznalo= felhasznalonev.getText();
+        String jelsz= jelszo.getText();
+        
+        if(felhasznalonev.getText().length()==0){
+        JOptionPane.showMessageDialog(null, "Nincs kitöltve a felhasználónév mező");
+    }
+        else if (jelszo.getPassword().length==0){
+         JOptionPane.showMessageDialog(null,"Nincs kitöltve a jelszó mező");       
+                }
+        else {
+          String felhasznalomezo = felhasznalonev.getText();   // Collecting the input
+       char[] jelszokar = jelszo.getPassword(); // Collecting the input
+       String jelszomezo = String.copyValueOf(jelszokar);  // converting from array to string
+       if(bejelenkezes_ellenorzes(felhasznalomezo,jelszomezo))
+          JOptionPane.showMessageDialog(null, "Helyes bejelentkezési adatok");        
+       else
+          JOptionPane.showMessageDialog(null, "Helytelen bejelentkezési adatok");   
+        }
+    }//GEN-LAST:event_bejelentkezes_gombActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,11 +175,22 @@ public class Bejelentkezes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bejelentkezes_gomb;
+    private javax.swing.JTextField felhasznalonev;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jelszo;
     // End of variables declaration//GEN-END:variables
+
+    private boolean bejelenkezes_ellenorzes(String felhasznalomezo, String jelszomezo) {
+     SQL adatbazis = new SQL();
+     Felhasznalo fel = adatbazis.bejelenkezes(felhasznalomezo, jelszomezo);
+     if (fel !=null){
+         return true;
+     }else {
+         return false;
+     }
+            
+    }
 }
