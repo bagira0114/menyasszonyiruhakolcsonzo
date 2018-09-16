@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.bkeryorsi.menyasszonyiruhakolcsonzo;
+package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
+
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 
 /**
  *

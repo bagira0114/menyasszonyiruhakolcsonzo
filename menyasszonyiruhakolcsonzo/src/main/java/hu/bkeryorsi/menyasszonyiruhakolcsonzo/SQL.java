@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class SQL {
     private Connection con = null;
-    protected Connection connect() {
+    public Connection connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/eskuvo?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", null);
