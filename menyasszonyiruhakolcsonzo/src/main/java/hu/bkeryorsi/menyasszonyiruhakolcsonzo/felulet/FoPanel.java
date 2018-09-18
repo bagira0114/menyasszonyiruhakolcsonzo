@@ -6,6 +6,7 @@
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -51,10 +52,10 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jobboldali_panel = new javax.swing.JPanel();
-        ruhaink_ablak = new javax.swing.JPanel();
-        fatylak_ablak = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(new java.awt.Dimension(1024, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -388,37 +389,7 @@ public class FoPanel extends javax.swing.JFrame {
 
         foreteg.add(baloldali_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 603));
 
-        jobboldali_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ruhaink_ablak.setBackground(new java.awt.Color(255, 255, 255));
-        ruhaink_ablak.setForeground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout ruhaink_ablakLayout = new javax.swing.GroupLayout(ruhaink_ablak);
-        ruhaink_ablak.setLayout(ruhaink_ablakLayout);
-        ruhaink_ablakLayout.setHorizontalGroup(
-            ruhaink_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        ruhaink_ablakLayout.setVerticalGroup(
-            ruhaink_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-
-        jobboldali_panel.add(ruhaink_ablak, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 900, 600));
-
-        javax.swing.GroupLayout fatylak_ablakLayout = new javax.swing.GroupLayout(fatylak_ablak);
-        fatylak_ablak.setLayout(fatylak_ablakLayout);
-        fatylak_ablakLayout.setHorizontalGroup(
-            fatylak_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        fatylak_ablakLayout.setVerticalGroup(
-            fatylak_ablakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jobboldali_panel.add(fatylak_ablak, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 0, 900, 610));
-
+        jobboldali_panel.setLayout(new java.awt.GridBagLayout());
         foreteg.add(jobboldali_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 0, 890, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -555,25 +526,13 @@ public class FoPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_ruhainkMousePressed
 
     private void kijelentkezesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kijelentkezesMouseClicked
-        System.out.println("kijelentkezés");
-        jobboldali_panel.removeAll();
-        jobboldali_panel.repaint();
-        jobboldali_panel.revalidate();
-        jobboldali_panel.add(new Kijelentkezes());
-        jobboldali_panel.repaint();
-        jobboldali_panel.repaint();
-        jobboldali_panel.revalidate();
+       active="kijelentkezes";
+       kijelentkezes.setBackground(new Color(0,102,102));
+        panelmutat(new Kijelentkezes());
     }//GEN-LAST:event_kijelentkezesMouseClicked
 
     private void kesztyukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kesztyukMouseClicked
-        System.out.println("kesztyűk");
-        jobboldali_panel.removeAll();
-        jobboldali_panel.repaint();
-        jobboldali_panel.revalidate();
-        jobboldali_panel.add(new Kesztyuk());
-        jobboldali_panel.repaint();
-        jobboldali_panel.repaint();
-        jobboldali_panel.revalidate();
+        panelmutat(new Kesztyuk());
     }//GEN-LAST:event_kesztyukMouseClicked
     /**
      * @param args the command line arguments
@@ -617,11 +576,19 @@ public class FoPanel extends javax.swing.JFrame {
             }
         });
     }
+    private void panelmutat(JPanel panel){
+     jobboldali_panel.removeAll();
+        jobboldali_panel.repaint();
+        jobboldali_panel.revalidate();
+        jobboldali_panel.add(panel);
+        jobboldali_panel.repaint();
+        jobboldali_panel.repaint();
+        jobboldali_panel.revalidate();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel baloldali_menu;
     private javax.swing.JPanel fatylak;
-    private javax.swing.JPanel fatylak_ablak;
     private javax.swing.JPanel foreteg;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -640,7 +607,6 @@ public class FoPanel extends javax.swing.JFrame {
     private javax.swing.JPanel kijelentkezes;
     private javax.swing.JPanel kolcsonzes;
     private javax.swing.JPanel ruhaink;
-    private javax.swing.JPanel ruhaink_ablak;
     private javax.swing.JPanel ugyfelek;
     // End of variables declaration//GEN-END:variables
 }

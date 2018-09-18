@@ -29,24 +29,11 @@ public class Kijelentkezes extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
+        setPreferredSize(new java.awt.Dimension(890, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(512, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(429, 429, 429))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(jButton1)
-                .addContainerGap(319, Short.MAX_VALUE))
-        );
+        jButton1.setText("jButton1");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

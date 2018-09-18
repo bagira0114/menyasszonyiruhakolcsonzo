@@ -45,6 +45,7 @@ public class Bejelentkezes extends javax.swing.JFrame {
 
         jLabel2.setText("Jelszó");
 
+        felhasznalonev.setText("admin");
         felhasznalonev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 felhasznalonevActionPerformed(evt);
@@ -58,7 +59,7 @@ public class Bejelentkezes extends javax.swing.JFrame {
             }
         });
 
-        jelszo.setText("jPasswordField1");
+        jelszo.setText("kacsa");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
