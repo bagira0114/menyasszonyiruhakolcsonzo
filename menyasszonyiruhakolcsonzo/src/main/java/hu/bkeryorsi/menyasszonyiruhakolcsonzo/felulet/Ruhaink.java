@@ -9,12 +9,12 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
  *
  * @author keryo
  */
-public class Kesztyuk extends javax.swing.JPanel {
+public class Ruhaink extends javax.swing.JPanel {
 
     /**
-     * Creates new form Kesztyuk
+     * Creates new form Ruhaink
      */
-    public Kesztyuk() {
+    public Ruhaink() {
         initComponents();
     }
 
@@ -31,23 +31,23 @@ public class Kesztyuk extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
-        jLabel1.setText("Kesztyűk");
+        jLabel1.setText("Ruháink");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(858, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(744, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(530, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addContainerGap(473, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

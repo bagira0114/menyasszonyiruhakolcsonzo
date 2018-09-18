@@ -73,6 +73,9 @@ public class FoPanel extends javax.swing.JFrame {
         ugyfelek.setForeground(new java.awt.Color(0, 0, 0));
         ugyfelek.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ugyfelek.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ugyfelekMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ugyfelekMouseEntered(evt);
             }
@@ -84,6 +87,11 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Logó");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -91,6 +99,9 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Ügyfelek");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel4MouseEntered(evt);
             }
@@ -120,6 +131,9 @@ public class FoPanel extends javax.swing.JFrame {
         ruhaink.setForeground(new java.awt.Color(0, 0, 0));
         ruhaink.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ruhaink.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ruhainkMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ruhainkMouseEntered(evt);
             }
@@ -134,6 +148,11 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Logó");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -141,6 +160,9 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Ruháink");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel6MouseEntered(evt);
             }
@@ -169,6 +191,9 @@ public class FoPanel extends javax.swing.JFrame {
         fatylak.setForeground(new java.awt.Color(0, 0, 0));
         fatylak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fatylak.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fatylakMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 fatylakMouseEntered(evt);
             }
@@ -180,6 +205,11 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Logó");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -187,6 +217,9 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Fátylak");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel8MouseEntered(evt);
             }
@@ -229,6 +262,11 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Logó");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -236,6 +274,9 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Kesztyűk");
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel10MouseEntered(evt);
             }
@@ -265,6 +306,9 @@ public class FoPanel extends javax.swing.JFrame {
         kolcsonzes.setForeground(new java.awt.Color(0, 0, 0));
         kolcsonzes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         kolcsonzes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kolcsonzesMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 kolcsonzesMouseEntered(evt);
             }
@@ -276,6 +320,11 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Logó");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -283,6 +332,9 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Kölcsönzés");
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel12MouseEntered(evt);
             }
@@ -326,6 +378,11 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Logó");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -333,6 +390,9 @@ public class FoPanel extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Kijelentkezés");
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel14MouseEntered(evt);
             }
@@ -532,8 +592,106 @@ public class FoPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_kijelentkezesMouseClicked
 
     private void kesztyukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kesztyukMouseClicked
+ active="kesztyuk";
+       kesztyuk.setBackground(new Color(0,102,102));
         panelmutat(new Kesztyuk());
     }//GEN-LAST:event_kesztyukMouseClicked
+
+    private void ruhainkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ruhainkMouseClicked
+       active="ruhaink";
+       ruhaink.setBackground(new Color(0,102,102));
+        panelmutat(new Ruhaink());
+    }//GEN-LAST:event_ruhainkMouseClicked
+
+    private void fatylakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fatylakMouseClicked
+ active="fatylak";
+       fatylak.setBackground(new Color(0,102,102));
+        panelmutat(new Fatylak());
+    }//GEN-LAST:event_fatylakMouseClicked
+
+    private void ugyfelekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ugyfelekMouseClicked
+ active="ugyfelek";
+       ugyfelek.setBackground(new Color(0,102,102));
+        panelmutat(new Ugyfelek());
+    }//GEN-LAST:event_ugyfelekMouseClicked
+
+    private void kolcsonzesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kolcsonzesMouseClicked
+  active="kolcsonzes";
+       kolcsonzes.setBackground(new Color(0,102,102));
+        panelmutat(new Kolcsonzes());
+    }//GEN-LAST:event_kolcsonzesMouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+      active="ruhaink";
+       ruhaink.setBackground(new Color(0,102,102));
+        panelmutat(new Ruhaink());
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+  active="ruhaink";
+       ruhaink.setBackground(new Color(0,102,102));
+        panelmutat(new Ruhaink());
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+ active="fatylak";
+       fatylak.setBackground(new Color(0,102,102));
+        panelmutat(new Fatylak());
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+ active="fatylak";
+       fatylak.setBackground(new Color(0,102,102));
+        panelmutat(new Fatylak());
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+ active="kesztyuk";
+       kesztyuk.setBackground(new Color(0,102,102));
+        panelmutat(new Kesztyuk());
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+ active="kesztyuk";
+       kesztyuk.setBackground(new Color(0,102,102));
+        panelmutat(new Kesztyuk());
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+  active="ugyfelek";
+       ugyfelek.setBackground(new Color(0,102,102));
+        panelmutat(new Ugyfelek());
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+active="ugyfelek";
+       ugyfelek.setBackground(new Color(0,102,102));
+        panelmutat(new Ugyfelek());
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+  active="kolcsonzes";
+       kolcsonzes.setBackground(new Color(0,102,102));
+        panelmutat(new Kolcsonzes());
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+   active="kolcsonzes";
+       kolcsonzes.setBackground(new Color(0,102,102));
+        panelmutat(new Kolcsonzes());
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+ active="kijelentkezes";
+       kijelentkezes.setBackground(new Color(0,102,102));
+        panelmutat(new Kijelentkezes());
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+  active="kijelentkezes";
+       kijelentkezes.setBackground(new Color(0,102,102));
+        panelmutat(new Kijelentkezes());
+    }//GEN-LAST:event_jLabel13MouseClicked
     /**
      * @param args the command line arguments
      */
