@@ -135,6 +135,7 @@ public class Bejelentkezes extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(null, "Helyes bejelentkezési adatok");
           FoPanel fopanel = new FoPanel();
           fopanel.setVisible(true);
+          this.setVisible(false);
         }
        else
           JOptionPane.showMessageDialog(null, "Helytelen bejelentkezési adatok");   

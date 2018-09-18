@@ -46,7 +46,11 @@ public class Kijelentkezes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-   
+      this.getTopLevelAncestor().setVisible(false);
+      Bejelentkezes bejelentkezes = new Bejelentkezes();
+          bejelentkezes.setVisible(true);
+
+
     }//GEN-LAST:event_jButton1MouseClicked
 
 
@@ -54,4 +58,6 @@ public class Kijelentkezes extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    
 }
