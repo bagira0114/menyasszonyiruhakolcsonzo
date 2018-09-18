@@ -125,6 +125,9 @@ public class FoPanel extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 ruhainkMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ruhainkMousePressed(evt);
+            }
         });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -211,6 +214,9 @@ public class FoPanel extends javax.swing.JFrame {
         kesztyuk.setForeground(new java.awt.Color(0, 0, 0));
         kesztyuk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         kesztyuk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kesztyukMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 kesztyukMouseEntered(evt);
             }
@@ -305,6 +311,9 @@ public class FoPanel extends javax.swing.JFrame {
         kijelentkezes.setForeground(new java.awt.Color(0, 0, 0));
         kijelentkezes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         kijelentkezes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kijelentkezesMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 kijelentkezesMouseEntered(evt);
             }
@@ -539,9 +548,36 @@ public class FoPanel extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
-        /**
-         * @param args the command line arguments
-         */
+
+    private void ruhainkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ruhainkMousePressed
+
+
+    }//GEN-LAST:event_ruhainkMousePressed
+
+    private void kijelentkezesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kijelentkezesMouseClicked
+        System.out.println("kijelentkezés");
+        jobboldali_panel.removeAll();
+        jobboldali_panel.repaint();
+        jobboldali_panel.revalidate();
+        jobboldali_panel.add(new Kijelentkezes());
+        jobboldali_panel.repaint();
+        jobboldali_panel.repaint();
+        jobboldali_panel.revalidate();
+    }//GEN-LAST:event_kijelentkezesMouseClicked
+
+    private void kesztyukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kesztyukMouseClicked
+        System.out.println("kesztyűk");
+        jobboldali_panel.removeAll();
+        jobboldali_panel.repaint();
+        jobboldali_panel.revalidate();
+        jobboldali_panel.add(new Kesztyuk());
+        jobboldali_panel.repaint();
+        jobboldali_panel.repaint();
+        jobboldali_panel.revalidate();
+    }//GEN-LAST:event_kesztyukMouseClicked
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
