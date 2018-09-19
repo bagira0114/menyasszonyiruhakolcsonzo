@@ -5,6 +5,8 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import javax.swing.JComboBox;
+
 /**
  *
  * @author keryo
@@ -28,31 +30,137 @@ public class Kesztyuk extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        kesztyuAzonosito = new javax.swing.JTextField();
+        uj_kesztyu_gomb = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        kesztyuComboBox = new javax.swing.JComboBox<>();
+        kesztyu_szures_gomb = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
         jLabel1.setText("Kesztyűk");
 
+        jLabel2.setText("Azonosító:");
+
+        kesztyuAzonosito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kesztyuAzonositoActionPerformed(evt);
+            }
+        });
+
+        uj_kesztyu_gomb.setText("Új kesztyű felvétele");
+
+        jButton1.setText("Kijelölt kesztyű megnyitása");
+
+        kesztyuComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kölcsönözhető", "Kölcsönözve", "Tisztító", "Sérült" }));
+        kesztyuComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kesztyuComboBoxActionPerformed(evt);
+            }
+        });
+
+        kesztyu_szures_gomb.setText("Szűrés");
+        kesztyu_szures_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kesztyu_szures_gombActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(858, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(kesztyuAzonosito)))
+                .addGap(72, 72, 72)
+                .addComponent(kesztyuComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(kesztyu_szures_gomb)
+                .addGap(264, 264, 264))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(uj_kesztyu_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(530, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kesztyuAzonosito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kesztyu_szures_gomb)
+                    .addComponent(kesztyuComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(uj_kesztyu_gomb)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void kesztyuAzonositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kesztyuAzonositoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kesztyuAzonositoActionPerformed
+
+    private void kesztyuComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kesztyuComboBoxActionPerformed
+
+
+    }//GEN-LAST:event_kesztyuComboBoxActionPerformed
+
+    private void kesztyu_szures_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kesztyu_szures_gombActionPerformed
+        String kivalasztottAllap = (String) kesztyuComboBox.getSelectedItem(); //ez majd később kell, kiszedni a választást
+        int kesztyuAzon =  Integer.parseInt(kesztyuAzonosito.getText());
+    }//GEN-LAST:event_kesztyu_szures_gombActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField kesztyuAzonosito;
+    private javax.swing.JComboBox<String> kesztyuComboBox;
+    private javax.swing.JButton kesztyu_szures_gomb;
+    private javax.swing.JButton uj_kesztyu_gomb;
     // End of variables declaration//GEN-END:variables
 }
