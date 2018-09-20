@@ -38,11 +38,13 @@ public class Kesztyuk extends javax.swing.JPanel {
         }
 
         String[] columnNames = {"Id", "Kép", "Ár", "Állapot", "Megjegyzés"};
+        Class [] columnClass = {Integer.class, String.class, Integer.class, String.class, String.class};
         DefaultTableModel model = new DefaultTableModel(o, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
+            @Override
             public Class getColumnClass(int column) {
-                return getValueAt(0, column).getClass();
+                return columnClass [column];
             }
         };
         jTable1.setRowHeight(100);
@@ -180,7 +182,13 @@ public class Kesztyuk extends javax.swing.JPanel {
         String kivalasztottAllap = (String) kesztyuComboBox.getSelectedItem(); //ez majd később kell, kiszedni a választást
       //  int kesztyuAzon =  Integer.parseInt(kesztyuAzonosito.getText());
     }//GEN-LAST:event_kesztyu_szures_gombActionPerformed
-
+ public static void main(String args[]) {
+      java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Kesztyuk().setVisible(true);
+            }
+        });
+ }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

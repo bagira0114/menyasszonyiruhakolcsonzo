@@ -11,10 +11,9 @@ Leiras VARCHAR(255),
 Kep VARCHAR(255),
 Meret INT NOT NULL,
 Ar INT NOT NULL,
-Fazon ENUM('sellő','félsellő','hercegnős') NOT NULL,
-Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') NOT NULL,
+Fazon ENUM('sellő','félsellő','hercegnős') CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
 Megjegyzes VARCHAR(50)
-
 );
 
 CREATE TABLE fatyol (
