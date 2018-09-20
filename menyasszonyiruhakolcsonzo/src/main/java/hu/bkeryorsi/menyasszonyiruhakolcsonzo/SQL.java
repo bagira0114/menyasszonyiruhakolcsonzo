@@ -6,11 +6,14 @@
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Felhasznalo;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,5 +58,33 @@ public class SQL {
             return null;
         }
     
-    } 
+    }
+    public List<Kesztyu> getKesztyu() {
+        try {
+            
+            con = connect();
+            
+            PreparedStatement st = con.prepareStatement("select * from kesztyu");
+            ResultSet rs = st.executeQuery();
+
+            List<Kesztyu> kesztyu = new ArrayList<Kesztyu>();
+            while (rs.next()) {
+                Kesztyu k = new Kesztyu();
+                k.id = rs.getInt("Kesztyuid");
+                k.kep = rs.getString("Kep");
+                k.ar = rs.getInt("Ar");
+                k.allapot = rs.getString("Allapot");
+                k.megjegyzes = rs.getString("Megjegyzes");
+                kesztyu.add(k);
+                
+            }
+            st.close();
+            con.close();
+            return kesztyu;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
 }
+

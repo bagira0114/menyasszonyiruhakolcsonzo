@@ -21,7 +21,7 @@ CREATE TABLE fatyol (
 FatyolId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 Kep VARCHAR(255),
 Ar INT NOT NULL,
-Fazon ENUM('rövid', 'hosszu', 'pironkodó') NOT NULL,
+Fazon ENUM('rövid', 'hosszú', 'pironkodó') NOT NULL,
 Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') NOT NULL,
 Megjegyzes VARCHAR(255)
 );
