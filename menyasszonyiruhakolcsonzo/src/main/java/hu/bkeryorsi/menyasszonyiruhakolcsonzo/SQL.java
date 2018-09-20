@@ -5,6 +5,7 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Felhasznalo;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import java.sql.Connection;
@@ -85,6 +86,35 @@ public class SQL {
         }
         return null;
     }
+
+    public List<Fatyol> getFatyol() {
+      try {
+            
+            con = connect();
+            
+            PreparedStatement st = con.prepareStatement("select * from fatyol");
+            ResultSet rs = st.executeQuery();
+
+            List<Fatyol> fatyol = new ArrayList<Fatyol>();
+            while (rs.next()) {
+                Fatyol k = new Fatyol();
+                k.setId(rs.getInt("FatyolId"));
+                k.setKep(rs.getString("Kep"));
+                k.setAr(rs.getInt("Ar"));
+                k.setFazon(rs.getString("Fazon"));
+                k.setAllapot(rs.getString("Allapot"));
+                k.setMegjegyzes(rs.getString("Megjegyzes"));
+                fatyol.add(k);
+                
+            }
+            st.close();
+            con.close();
+            return fatyol;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+   
     
 }
 
