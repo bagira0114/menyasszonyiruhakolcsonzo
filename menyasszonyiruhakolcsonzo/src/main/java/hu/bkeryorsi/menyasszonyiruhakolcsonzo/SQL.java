@@ -8,6 +8,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Felhasznalo;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ruha;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,34 +38,35 @@ public class SQL {
         return con;
 
     }
-    public Felhasznalo bejelenkezes( String felhasznalonev, String jelszo){
+
+    public Felhasznalo bejelenkezes(String felhasznalonev, String jelszo) {
         try {
             connect();
             PreparedStatement st = con.prepareStatement("select * from felhasznalo where Felhasznalonev=? and Jelszo=?");
             st.setString(1, felhasznalonev);
             st.setString(2, jelszo);
-            ResultSet rs =st.executeQuery();
-            if (rs.next()){
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
                 Felhasznalo felhasznalo = new Felhasznalo();
                 felhasznalo.setFelhasznalonev(felhasznalonev);
                 felhasznalo.setId(rs.getInt("FelhasznaloId"));
                 return felhasznalo;
-            }
-            else{
+            } else {
                 return null;
-          
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
         }
-    
+
     }
+
     public List<Kesztyu> getKesztyu() {
         try {
-            
+
             con = connect();
-            
+
             PreparedStatement st = con.prepareStatement("select * from kesztyu");
             ResultSet rs = st.executeQuery();
 
@@ -77,21 +79,22 @@ public class SQL {
                 k.setAllapot(rs.getString("Allapot"));
                 k.setMegjegyzes(rs.getString("Megjegyzes"));
                 kesztyu.add(k);
-                
+
             }
             st.close();
             con.close();
             return kesztyu;
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     public List<Fatyol> getFatyol() {
-      try {
-            
+        try {
+
             con = connect();
-            
+
             PreparedStatement st = con.prepareStatement("select * from fatyol");
             ResultSet rs = st.executeQuery();
 
@@ -105,16 +108,46 @@ public class SQL {
                 k.setAllapot(rs.getString("Allapot"));
                 k.setMegjegyzes(rs.getString("Megjegyzes"));
                 fatyol.add(k);
-                
+
             }
             st.close();
             con.close();
             return fatyol;
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
-   
-    
-}
 
+    public List<Ruha> getRuha() {
+        try {
+
+            con = connect();
+
+            PreparedStatement st = con.prepareStatement("select * from menyasszonyiruha");
+            ResultSet rs = st.executeQuery();
+
+            List<Ruha> ruha = new ArrayList<Ruha>();
+            while (rs.next()) {
+                Ruha k = new Ruha();
+                k.setId(rs.getInt("MenyasszonyiRuhaId"));
+                k.setLeiras(rs.getString("Leiras"));
+                k.setKep(rs.getString("Kep"));
+                k.setAr(rs.getInt("Ar"));
+                k.setMeret(rs.getInt("Meret"));
+                k.setFazon(rs.getString("Fazon"));
+                k.setAllapot(rs.getString("Allapot"));
+                k.setMegjegyzes(rs.getString("Megjegyzes"));
+                ruha.add(k);
+
+            }
+            st.close();
+            con.close();
+            return ruha;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+}
