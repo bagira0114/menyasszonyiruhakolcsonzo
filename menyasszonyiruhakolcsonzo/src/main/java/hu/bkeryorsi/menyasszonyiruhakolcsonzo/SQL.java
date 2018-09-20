@@ -9,6 +9,7 @@ import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Felhasznalo;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ruha;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -149,5 +150,31 @@ public class SQL {
         }
         return null;
     }
+public List<Ugyfel> getUgyfel() {
+        try {
 
+            con = connect();
+
+            PreparedStatement st = con.prepareStatement("select * from ugyfel");
+            ResultSet rs = st.executeQuery();
+
+            List<Ugyfel> ugyfel = new ArrayList<Ugyfel>();
+            while (rs.next()) {
+                Ugyfel k = new Ugyfel();
+                k.setId(rs.getInt("UgyfelId"));
+                k.setVezeteknev(rs.getString("Vezeteknev"));
+                k.setKeresztnev(rs.getString("Keresztnev"));
+                k.setEmailcim(rs.getString("EmailCim"));
+                
+                ugyfel.add(k);
+
+            }
+            st.close();
+            con.close();
+            return ugyfel;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
