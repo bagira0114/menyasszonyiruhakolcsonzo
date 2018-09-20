@@ -10,10 +10,11 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis;
  * @author keryo
  */
 public class Kesztyu {
-    public int id;
-    public String kep;
-    public int ar;
-     public String allapot;
+    private int id;
+    private String kep;
+    private int ar;
+     private String allapot;
+     private String megjegyzes;
 
     public int getId() {
         return id;
@@ -54,5 +55,5 @@ public class Kesztyu {
     public void setMegjegyzes(String megjegyzes) {
         this.megjegyzes = megjegyzes;
     }
-      public String megjegyzes;
+      
 }

@@ -30,11 +30,11 @@ public class Kesztyuk extends javax.swing.JPanel {
             Kesztyu k = new Kesztyu();
             k = kesztyu.get(i);
 
-            o[i][0] = k.id;
-            o[i][1] = new ImageIcon("icons/" + k.kep);
-            o[i][2] = k.ar;
-            o[i][3] = k.allapot;
-            o[i][4] = k.megjegyzes;
+            o[i][0] = k.getId();
+            o[i][1] = new ImageIcon("icons/" + k.getKep());
+            o[i][2] = k.getAr();
+            o[i][3] = k.getAllapot();
+            o[i][4] = k.getMegjegyzes();
         }
 
         String[] columnNames = {"Id", "Kép", "Ár", "Állapot", "Megjegyzés"};

@@ -70,11 +70,11 @@ public class SQL {
             List<Kesztyu> kesztyu = new ArrayList<Kesztyu>();
             while (rs.next()) {
                 Kesztyu k = new Kesztyu();
-                k.id = rs.getInt("Kesztyuid");
-                k.kep = rs.getString("Kep");
-                k.ar = rs.getInt("Ar");
-                k.allapot = rs.getString("Allapot");
-                k.megjegyzes = rs.getString("Megjegyzes");
+                k.setId(rs.getInt("Kesztyuid"));
+                k.setKep(rs.getString("Kep"));
+                k.setAr(rs.getInt("Ar"));
+                k.setAllapot(rs.getString("Allapot"));
+                k.setMegjegyzes(rs.getString("Megjegyzes"));
                 kesztyu.add(k);
                 
             }
