@@ -5,6 +5,7 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -612,7 +613,7 @@ public class FoPanel extends javax.swing.JFrame {
     private void ugyfelekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ugyfelekMouseClicked
  active="ugyfelek";
        ugyfelek.setBackground(new Color(0,102,102));
-        panelmutat(new Ugyfelek());
+        panelmutat(new Ugyfelek(this));
     }//GEN-LAST:event_ugyfelekMouseClicked
 
     private void kolcsonzesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kolcsonzesMouseClicked
@@ -767,4 +768,6 @@ active="ugyfelek";
     private javax.swing.JPanel ruhaink;
     private javax.swing.JPanel ugyfelek;
     // End of variables declaration//GEN-END:variables
+
+    
 }

@@ -6,6 +6,7 @@
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 
 /**
  *
@@ -16,13 +17,13 @@ public class Ugyfelfelvetel extends javax.swing.JPanel {
     /**
      * Creates new form Ugyfelfelvetel
      */
-    public Ugyfelfelvetel() {
+    private FoPanel szulo;
+    public Ugyfelfelvetel(FoPanel szulo) {
+         this.szulo = szulo;
         initComponents();
-         
-        
-        
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,8 +54,18 @@ public class Ugyfelfelvetel extends javax.swing.JPanel {
         jLabel4.setText("E-mail cím:");
 
         megse_gomb.setText("Mégse");
+        megse_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                megse_gombActionPerformed(evt);
+            }
+        });
 
         mentes_gomb.setText("Mentés");
+        mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mentes_gombActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,6 +118,22 @@ public class Ugyfelfelvetel extends javax.swing.JPanel {
                 .addContainerGap(274, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
+        SQL sql = new SQL();
+        Ugyfel k = new Ugyfel();
+        k.setVezeteknev(vezetetknev.getText());
+        k.setKeresztnev(keresztnev.getText());
+        k.setEmailcim(emailcim.getText());
+        sql.addUgyfel(k);
+        Ugyfelek ugyfelek = new Ugyfelek(szulo);
+          szulo.panelmutat(ugyfelek);
+    }//GEN-LAST:event_mentes_gombActionPerformed
+
+    private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
+Ugyfelek ugyfelek = new Ugyfelek(szulo);
+          szulo.panelmutat(ugyfelek);      
+    }//GEN-LAST:event_megse_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

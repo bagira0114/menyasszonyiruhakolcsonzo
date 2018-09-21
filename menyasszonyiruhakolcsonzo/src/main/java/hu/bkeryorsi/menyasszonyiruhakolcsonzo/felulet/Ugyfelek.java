@@ -159,7 +159,7 @@ public class Ugyfelek extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void uj_ugyfel_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_ugyfel_gombActionPerformed
-     Ugyfelfelvetel ugyfelfelvetel = new Ugyfelfelvetel();
+     Ugyfelfelvetel ugyfelfelvetel = new Ugyfelfelvetel(szulo);
      szulo.panelmutat(ugyfelfelvetel);
           
     }//GEN-LAST:event_uj_ugyfel_gombActionPerformed

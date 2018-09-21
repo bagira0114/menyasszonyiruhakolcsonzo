@@ -113,11 +113,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="M&#xe9;gse"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="megse_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mentes_gomb">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ment&#xe9;s"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mentes_gombActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
