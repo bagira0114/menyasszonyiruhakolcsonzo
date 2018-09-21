@@ -5,6 +5,8 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+
 /**
  *
  * @author keryo
@@ -16,8 +18,11 @@ public class Ugyfelfelvetel extends javax.swing.JPanel {
      */
     public Ugyfelfelvetel() {
         initComponents();
+         
+        
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

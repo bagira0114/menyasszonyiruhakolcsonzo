@@ -107,6 +107,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xda;j &#xfc;gyf&#xe9;l felv&#xe9;tele"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uj_ugyfel_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>

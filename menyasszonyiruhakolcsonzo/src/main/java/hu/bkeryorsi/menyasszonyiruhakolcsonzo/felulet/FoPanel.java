@@ -660,13 +660,13 @@ public class FoPanel extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
   active="ugyfelek";
        ugyfelek.setBackground(new Color(0,102,102));
-        panelmutat(new Ugyfelek());
+        panelmutat(new Ugyfelek(this));
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 active="ugyfelek";
        ugyfelek.setBackground(new Color(0,102,102));
-        panelmutat(new Ugyfelek());
+        panelmutat(new Ugyfelek(this));
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
@@ -734,7 +734,7 @@ active="ugyfelek";
             }
         });
     }
-    private void panelmutat(JPanel panel){
+    public void panelmutat(JPanel panel){
      jobboldali_panel.removeAll();
         jobboldali_panel.repaint();
         jobboldali_panel.revalidate();

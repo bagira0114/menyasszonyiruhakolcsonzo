@@ -18,10 +18,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Ugyfelek extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Ugyfelek
-     */
-    public Ugyfelek() {
+    private FoPanel szulo;
+
+   public Ugyfelek(FoPanel szulo) {
+        this.szulo = szulo;
         initComponents();
         SQL sql = new SQL();
         List<Ugyfel> ugyfel = sql.getUgyfel();
@@ -87,6 +87,11 @@ public class Ugyfelek extends javax.swing.JPanel {
         ugyfel_megynyitas_gomb.setText("Kijelölt ügyfél megnyitása");
 
         uj_ugyfel_gomb.setText("Új ügyfél felvétele");
+        uj_ugyfel_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uj_ugyfel_gombActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,6 +157,12 @@ public class Ugyfelek extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void uj_ugyfel_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_ugyfel_gombActionPerformed
+     Ugyfelfelvetel ugyfelfelvetel = new Ugyfelfelvetel();
+     szulo.panelmutat(ugyfelfelvetel);
+          
+    }//GEN-LAST:event_uj_ugyfel_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

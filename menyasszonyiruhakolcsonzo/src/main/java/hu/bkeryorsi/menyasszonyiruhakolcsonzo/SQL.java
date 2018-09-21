@@ -177,4 +177,19 @@ public List<Ugyfel> getUgyfel() {
         }
         return null;
     }
+public void addUgyfel(Ugyfel k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("insert into ugyfel (Vezeteknev, Keresztnev, EmailCim) values (?,?,?)");
+            st.setString(1, k.getVezeteknev());
+            st.setString(2, k.getKeresztnev());
+            st.setString(3, k.getEmailcim());
+                        st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
 }
