@@ -102,6 +102,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kijel&#xf6;lt &#xfc;gyf&#xe9;l megnyit&#xe1;sa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ugyfel_megynyitas_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="uj_ugyfel_gomb">
       <Properties>

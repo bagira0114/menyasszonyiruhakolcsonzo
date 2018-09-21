@@ -11,6 +11,7 @@ import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -85,6 +86,11 @@ public class Ugyfelek extends javax.swing.JPanel {
         });
 
         ugyfel_megynyitas_gomb.setText("Kijelölt ügyfél megnyitása");
+        ugyfel_megynyitas_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ugyfel_megynyitas_gombActionPerformed(evt);
+            }
+        });
 
         uj_ugyfel_gomb.setText("Új ügyfél felvétele");
         uj_ugyfel_gomb.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +169,22 @@ public class Ugyfelek extends javax.swing.JPanel {
      szulo.panelmutat(ugyfelfelvetel);
           
     }//GEN-LAST:event_uj_ugyfel_gombActionPerformed
+
+    private void ugyfel_megynyitas_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ugyfel_megynyitas_gombActionPerformed
+     Ugyfel ugyfel = this.kivalasztottsor();
+       Ugyfelmodositas ugyfelmodositas = new Ugyfelmodositas(szulo, ugyfel);
+     szulo.panelmutat(ugyfelmodositas);
+    }
+    public Ugyfel kivalasztottsor(){
+         int i = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+        Ugyfel k = new Ugyfel();
+        k.setId((Integer)model.getValueAt(i, 0));
+        k.setVezeteknev((String)model.getValueAt(i, 1));
+        k.setKeresztnev((String) model.getValueAt(i, 2));
+        k.setEmailcim((String)model.getValueAt(i, 3));
+        return k;
+    }//GEN-LAST:event_ugyfel_megynyitas_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
