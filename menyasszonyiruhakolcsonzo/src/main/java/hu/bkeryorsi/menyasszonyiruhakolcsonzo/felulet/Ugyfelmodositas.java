@@ -7,6 +7,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
+import java.awt.Color;
 import javax.swing.table.TableModel;
 
 /**
@@ -25,6 +26,14 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
         this.szulo = szulo;
         this.ugyfel = ugyfel;
         initComponents();
+        vezeteknev.setEditable(false);
+        vezeteknev.setBackground(Color.LIGHT_GRAY);
+        keresztnev.setEditable(false);
+        keresztnev.setBackground(Color.LIGHT_GRAY);
+        emailcim.setEditable(false);
+        emailcim.setBackground(Color.LIGHT_GRAY);
+        kolcsonzesek.setEditable(false);
+        kolcsonzesek.setBackground(Color.LIGHT_GRAY);
 
         vezeteknev.setText(ugyfel.getVezeteknev());
         keresztnev.setText(ugyfel.getKeresztnev());
@@ -67,6 +76,12 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
         jLabel4.setText("E-mail cím:");
 
         jLabel5.setText("Kölcsönzések:");
+
+        vezeteknev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vezeteknevActionPerformed(evt);
+            }
+        });
 
         kolcsonzesek.setColumns(20);
         kolcsonzesek.setRows(5);
@@ -181,12 +196,26 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void szerkesztes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szerkesztes_gombActionPerformed
-        // TODO add your handling code here:
+        vezeteknev.setEditable(true);
+        vezeteknev.setBackground(Color.WHITE);
+        keresztnev.setEditable(true);
+        keresztnev.setBackground(Color.WHITE);
+        emailcim.setEditable(true);
+        emailcim.setBackground(Color.WHITE);
     }//GEN-LAST:event_szerkesztes_gombActionPerformed
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
-        Ugyfelek ugyfelek = new Ugyfelek(szulo);
-        szulo.panelmutat(ugyfelek);
+        vezeteknev.setText(ugyfel.getVezeteknev());
+        keresztnev.setText(ugyfel.getKeresztnev());
+        emailcim.setText(ugyfel.getEmailcim());
+        vezeteknev.setEditable(false);
+        vezeteknev.setBackground(Color.LIGHT_GRAY);
+        keresztnev.setEditable(false);
+        keresztnev.setBackground(Color.LIGHT_GRAY);
+        emailcim.setEditable(false);
+        emailcim.setBackground(Color.LIGHT_GRAY);
+        kolcsonzesek.setEditable(false);
+        kolcsonzesek.setBackground(Color.LIGHT_GRAY);
     }//GEN-LAST:event_megse_gombActionPerformed
 
     private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
@@ -205,7 +234,7 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
     }//GEN-LAST:event_bezar_gombActionPerformed
 
     private void torles_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torles_gombActionPerformed
-        
+
         SQL sql = new SQL();
 
         this.ugyfel.getId();
@@ -214,6 +243,10 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
         Ugyfelek ugyfelek = new Ugyfelek(szulo);
         szulo.panelmutat(ugyfelek);
     }//GEN-LAST:event_torles_gombActionPerformed
+
+    private void vezeteknevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vezeteknevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vezeteknevActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
