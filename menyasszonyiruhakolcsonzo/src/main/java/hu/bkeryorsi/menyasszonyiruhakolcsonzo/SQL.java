@@ -210,4 +210,20 @@ public void updateUgyfel(Ugyfel k) {
         }
        
     }
+public void deleteUgyfel(Ugyfel k) {
+con = connect();
+
+        try {
+            
+            PreparedStatement st = con.prepareStatement("DELETE FROM ugyfel WHERE UgyfelId=?");
+            st.setInt(1, k.getId());
+            
+            st.execute();
+           
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

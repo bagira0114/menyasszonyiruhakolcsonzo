@@ -179,6 +179,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#xf6;rl&#xe9;s"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="torles_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mentes_gomb">
       <Properties>
@@ -192,6 +195,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Bez&#xe1;r"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bezar_gombActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
