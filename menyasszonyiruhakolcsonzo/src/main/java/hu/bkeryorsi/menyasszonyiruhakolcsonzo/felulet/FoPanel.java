@@ -741,7 +741,6 @@ active="ugyfelek";
         jobboldali_panel.revalidate();
         jobboldali_panel.add(panel);
         jobboldali_panel.repaint();
-        jobboldali_panel.repaint();
         jobboldali_panel.revalidate();
     }
 

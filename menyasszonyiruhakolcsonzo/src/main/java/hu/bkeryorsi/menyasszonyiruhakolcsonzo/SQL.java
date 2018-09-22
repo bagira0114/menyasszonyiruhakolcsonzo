@@ -150,7 +150,8 @@ public class SQL {
         }
         return null;
     }
-public List<Ugyfel> getUgyfel() {
+
+    public List<Ugyfel> getUgyfel() {
         try {
 
             con = connect();
@@ -165,7 +166,7 @@ public List<Ugyfel> getUgyfel() {
                 k.setVezeteknev(rs.getString("Vezeteknev"));
                 k.setKeresztnev(rs.getString("Keresztnev"));
                 k.setEmailcim(rs.getString("EmailCim"));
-                
+
                 ugyfel.add(k);
 
             }
@@ -177,7 +178,8 @@ public List<Ugyfel> getUgyfel() {
         }
         return null;
     }
-public void addUgyfel(Ugyfel k) {
+
+    public void addUgyfel(Ugyfel k) {
         con = connect();
 
         try {
@@ -185,19 +187,20 @@ public void addUgyfel(Ugyfel k) {
             st.setString(1, k.getVezeteknev());
             st.setString(2, k.getKeresztnev());
             st.setString(3, k.getEmailcim());
-                        st.execute();
+            st.execute();
             st.close();
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-}
-public void updateUgyfel(Ugyfel k) {
+    }
+
+    public void updateUgyfel(Ugyfel k) {
         con = connect();
 
         try {
             PreparedStatement st = con.prepareStatement("UPDATE `ugyfel` SET `Vezeteknev`=?,`Keresztnev`=?,`Emailcim`=? WHERE `UgyfelId`=?");
-            
+
             st.setString(1, k.getVezeteknev());
             st.setString(2, k.getKeresztnev());
             st.setString(3, k.getEmailcim());
@@ -208,22 +211,55 @@ public void updateUgyfel(Ugyfel k) {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       
+
     }
-public void deleteUgyfel(Ugyfel k) {
-con = connect();
+
+    public void deleteUgyfel(Ugyfel k) {
+        con = connect();
 
         try {
-            
+
             PreparedStatement st = con.prepareStatement("DELETE FROM ugyfel WHERE UgyfelId=?");
             st.setInt(1, k.getId());
-            
+
             st.execute();
-           
+
             st.close();
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public List<Ugyfel> searchUgyfelVezeteknev(String vezeteknev) {
+
+        try {
+
+            con = connect();
+
+            PreparedStatement st = con.prepareStatement("select * from ugyfel where Vezeteknev like ?");
+            st.setString(1, "%" + vezeteknev + "%");
+            ResultSet rs = st.executeQuery();
+
+            List<Ugyfel> ugyfel = new ArrayList<Ugyfel>();
+            while (rs.next()) {
+                Ugyfel k = new Ugyfel();
+                k.setId(rs.getInt("UgyfelId"));
+                k.setVezeteknev(rs.getString("Vezeteknev"));
+                k.setKeresztnev(rs.getString("Keresztnev"));
+                k.setEmailcim(rs.getString("EmailCim"));
+
+                ugyfel.add(k);
+
+            }
+            st.close();
+            con.close();
+            return ugyfel;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    } 
 }
+ 
+

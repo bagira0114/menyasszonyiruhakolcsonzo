@@ -18,27 +18,31 @@ import javax.swing.table.TableModel;
  * @author keryo
  */
 public class Ugyfelek extends javax.swing.JPanel {
-
+    
     private FoPanel szulo;
-
-   public Ugyfelek(FoPanel szulo) {
+    
+    public Ugyfelek(FoPanel szulo) {
         this.szulo = szulo;
         initComponents();
         SQL sql = new SQL();
         List<Ugyfel> ugyfel = sql.getUgyfel();
+        ugyfelBetolt(ugyfel);
+    }
+    
+    private void ugyfelBetolt(List<Ugyfel> ugyfel) {
         Object o[][] = new Object[ugyfel.size()][4];
         for (int i = 0; i < ugyfel.size(); i++) {
             Ugyfel k = new Ugyfel();
             k = ugyfel.get(i);
-
+            
             o[i][0] = k.getId();
             o[i][1] = k.getVezeteknev();
             o[i][2] = k.getKeresztnev();
             o[i][3] = k.getEmailcim();
             
         }
-
-        String[] columnNames = {"Id", "Vezetéknév", "Keresztnév","E-mail cím"};
+        
+        String[] columnNames = {"Id", "Vezetéknév", "Keresztnév", "E-mail cím"};
         Class[] columnClass = {Integer.class, String.class, String.class, String.class};
         DefaultTableModel model = new DefaultTableModel(o, columnNames) {
             //  Returning the Class of each column will allow different
@@ -48,7 +52,7 @@ public class Ugyfelek extends javax.swing.JPanel {
                 return columnClass[column];
             }
         };
-             jTable1.setRowHeight(100);
+        jTable1.setRowHeight(100);
         jTable1.setModel(model);
     }
 
@@ -63,25 +67,34 @@ public class Ugyfelek extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        vezeteknev = new javax.swing.JTextField();
+        vezeteknev_kereses_gomb = new javax.swing.JButton();
         ugyfel_megynyitas_gomb = new javax.swing.JButton();
         uj_ugyfel_gomb = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        keresztnev = new javax.swing.JTextField();
+        keresztnev_kereses_gomb = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
         setRequestFocusEnabled(false);
 
         jLabel1.setText("Ügyfelek");
 
-        jLabel2.setText("Ügyfél neve:");
+        jLabel2.setText("Ügyfél vezetékneve:");
 
-        jButton1.setText("Keresás");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        vezeteknev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                vezeteknevActionPerformed(evt);
+            }
+        });
+
+        vezeteknev_kereses_gomb.setText("Keresés");
+        vezeteknev_kereses_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vezeteknev_kereses_gombActionPerformed(evt);
             }
         });
 
@@ -112,6 +125,10 @@ public class Ugyfelek extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel3.setText("Ügyfél keresztneve:");
+
+        keresztnev_kereses_gomb.setText("Keresés");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,21 +139,31 @@ public class Ugyfelek extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(42, 42, 42)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)
-                                .addComponent(jButton1))
                             .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(ugyfel_megynyitas_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(88, 88, 88)
-                                .addComponent(uj_ugyfel_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(ugyfel_megynyitas_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                    .addComponent(uj_ugyfel_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addGap(42, 42, 42))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(43, 43, 43)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(vezeteknev, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                                        .addComponent(keresztnev))
+                                    .addGap(66, 66, 66)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(vezeteknev_kereses_gomb)
+                                        .addComponent(keresztnev_kereses_gomb))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,56 +173,74 @@ public class Ugyfelek extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
+                    .addComponent(vezeteknev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vezeteknev_kereses_gomb))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(keresztnev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(keresztnev_kereses_gomb))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ugyfel_megynyitas_gomb)
                     .addComponent(uj_ugyfel_gomb))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void vezeteknev_kereses_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vezeteknev_kereses_gombActionPerformed
+        String vezeteknev = this.vezeteknev.getText();        
+        SQL sql = new SQL();
+        List<Ugyfel> ugyfel = sql.searchUgyfelVezeteknev(vezeteknev);
+        ugyfelBetolt(ugyfel);
+        
+    }//GEN-LAST:event_vezeteknev_kereses_gombActionPerformed
 
     private void uj_ugyfel_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_ugyfel_gombActionPerformed
-     Ugyfelfelvetel ugyfelfelvetel = new Ugyfelfelvetel(szulo);
-     szulo.panelmutat(ugyfelfelvetel);
-          
+        Ugyfelfelvetel ugyfelfelvetel = new Ugyfelfelvetel(szulo);
+        szulo.panelmutat(ugyfelfelvetel);
+        
     }//GEN-LAST:event_uj_ugyfel_gombActionPerformed
 
     private void ugyfel_megynyitas_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ugyfel_megynyitas_gombActionPerformed
-     Ugyfel ugyfel = this.kivalasztottsor();
-       Ugyfelmodositas ugyfelmodositas = new Ugyfelmodositas(szulo, ugyfel);
-     szulo.panelmutat(ugyfelmodositas);
+        Ugyfel ugyfel = this.kivalasztottsor();
+        Ugyfelmodositas ugyfelmodositas = new Ugyfelmodositas(szulo, ugyfel);
+        szulo.panelmutat(ugyfelmodositas);
     }
-    public Ugyfel kivalasztottsor(){
-         int i = jTable1.getSelectedRow();
+
+    public Ugyfel kivalasztottsor() {
+        int i = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         Ugyfel k = new Ugyfel();
-        k.setId((Integer)model.getValueAt(i, 0));
-        k.setVezeteknev((String)model.getValueAt(i, 1));
+        k.setId((Integer) model.getValueAt(i, 0));
+        k.setVezeteknev((String) model.getValueAt(i, 1));
         k.setKeresztnev((String) model.getValueAt(i, 2));
-        k.setEmailcim((String)model.getValueAt(i, 3));
+        k.setEmailcim((String) model.getValueAt(i, 3));
         return k;
     }//GEN-LAST:event_ugyfel_megynyitas_gombActionPerformed
 
+    private void vezeteknevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vezeteknevActionPerformed
+        
+
+    }//GEN-LAST:event_vezeteknevActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField keresztnev;
+    private javax.swing.JButton keresztnev_kereses_gomb;
     private javax.swing.JButton ugyfel_megynyitas_gomb;
     private javax.swing.JButton uj_ugyfel_gomb;
+    private javax.swing.JTextField vezeteknev;
+    private javax.swing.JButton vezeteknev_kereses_gomb;
     // End of variables declaration//GEN-END:variables
 }
