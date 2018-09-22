@@ -111,6 +111,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kijel&#xf6;lt keszty&#x171; megnyit&#xe1;sa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kesztyu_megnyitasa_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="kesztyuComboBox">
       <Properties>

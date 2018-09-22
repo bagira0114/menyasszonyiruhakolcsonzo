@@ -7,21 +7,24 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author keryo
  */
 public class Kesztyuk extends javax.swing.JPanel {
-
+private FoPanel szulo;
     /**
      * Creates new form Kesztyuk
      */
-    public Kesztyuk() {
+    public Kesztyuk(FoPanel szulo) {
+         this.szulo = szulo;
         initComponents();
         SQL sql = new SQL();
         List<Kesztyu> kesztyu = sql.getKesztyu();
@@ -89,6 +92,11 @@ public class Kesztyuk extends javax.swing.JPanel {
         uj_kesztyu_gomb.setText("Új kesztyű felvétele");
 
         kesztyu_megnyitasa_gomb.setText("Kijelölt kesztyű megnyitása");
+        kesztyu_megnyitasa_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kesztyu_megnyitasa_gombActionPerformed(evt);
+            }
+        });
 
         kesztyuComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kölcsönözhető", "Kölcsönözve", "Tisztító", "Sérült" }));
         kesztyuComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -188,13 +196,30 @@ public class Kesztyuk extends javax.swing.JPanel {
         String kivalasztottAllap = (String) kesztyuComboBox.getSelectedItem(); //ez majd később kell, kiszedni a választást
       //  int kesztyuAzon =  Integer.parseInt(kesztyuAzonosito.getText());
     }//GEN-LAST:event_kesztyu_szures_gombActionPerformed
- public static void main(String args[]) {
+
+    private void kesztyu_megnyitasa_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kesztyu_megnyitasa_gombActionPerformed
+    Kesztyu kesztyu = this.kivalasztottsor();
+        Kesztyumodositas kesztyumodositas = new Kesztyumodositas(szulo, kesztyu);
+        szulo.panelmutat(kesztyumodositas);
+    }//GEN-LAST:event_kesztyu_megnyitasa_gombActionPerformed
+ public Kesztyu kivalasztottsor() {
+        int i = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+        Kesztyu k = new Kesztyu();
+        k.setId((Integer) model.getValueAt(i, 0));
+        k.setKep(model.getValueAt(i, 1).toString());
+        k.setAr((Integer) model.getValueAt(i, 2));
+        k.setAllapot((String) model.getValueAt(i, 3));
+        k.setMegjegyzes((String) model.getValueAt(i, 4));
+        return k;
+    }                
+    /*public static void main(String args[]) {
       java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Kesztyuk().setVisible(true);
             }
         });
- }
+ }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

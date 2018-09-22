@@ -595,7 +595,7 @@ public class FoPanel extends javax.swing.JFrame {
     private void kesztyukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kesztyukMouseClicked
  active="kesztyuk";
        kesztyuk.setBackground(new Color(0,102,102));
-        panelmutat(new Kesztyuk());
+        panelmutat(new Kesztyuk(this));
     }//GEN-LAST:event_kesztyukMouseClicked
 
     private void ruhainkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ruhainkMouseClicked
@@ -649,13 +649,13 @@ public class FoPanel extends javax.swing.JFrame {
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
  active="kesztyuk";
        kesztyuk.setBackground(new Color(0,102,102));
-        panelmutat(new Kesztyuk());
+        panelmutat(new Kesztyuk(this));
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
  active="kesztyuk";
        kesztyuk.setBackground(new Color(0,102,102));
-        panelmutat(new Kesztyuk());
+        panelmutat(new Kesztyuk(this));
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
