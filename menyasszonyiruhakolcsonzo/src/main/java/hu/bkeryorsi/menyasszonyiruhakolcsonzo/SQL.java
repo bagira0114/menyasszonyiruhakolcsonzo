@@ -192,4 +192,22 @@ public void addUgyfel(Ugyfel k) {
             e.printStackTrace();
         }
 }
+public void updateUgyfel(Ugyfel k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("UPDATE `ugyfel` SET `Vezeteknev`=?,`Keresztnev`=?,`Emailcim`=? WHERE `UgyfelId`=?");
+            
+            st.setString(1, k.getVezeteknev());
+            st.setString(2, k.getKeresztnev());
+            st.setString(3, k.getEmailcim());
+            st.setInt(4, k.getId());
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       
+    }
 }
