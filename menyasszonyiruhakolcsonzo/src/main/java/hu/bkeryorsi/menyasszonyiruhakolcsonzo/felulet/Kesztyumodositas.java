@@ -7,14 +7,18 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
+import java.awt.Color;
+import javax.swing.JCheckBox;
 
 /**
  *
  * @author keryo
  */
 public class Kesztyumodositas extends javax.swing.JPanel {
-private FoPanel szulo;
+
+    private FoPanel szulo;
     private final Kesztyu kesztyu;
+
     /**
      * Creates new form Kesztyumodositas
      */
@@ -22,6 +26,23 @@ private FoPanel szulo;
         initComponents();
         this.szulo = szulo;
         this.kesztyu = kesztyu;
+        azonosito.setEditable(false);
+        azonosito.setBackground(Color.LIGHT_GRAY);
+        ar.setEditable(false);
+        ar.setBackground(Color.LIGHT_GRAY);
+        allapot.setEditable(false);
+        allapot.setBackground(Color.LIGHT_GRAY);
+        jComboBox1.setEnabled(false);
+        jComboBox1.setBackground(Color.LIGHT_GRAY);
+        megjegyzes.setEditable(false);
+        megjegyzes.setBackground(Color.LIGHT_GRAY);
+        bongeszes_gomb.setEnabled(false);
+        mentes_gomb.setEnabled(false);
+        megse_gomb.setEnabled(false);
+
+        azonosito.setText(String.valueOf(kesztyu.getId()));
+        allapot.setText(kesztyu.getAllapot());
+        megjegyzes.setText(kesztyu.getMegjegyzes());
     }
 
     /**
@@ -38,7 +59,7 @@ private FoPanel szulo;
         jLabel3 = new javax.swing.JLabel();
         azonosito = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        ar = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         bongeszes_gomb = new javax.swing.JButton();
@@ -48,11 +69,14 @@ private FoPanel szulo;
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        megjegyzes = new javax.swing.JTextArea();
         szerkesztes_gomb = new javax.swing.JButton();
         megse_gomb = new javax.swing.JButton();
         torles_gomb = new javax.swing.JButton();
         mentes_gomb = new javax.swing.JButton();
+        bezar_gomb = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(890, 600));
 
         jLabel1.setText("Kijelölt kesztyű megtekintése. Módosítás, törlés");
 
@@ -66,9 +90,9 @@ private FoPanel szulo;
 
         jLabel4.setText("Ár:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        ar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                arActionPerformed(evt);
             }
         });
 
@@ -86,11 +110,16 @@ private FoPanel szulo;
 
         jLabel9.setText("Megjegyzés:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        megjegyzes.setColumns(20);
+        megjegyzes.setRows(5);
+        jScrollPane1.setViewportView(megjegyzes);
 
         szerkesztes_gomb.setText("Szerkesztés");
+        szerkesztes_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                szerkesztes_gombActionPerformed(evt);
+            }
+        });
 
         megse_gomb.setText("Mégse");
         megse_gomb.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +131,13 @@ private FoPanel szulo;
         torles_gomb.setText("Törlés");
 
         mentes_gomb.setText("Mentés");
+
+        bezar_gomb.setText("Bezár");
+        bezar_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bezar_gombActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,7 +165,7 @@ private FoPanel szulo;
                                             .addComponent(azonosito, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel3))
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(ar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(64, 64, 64)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,9 +181,10 @@ private FoPanel szulo;
                                         .addComponent(szerkesztes_gomb)
                                         .addComponent(torles_gomb))
                                     .addGap(69, 69, 69)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(mentes_gomb)
-                                        .addComponent(megse_gomb)))))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(mentes_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(megse_gomb)
+                                        .addComponent(bezar_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -167,7 +204,7 @@ private FoPanel szulo;
                                 .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(ar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -193,14 +230,15 @@ private FoPanel szulo;
                                 .addComponent(mentes_gomb))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel9)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(139, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(szerkesztes_gomb)
-                            .addComponent(megse_gomb))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(megse_gomb))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(bezar_gomb)
+                .addGap(78, 78, 78))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,18 +246,37 @@ private FoPanel szulo;
         // TODO add your handling code here:
     }//GEN-LAST:event_azonositoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void arActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_arActionPerformed
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_megse_gombActionPerformed
 
+    private void szerkesztes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szerkesztes_gombActionPerformed
+        mentes_gomb.setEnabled(true);
+        megse_gomb.setEnabled(true);
+        bongeszes_gomb.setEnabled(true);
+        ar.setEditable(true);
+        ar.setBackground(Color.WHITE);
+        jComboBox1.setEnabled(true);
+        jComboBox1.setBackground(Color.WHITE);
+        megjegyzes.setEditable(true);
+        megjegyzes.setBackground(Color.WHITE);
+    }//GEN-LAST:event_szerkesztes_gombActionPerformed
+
+    private void bezar_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bezar_gombActionPerformed
+          Kesztyuk kesztyuk = new Kesztyuk(szulo);
+        szulo.panelmutat(kesztyuk); 
+    }//GEN-LAST:event_bezar_gombActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField allapot;
+    private javax.swing.JTextField ar;
     private javax.swing.JTextField azonosito;
+    private javax.swing.JButton bezar_gomb;
     private javax.swing.JButton bongeszes_gomb;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -232,8 +289,7 @@ private FoPanel szulo;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea megjegyzes;
     private javax.swing.JButton megse_gomb;
     private javax.swing.JButton mentes_gomb;
     private javax.swing.JButton szerkesztes_gomb;

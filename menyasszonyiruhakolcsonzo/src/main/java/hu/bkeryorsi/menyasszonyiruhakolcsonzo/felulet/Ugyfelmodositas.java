@@ -34,6 +34,8 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
         emailcim.setBackground(Color.LIGHT_GRAY);
         kolcsonzesek.setEditable(false);
         kolcsonzesek.setBackground(Color.LIGHT_GRAY);
+        mentes_gomb.setEnabled(false);
+        megse_gomb.setEnabled(false);
 
         vezeteknev.setText(ugyfel.getVezeteknev());
         keresztnev.setText(ugyfel.getKeresztnev());
@@ -196,12 +198,15 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void szerkesztes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szerkesztes_gombActionPerformed
+        mentes_gomb.setEnabled(true);
+        megse_gomb.setEnabled(true);
         vezeteknev.setEditable(true);
         vezeteknev.setBackground(Color.WHITE);
         keresztnev.setEditable(true);
         keresztnev.setBackground(Color.WHITE);
         emailcim.setEditable(true);
         emailcim.setBackground(Color.WHITE);
+
     }//GEN-LAST:event_szerkesztes_gombActionPerformed
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
@@ -216,6 +221,7 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
         emailcim.setBackground(Color.LIGHT_GRAY);
         kolcsonzesek.setEditable(false);
         kolcsonzesek.setBackground(Color.LIGHT_GRAY);
+
     }//GEN-LAST:event_megse_gombActionPerformed
 
     private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
