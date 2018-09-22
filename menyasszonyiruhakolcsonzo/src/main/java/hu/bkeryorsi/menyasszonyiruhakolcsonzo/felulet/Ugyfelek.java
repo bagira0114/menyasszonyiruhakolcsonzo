@@ -128,6 +128,11 @@ public class Ugyfelek extends javax.swing.JPanel {
         jLabel3.setText("Ügyfél keresztneve:");
 
         keresztnev_kereses_gomb.setText("Keresés");
+        keresztnev_kereses_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keresztnev_kereses_gombActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -227,6 +232,13 @@ public class Ugyfelek extends javax.swing.JPanel {
         
 
     }//GEN-LAST:event_vezeteknevActionPerformed
+
+    private void keresztnev_kereses_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keresztnev_kereses_gombActionPerformed
+  String keresztnev = this.keresztnev.getText();        
+        SQL sql = new SQL();
+        List<Ugyfel> ugyfel = sql.searchUgyfelKeresztnev(keresztnev);
+        ugyfelBetolt(ugyfel);
+    }//GEN-LAST:event_keresztnev_kereses_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

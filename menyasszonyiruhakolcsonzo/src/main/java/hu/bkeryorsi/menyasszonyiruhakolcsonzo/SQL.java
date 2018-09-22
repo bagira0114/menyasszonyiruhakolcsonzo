@@ -159,17 +159,7 @@ public class SQL {
             PreparedStatement st = con.prepareStatement("select * from ugyfel");
             ResultSet rs = st.executeQuery();
 
-            List<Ugyfel> ugyfel = new ArrayList<Ugyfel>();
-            while (rs.next()) {
-                Ugyfel k = new Ugyfel();
-                k.setId(rs.getInt("UgyfelId"));
-                k.setVezeteknev(rs.getString("Vezeteknev"));
-                k.setKeresztnev(rs.getString("Keresztnev"));
-                k.setEmailcim(rs.getString("EmailCim"));
-
-                ugyfel.add(k);
-
-            }
+            List<Ugyfel> ugyfel = ugyfelLista(rs);
             st.close();
             con.close();
             return ugyfel;
@@ -241,17 +231,7 @@ public class SQL {
             st.setString(1, "%" + vezeteknev + "%");
             ResultSet rs = st.executeQuery();
 
-            List<Ugyfel> ugyfel = new ArrayList<Ugyfel>();
-            while (rs.next()) {
-                Ugyfel k = new Ugyfel();
-                k.setId(rs.getInt("UgyfelId"));
-                k.setVezeteknev(rs.getString("Vezeteknev"));
-                k.setKeresztnev(rs.getString("Keresztnev"));
-                k.setEmailcim(rs.getString("EmailCim"));
-
-                ugyfel.add(k);
-
-            }
+            List<Ugyfel> ugyfel = ugyfelLista(rs);
             st.close();
             con.close();
             return ugyfel;
@@ -260,6 +240,41 @@ public class SQL {
         }
         return null;
     } 
+    public List<Ugyfel> searchUgyfelKeresztnev(String keresztnev) {
+
+        try {
+
+            con = connect();
+
+            PreparedStatement st = con.prepareStatement("select * from ugyfel where Keresztnev like ?");
+            st.setString(1, "%" + keresztnev + "%");
+            ResultSet rs = st.executeQuery();
+
+            List<Ugyfel> ugyfel = ugyfelLista(rs);
+            st.close();
+            con.close();
+            return ugyfel;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    } 
+    
+
+    private List<Ugyfel> ugyfelLista(ResultSet rs) throws SQLException {
+        List<Ugyfel> ugyfel = new ArrayList<Ugyfel>();
+        while (rs.next()) {
+            Ugyfel k = new Ugyfel();
+            k.setId(rs.getInt("UgyfelId"));
+            k.setVezeteknev(rs.getString("Vezeteknev"));
+            k.setKeresztnev(rs.getString("Keresztnev"));
+            k.setEmailcim(rs.getString("EmailCim"));
+            
+            ugyfel.add(k);
+            
+        }
+        return ugyfel;
+    }
 }
  
 
