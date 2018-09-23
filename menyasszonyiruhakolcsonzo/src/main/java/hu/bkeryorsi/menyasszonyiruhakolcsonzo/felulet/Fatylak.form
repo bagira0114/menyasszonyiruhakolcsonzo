@@ -168,6 +168,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kijel&#xf6;lt f&#xe1;tyol megnyit&#xe1;sa"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fatyol_megnyitasa_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>

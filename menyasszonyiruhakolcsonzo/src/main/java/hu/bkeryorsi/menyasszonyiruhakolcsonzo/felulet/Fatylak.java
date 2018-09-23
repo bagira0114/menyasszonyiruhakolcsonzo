@@ -12,6 +12,7 @@ import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -114,6 +115,11 @@ public class Fatylak extends javax.swing.JPanel {
         });
 
         fatyol_megnyitasa_gomb.setText("Kijelölt fátyol megnyitása");
+        fatyol_megnyitasa_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fatyol_megnyitasa_gombActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -228,6 +234,23 @@ Fatyolfelvetel fatyolfelvetel = new Fatyolfelvetel(szulo);
         szulo.panelmutat(fatyolfelvetel);       
     }//GEN-LAST:event_uj_fatyol_gombActionPerformed
 
+    private void fatyol_megnyitasa_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatyol_megnyitasa_gombActionPerformed
+    Fatyol fatyol = this.kivalasztottsor();
+        Fatyolmodositas fatyolmodositas = new Fatyolmodositas(szulo, fatyol);
+        szulo.panelmutat(fatyolmodositas);
+    }//GEN-LAST:event_fatyol_megnyitasa_gombActionPerformed
+public Fatyol kivalasztottsor() {
+        int i = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+        Fatyol k = new Fatyol();
+        k.setId((Integer) model.getValueAt(i, 0));
+        k.setKep(model.getValueAt(i, 1).toString());
+        k.setAr((Integer) model.getValueAt(i, 2));
+        k.setFazon(model.getValueAt(i, 3).toString());
+        k.setAllapot((String) model.getValueAt(i, 4));
+        k.setMegjegyzes((String) model.getValueAt(i, 5));
+        return k;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> allapotComboBox;
