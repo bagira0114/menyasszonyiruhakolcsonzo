@@ -5,6 +5,10 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
+
 /**
  *
  * @author keryo
@@ -14,8 +18,12 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
     /**
      * Creates new form Fatyolfelvetel
      */
-    public Fatyolfelvetel() {
+     private FoPanel szulo;
+    public Fatyolfelvetel(FoPanel szulo) {
+    this.szulo = szulo;
         initComponents();
+
+   
     }
 
     /**
@@ -34,7 +42,7 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         ar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        megjegyzes = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         bongeszes_gomb = new javax.swing.JButton();
@@ -53,9 +61,9 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
 
         jLabel4.setText("Megjegyzés:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        megjegyzes.setColumns(20);
+        megjegyzes.setRows(5);
+        jScrollPane1.setViewportView(megjegyzes);
 
         jLabel5.setText("Kép");
 
@@ -66,6 +74,11 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         jButton1.setText("Mégse");
 
         jButton2.setText("Mentés");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -138,6 +151,19 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       SQL sql = new SQL();
+        Fatyol k = new Fatyol();
+        k.setKep(jLabel5.getText());
+        k.setAr(Integer.parseInt(ar.getText()));
+        k.setFazon(String.valueOf(fazonComboBox1.getSelectedItem()));
+        k.setAllapot("kölcsönözhető");
+        k.setMegjegyzes(megjegyzes.getText());
+        sql.addFatyol(k);
+        Fatylak fatylak = new Fatylak(szulo);
+          szulo.panelmutat(fatylak);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ar;
@@ -152,6 +178,6 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea megjegyzes;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,7 +21,9 @@ public class Fatylak extends javax.swing.JPanel {
     /**
      * Creates new form Fatylak
      */
-    public Fatylak() {
+    private FoPanel szulo;
+    public Fatylak(FoPanel szulo) {
+        this.szulo = szulo;
         initComponents();
         SQL sql = new SQL();
         List<Fatyol> fatyol = sql.getFatyol();
@@ -100,6 +102,11 @@ public class Fatylak extends javax.swing.JPanel {
         });
 
         uj_fatyol_gomb.setText("Új fátyol felvétele");
+        uj_fatyol_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uj_fatyol_gombActionPerformed(evt);
+            }
+        });
 
         fatyol_megnyitasa_gomb.setText("Kijelölt fátyol megnyitása");
 
@@ -193,6 +200,11 @@ public class Fatylak extends javax.swing.JPanel {
     private void fatyolAzonositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatyolAzonositoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fatyolAzonositoActionPerformed
+
+    private void uj_fatyol_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_fatyol_gombActionPerformed
+Fatyolfelvetel fatyolfelvetel = new Fatyolfelvetel(szulo);
+        szulo.panelmutat(fatyolfelvetel);       
+    }//GEN-LAST:event_uj_fatyol_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

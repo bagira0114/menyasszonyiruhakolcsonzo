@@ -607,7 +607,7 @@ public class FoPanel extends javax.swing.JFrame {
     private void fatylakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fatylakMouseClicked
  active="fatylak";
        fatylak.setBackground(new Color(0,102,102));
-        panelmutat(new Fatylak());
+        panelmutat(new Fatylak(this));
     }//GEN-LAST:event_fatylakMouseClicked
 
     private void ugyfelekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ugyfelekMouseClicked
@@ -637,13 +637,13 @@ public class FoPanel extends javax.swing.JFrame {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
  active="fatylak";
        fatylak.setBackground(new Color(0,102,102));
-        panelmutat(new Fatylak());
+        panelmutat(new Fatylak(this));
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
  active="fatylak";
        fatylak.setBackground(new Color(0,102,102));
-        panelmutat(new Fatylak());
+        panelmutat(new Fatylak(this));
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked

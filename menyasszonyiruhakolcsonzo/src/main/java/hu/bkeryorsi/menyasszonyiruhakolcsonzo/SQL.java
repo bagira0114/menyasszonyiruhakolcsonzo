@@ -363,5 +363,22 @@ public List<Kesztyu> searchKesztyu(int id, String allapot) {
         }
         return null;
     } 
+public void addFatyol(Fatyol k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("insert into fatyol (Kep, Ar, Fazon, Allapot, Megjegyzes) values (?,?,?,?,?)");
+            st.setString(1, k.getKep());
+            st.setInt(2, k.getAr());
+            st.setString(3, k.getFazon());
+            st.setString(4, k.getAllapot());
+            st.setString(5, k.getMegjegyzes());
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
