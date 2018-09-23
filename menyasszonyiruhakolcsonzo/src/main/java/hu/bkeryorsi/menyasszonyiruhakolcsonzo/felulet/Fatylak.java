@@ -7,6 +7,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -27,6 +28,11 @@ public class Fatylak extends javax.swing.JPanel {
         initComponents();
         SQL sql = new SQL();
         List<Fatyol> fatyol = sql.getFatyol();
+        fatyolBetolt(fatyol);
+
+    }
+
+    private void fatyolBetolt(List<Fatyol> fatyol) {
         Object o[][] = new Object[fatyol.size()][6];
         for (int i = 0; i < fatyol.size(); i++) {
             Fatyol k = new Fatyol();
@@ -52,7 +58,6 @@ public class Fatylak extends javax.swing.JPanel {
         };
         jTable1.setRowHeight(100);
         jTable1.setModel(model);
-
     }
 
     
@@ -68,17 +73,17 @@ public class Fatylak extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        fazonComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        fatyol_szures_gomb = new javax.swing.JButton();
+        allapotComboBox = new javax.swing.JComboBox<>();
+        fatyol_kereses_gomb = new javax.swing.JButton();
         uj_fatyol_gomb = new javax.swing.JButton();
         fatyol_megnyitasa_gomb = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        fatyolAzonosito = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
@@ -86,18 +91,18 @@ public class Fatylak extends javax.swing.JPanel {
 
         jLabel2.setText("Azonosító:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hosszú", "Rövid", "Pironkodó" }));
+        fazonComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Hosszú", "Rövid", "Pironkodó" }));
 
         jLabel3.setText("Fazon:");
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("Állapot");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kölcsönözhető", "Kölcsönözve", "Tisztító", "Sérült" }));
+        allapotComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Kölcsönözhető", "Kölcsönözve", "Tisztító", "Sérült" }));
 
-        fatyol_szures_gomb.setText("Szűrés");
-        fatyol_szures_gomb.addActionListener(new java.awt.event.ActionListener() {
+        fatyol_kereses_gomb.setText("Keresés");
+        fatyol_kereses_gomb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fatyol_szures_gombActionPerformed(evt);
+                fatyol_kereses_gombActionPerformed(evt);
             }
         });
 
@@ -123,9 +128,9 @@ public class Fatylak extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        fatyolAzonosito.addActionListener(new java.awt.event.ActionListener() {
+        id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fatyolAzonositoActionPerformed(evt);
+                idActionPerformed(evt);
             }
         });
 
@@ -146,26 +151,26 @@ public class Fatylak extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fatyolAzonosito)
+                                        .addComponent(id)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel3)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(38, 38, 38)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fazonComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(44, 44, 44)
                                         .addComponent(jLabel4)
                                         .addGap(40, 40, 40)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(allapotComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(48, 48, 48)
-                                        .addComponent(fatyol_szures_gomb))
+                                        .addComponent(fatyol_kereses_gomb))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(46, 46, 46)
                                         .addComponent(fatyol_megnyitasa_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +181,11 @@ public class Fatylak extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fazonComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fatyol_szures_gomb)
-                    .addComponent(fatyolAzonosito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(allapotComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fatyol_kereses_gomb)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(uj_fatyol_gomb)
@@ -193,13 +198,30 @@ public class Fatylak extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fatyol_szures_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatyol_szures_gombActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fatyol_szures_gombActionPerformed
+    private void fatyol_kereses_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatyol_kereses_gombActionPerformed
+ int beirtId;
+        if (this.id.getText()!=null && !this.id.getText().equals("")){
+        
+    
+         beirtId = (Integer.parseInt(this.id.getText()));
+    } else {
+            beirtId = 0;
+            
+            }
+    
+        
+        String allapot = (String.valueOf(this.allapotComboBox.getSelectedItem()));
+        String fazon = (String.valueOf(this.fazonComboBox.getSelectedItem()));
+        SQL sql = new SQL();
+        List<Fatyol> fatyol = sql.searchFatyol(beirtId, fazon, allapot);
+        fatyolBetolt(fatyol);   // String kivalasztottAllap = (String) allapotComboBox.getSelectedItem(); //ez majd később kell, kiszedni a választást
+        //  int kesztyuAzon =  Integer.parseInt(kesztyuAzonosito.getText());
+                                                
+    }//GEN-LAST:event_fatyol_kereses_gombActionPerformed
 
-    private void fatyolAzonositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatyolAzonositoActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fatyolAzonositoActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
     private void uj_fatyol_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_fatyol_gombActionPerformed
 Fatyolfelvetel fatyolfelvetel = new Fatyolfelvetel(szulo);
@@ -208,11 +230,11 @@ Fatyolfelvetel fatyolfelvetel = new Fatyolfelvetel(szulo);
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField fatyolAzonosito;
+    private javax.swing.JComboBox<String> allapotComboBox;
+    private javax.swing.JButton fatyol_kereses_gomb;
     private javax.swing.JButton fatyol_megnyitasa_gomb;
-    private javax.swing.JButton fatyol_szures_gomb;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> fazonComboBox;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

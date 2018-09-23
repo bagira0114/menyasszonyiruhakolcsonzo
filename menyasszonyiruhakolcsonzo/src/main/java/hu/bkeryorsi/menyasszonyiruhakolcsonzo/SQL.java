@@ -380,5 +380,42 @@ public void addFatyol(Fatyol k) {
             e.printStackTrace();
         }
     }
+private List<Fatyol> fatyolLista(ResultSet rs) throws SQLException {
+        List<Fatyol> fatyol = new ArrayList<Fatyol>();
+        while (rs.next()) {
+            Fatyol k = new Fatyol();
+            k.setId(rs.getInt("FatyolId"));
+            k.setKep(rs.getString("Kep"));
+            k.setAr(rs.getInt("Ar"));
+            k.setFazon(rs.getString("Fazon"));
+            k.setAllapot(rs.getString("Allapot"));
+            k.setMegjegyzes(rs.getString("Megjegyzes"));
+            
+            fatyol.add(k);
+            
+        }
+        return fatyol;
+    }
+public List<Fatyol> searchFatyol(int id, String fazon, String allapot) {
+
+        try {
+
+            con = connect();
+
+            PreparedStatement st = con.prepareStatement("select * from fatyol where FatyolId=? or Fazon=? or Allapot=?");
+            st.setInt(1, id);
+            st.setString(2, fazon);
+            st.setString(3, allapot);
+            ResultSet rs = st.executeQuery();
+
+            List<Fatyol> fatyol = fatyolLista(rs);
+            st.close();
+            con.close();
+            return fatyol;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    } 
 }
 

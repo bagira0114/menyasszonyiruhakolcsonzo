@@ -72,6 +72,11 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         bongeszes_gomb.setText("Böngészés");
 
         jButton1.setText("Mégse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Mentés");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +168,11 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         Fatylak fatylak = new Fatylak(szulo);
           szulo.panelmutat(fatylak);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+Fatylak fatylak = new Fatylak(szulo);
+          szulo.panelmutat(fatylak);         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
