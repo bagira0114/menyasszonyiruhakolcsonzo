@@ -601,7 +601,7 @@ public class FoPanel extends javax.swing.JFrame {
     private void ruhainkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ruhainkMouseClicked
        active="ruhaink";
        ruhaink.setBackground(new Color(0,102,102));
-        panelmutat(new Ruhaink());
+        panelmutat(new Ruhaink(this));
     }//GEN-LAST:event_ruhainkMouseClicked
 
     private void fatylakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fatylakMouseClicked
@@ -625,13 +625,13 @@ public class FoPanel extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
       active="ruhaink";
        ruhaink.setBackground(new Color(0,102,102));
-        panelmutat(new Ruhaink());
+        panelmutat(new Ruhaink(this));
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
   active="ruhaink";
        ruhaink.setBackground(new Color(0,102,102));
-        panelmutat(new Ruhaink());
+        panelmutat(new Ruhaink(this));
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked

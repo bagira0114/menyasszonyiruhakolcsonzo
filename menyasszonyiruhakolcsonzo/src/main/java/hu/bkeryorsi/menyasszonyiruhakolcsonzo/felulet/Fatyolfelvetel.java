@@ -46,8 +46,8 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         bongeszes_gomb = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        megse_gomb = new javax.swing.JButton();
+        mentes_gomb = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
@@ -71,17 +71,17 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
 
         bongeszes_gomb.setText("Böngészés");
 
-        jButton1.setText("Mégse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        megse_gomb.setText("Mégse");
+        megse_gomb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                megse_gombActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Mentés");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        mentes_gomb.setText("Mentés");
+        mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                mentes_gombActionPerformed(evt);
             }
         });
 
@@ -107,9 +107,9 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
                         .addGap(201, 201, 201)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(megse_gomb)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
+                                .addComponent(mentes_gomb))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,13 +150,13 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(megse_gomb)
+                    .addComponent(mentes_gomb))
                 .addGap(105, 105, 105))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
        SQL sql = new SQL();
         Fatyol k = new Fatyol();
         k.setKep(jLabel5.getText());
@@ -167,20 +167,18 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         sql.addFatyol(k);
         Fatylak fatylak = new Fatylak(szulo);
           szulo.panelmutat(fatylak);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_mentes_gombActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
 Fatylak fatylak = new Fatylak(szulo);
           szulo.panelmutat(fatylak);         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_megse_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ar;
     private javax.swing.JButton bongeszes_gomb;
     private javax.swing.JComboBox<String> fazonComboBox1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -189,5 +187,7 @@ Fatylak fatylak = new Fatylak(szulo);
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea megjegyzes;
+    private javax.swing.JButton megse_gomb;
+    private javax.swing.JButton mentes_gomb;
     // End of variables declaration//GEN-END:variables
 }

@@ -452,5 +452,24 @@ public void updateFatyol(Fatyol k) {
             e.printStackTrace();
 }
 }
+public void addRuha(Ruha k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("insert into menyasszonyiruha (Leiras, Kep, Meret, Ar, Fazon, Allapot, Megjegyzes) values (?,?,?,?,?,?,?)");
+            st.setString(1, k.getLeiras());
+            st.setString(2, k.getKep());
+            st.setInt(3, k.getMeret());
+            st.setInt(4, k.getAr());
+            st.setString(5, k.getFazon());
+            st.setString(6, k.getAllapot());
+            st.setString(7, k.getMegjegyzes());
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
 }
 

@@ -17,11 +17,12 @@ import javax.swing.table.DefaultTableModel;
  * @author keryo
  */
 public class Ruhaink extends javax.swing.JPanel {
-
+private FoPanel szulo;
     /**
      * Creates new form Ruhaink
      */
-    public Ruhaink() {
+    public Ruhaink(FoPanel szulo) {
+        this.szulo=szulo;
         initComponents();
         SQL sql = new SQL();
         List<Ruha> ruha = sql.getRuha();
@@ -77,6 +78,8 @@ public class Ruhaink extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        uj_ruha_gomb = new javax.swing.JButton();
+        ruha_megnyitasa_gomb = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
@@ -120,6 +123,15 @@ public class Ruhaink extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        uj_ruha_gomb.setText("Új ruha felvétele");
+        uj_ruha_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uj_ruha_gombActionPerformed(evt);
+            }
+        });
+
+        ruha_megnyitasa_gomb.setText("Kijelölt ruha módosítása");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,8 +154,12 @@ public class Ruhaink extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(uj_ruha_gomb))
                                 .addGap(47, 47, 47)
+                                .addComponent(ruha_megnyitasa_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +168,7 @@ public class Ruhaink extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,12 +187,14 @@ public class Ruhaink extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(meret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(meret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uj_ruha_gomb)
+                    .addComponent(ruha_megnyitasa_gomb))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,6 +205,11 @@ public class Ruhaink extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void uj_ruha_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_ruha_gombActionPerformed
+     Ruhafelvetel ruhafelvetel = new Ruhafelvetel(szulo);
+        szulo.panelmutat(ruhafelvetel); 
+    }//GEN-LAST:event_uj_ruha_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,5 +226,7 @@ public class Ruhaink extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField meret;
     private javax.swing.JTextField ruhaAzonosito;
+    private javax.swing.JButton ruha_megnyitasa_gomb;
+    private javax.swing.JButton uj_ruha_gomb;
     // End of variables declaration//GEN-END:variables
 }
