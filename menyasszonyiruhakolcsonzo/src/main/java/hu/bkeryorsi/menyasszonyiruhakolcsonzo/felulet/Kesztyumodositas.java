@@ -5,6 +5,7 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import java.awt.Color;
@@ -41,6 +42,7 @@ public class Kesztyumodositas extends javax.swing.JPanel {
         megse_gomb.setEnabled(false);
 
         azonosito.setText(String.valueOf(kesztyu.getId()));
+        ar.setText(String.valueOf(kesztyu.getAr()));
         allapot.setText(kesztyu.getAllapot());
         megjegyzes.setText(kesztyu.getMegjegyzes());
     }
@@ -129,8 +131,18 @@ public class Kesztyumodositas extends javax.swing.JPanel {
         });
 
         torles_gomb.setText("Törlés");
+        torles_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                torles_gombActionPerformed(evt);
+            }
+        });
 
         mentes_gomb.setText("Mentés");
+        mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mentes_gombActionPerformed(evt);
+            }
+        });
 
         bezar_gomb.setText("Bezár");
         bezar_gomb.addActionListener(new java.awt.event.ActionListener() {
@@ -270,6 +282,27 @@ public class Kesztyumodositas extends javax.swing.JPanel {
           Kesztyuk kesztyuk = new Kesztyuk(szulo);
         szulo.panelmutat(kesztyuk); 
     }//GEN-LAST:event_bezar_gombActionPerformed
+
+    private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
+        SQL sql = new SQL();
+        this.kesztyu.setKep(jLabel5.getText());
+        this.kesztyu.setAr((Integer.parseInt(ar.getText())));
+        this.kesztyu.setAllapot((String)jComboBox1.getSelectedItem());
+        this.kesztyu.setMegjegyzes(megjegyzes.getText());
+        sql.updateKesztyu(this.kesztyu);
+        Kesztyuk kesztyuk = new Kesztyuk(szulo);
+        szulo.panelmutat(kesztyuk);
+    }//GEN-LAST:event_mentes_gombActionPerformed
+
+    private void torles_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torles_gombActionPerformed
+       SQL sql = new SQL();
+
+        this.kesztyu.getId();
+
+        sql.deleteKesztyu(this.kesztyu);
+        Kesztyuk kesztyuk = new Kesztyuk(szulo);
+        szulo.panelmutat(kesztyuk);
+    }//GEN-LAST:event_torles_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

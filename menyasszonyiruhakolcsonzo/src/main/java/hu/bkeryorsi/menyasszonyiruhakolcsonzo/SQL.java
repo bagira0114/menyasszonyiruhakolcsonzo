@@ -275,6 +275,40 @@ public class SQL {
         }
         return ugyfel;
     }
+    public void updateKesztyu(Kesztyu k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("UPDATE kesztyu SET Kep=?,Ar=?,Allapot=?, Megjegyzes=? WHERE Kesztyuid=?");
+
+            st.setString(1, k.getKep());
+            st.setInt(2, k.getAr());
+            st.setString(3, k.getAllapot());
+            st.setString(4, k.getMegjegyzes());
+            st.setInt(5, k.getId());
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+public void deleteKesztyu(Kesztyu k) {
+        con = connect();
+
+        try {
+
+            PreparedStatement st = con.prepareStatement("DELETE FROM kesztyu WHERE Kesztyuid=?");
+            st.setInt(1, k.getId());
+
+            st.execute();
+
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
  
 
