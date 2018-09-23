@@ -437,7 +437,7 @@ public void updateFatyol(Fatyol k) {
         con = connect();
 
         try {
-            PreparedStatement st = con.prepareStatement("UPDATE fatyol SET Kep=?,Ar=?,Fazon=?, Allapot=?, Megjegyzes=? WHERE Kesztyuid=?");
+            PreparedStatement st = con.prepareStatement("UPDATE fatyol SET Kep=?,Ar=?,Fazon=?, Allapot=?, Megjegyzes=? WHERE FatyolId=?");
 
             st.setString(1, k.getKep());
             st.setInt(2, k.getAr());
