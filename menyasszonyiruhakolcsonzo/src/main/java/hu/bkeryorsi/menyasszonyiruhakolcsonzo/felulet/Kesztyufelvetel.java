@@ -74,6 +74,11 @@ public class Kesztyufelvetel extends javax.swing.JPanel {
         bongeszes_gomb.setText("Böngészés");
 
         megse_gomb.setText("Mégse");
+        megse_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                megse_gombActionPerformed(evt);
+            }
+        });
 
         mentes_gomb.setText("Mentés");
         mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +169,11 @@ public class Kesztyufelvetel extends javax.swing.JPanel {
         Kesztyuk kesztyuk = new Kesztyuk(szulo);
           szulo.panelmutat(kesztyuk);
     }//GEN-LAST:event_mentes_gombActionPerformed
+
+    private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
+Kesztyuk kesztyuk = new Kesztyuk(szulo);
+          szulo.panelmutat(kesztyuk);         // TODO add your handling code here:
+    }//GEN-LAST:event_megse_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

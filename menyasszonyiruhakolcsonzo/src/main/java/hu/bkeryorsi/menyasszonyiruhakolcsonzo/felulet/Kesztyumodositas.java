@@ -263,7 +263,21 @@ public class Kesztyumodositas extends javax.swing.JPanel {
     }//GEN-LAST:event_arActionPerformed
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
-        // TODO add your handling code here:
+  ar.setText(String.valueOf(kesztyu.getAr()));
+        allapot.setText(kesztyu.getAllapot());
+        jComboBox1.setEnabled(false);
+        megjegyzes.setText(kesztyu.getMegjegyzes());
+        bongeszes_gomb.setEnabled(false);
+        ar.setEditable(false);
+        ar.setBackground(Color.LIGHT_GRAY);
+        megjegyzes.setEditable(false);
+        megjegyzes.setBackground(Color.LIGHT_GRAY);
+        megse_gomb.setEnabled(false);
+        mentes_gomb.setEnabled(false);
+        /*emailcim.setEditable(false);
+        emailcim.setBackground(Color.LIGHT_GRAY);
+        kolcsonzesek.setEditable(false);
+        kolcsonzesek.setBackground(Color.LIGHT_GRAY);*/
     }//GEN-LAST:event_megse_gombActionPerformed
 
     private void szerkesztes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szerkesztes_gombActionPerformed
