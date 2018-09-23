@@ -33,6 +33,7 @@ public class Kesztyumodositas extends javax.swing.JPanel {
         ar.setBackground(Color.LIGHT_GRAY);
         allapot.setEditable(false);
         allapot.setBackground(Color.LIGHT_GRAY);
+        jComboBox1.setSelectedItem(kesztyu.getAllapot());
         jComboBox1.setEnabled(false);
         jComboBox1.setBackground(Color.LIGHT_GRAY);
         megjegyzes.setEditable(false);
@@ -106,7 +107,7 @@ public class Kesztyumodositas extends javax.swing.JPanel {
 
         jLabel7.setText("Állapot:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kölcsönözhető", "Kölcsönözve", "Tisztító", "Sérült" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kölcsönözhető", "kölcsönözve", "tisztító", "sérült" }));
 
         jLabel8.setText("Állapot megváltoztatása:");
 
