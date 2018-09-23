@@ -8,6 +8,9 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
+import javax.swing.text.PlainDocument;
+import sun.net.www.content.text.plain;
 
 /**
  *
@@ -18,12 +21,13 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
     /**
      * Creates new form Fatyolfelvetel
      */
-     private FoPanel szulo;
-    public Fatyolfelvetel(FoPanel szulo) {
-    this.szulo = szulo;
-        initComponents();
+    private FoPanel szulo;
 
-   
+    public Fatyolfelvetel(FoPanel szulo) {
+        this.szulo = szulo;
+        initComponents();
+        PlainDocument doc = (PlainDocument) ar.getDocument();
+        doc.setDocumentFilter(new SzamFilter());
     }
 
     /**
@@ -58,6 +62,12 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         fazonComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rövid", "Hosszú", "Pironkodó" }));
 
         jLabel3.setText("Ár:");
+
+        ar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Megjegyzés:");
 
@@ -157,7 +167,7 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
-       SQL sql = new SQL();
+        SQL sql = new SQL();
         Fatyol k = new Fatyol();
         k.setKep(jLabel5.getText());
         k.setAr(Integer.parseInt(ar.getText()));
@@ -166,13 +176,17 @@ public class Fatyolfelvetel extends javax.swing.JPanel {
         k.setMegjegyzes(megjegyzes.getText());
         sql.addFatyol(k);
         Fatylak fatylak = new Fatylak(szulo);
-          szulo.panelmutat(fatylak);
+        szulo.panelmutat(fatylak);
     }//GEN-LAST:event_mentes_gombActionPerformed
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
-Fatylak fatylak = new Fatylak(szulo);
-          szulo.panelmutat(fatylak);         // TODO add your handling code here:
+        Fatylak fatylak = new Fatylak(szulo);
+        szulo.panelmutat(fatylak);         // TODO add your handling code here:
     }//GEN-LAST:event_megse_gombActionPerformed
+
+    private void arActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
