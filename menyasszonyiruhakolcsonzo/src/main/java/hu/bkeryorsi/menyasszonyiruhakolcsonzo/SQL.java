@@ -239,7 +239,8 @@ public class SQL {
             e.printStackTrace();
         }
         return null;
-    } 
+    }
+
     public List<Ugyfel> searchUgyfelKeresztnev(String keresztnev) {
 
         try {
@@ -258,8 +259,7 @@ public class SQL {
             e.printStackTrace();
         }
         return null;
-    } 
-    
+    }
 
     private List<Ugyfel> ugyfelLista(ResultSet rs) throws SQLException {
         List<Ugyfel> ugyfel = new ArrayList<Ugyfel>();
@@ -269,13 +269,13 @@ public class SQL {
             k.setVezeteknev(rs.getString("Vezeteknev"));
             k.setKeresztnev(rs.getString("Keresztnev"));
             k.setEmailcim(rs.getString("EmailCim"));
-            
+
             ugyfel.add(k);
-            
+
         }
         return ugyfel;
     }
-    
+
     public void addKesztyu(Kesztyu k) {
         con = connect();
 
@@ -292,7 +292,7 @@ public class SQL {
             e.printStackTrace();
         }
     }
-    
+
     public void updateKesztyu(Kesztyu k) {
         con = connect();
 
@@ -311,7 +311,8 @@ public class SQL {
             e.printStackTrace();
         }
     }
-public void deleteKesztyu(Kesztyu k) {
+
+    public void deleteKesztyu(Kesztyu k) {
         con = connect();
 
         try {
@@ -327,7 +328,8 @@ public void deleteKesztyu(Kesztyu k) {
             e.printStackTrace();
         }
     }
-private List<Kesztyu> kesztyuLista(ResultSet rs) throws SQLException {
+
+    private List<Kesztyu> kesztyuLista(ResultSet rs) throws SQLException {
         List<Kesztyu> kesztyu = new ArrayList<Kesztyu>();
         while (rs.next()) {
             Kesztyu k = new Kesztyu();
@@ -336,14 +338,14 @@ private List<Kesztyu> kesztyuLista(ResultSet rs) throws SQLException {
             k.setAr(rs.getInt("Ar"));
             k.setAllapot(rs.getString("Allapot"));
             k.setMegjegyzes(rs.getString("Megjegyzes"));
-            
+
             kesztyu.add(k);
-            
+
         }
         return kesztyu;
     }
 
-public List<Kesztyu> searchKesztyu(int id, String allapot) {
+    public List<Kesztyu> searchKesztyu(int id, String allapot) {
 
         try {
 
@@ -362,8 +364,9 @@ public List<Kesztyu> searchKesztyu(int id, String allapot) {
             e.printStackTrace();
         }
         return null;
-    } 
-public void addFatyol(Fatyol k) {
+    }
+
+    public void addFatyol(Fatyol k) {
         con = connect();
 
         try {
@@ -380,7 +383,8 @@ public void addFatyol(Fatyol k) {
             e.printStackTrace();
         }
     }
-private List<Fatyol> fatyolLista(ResultSet rs) throws SQLException {
+
+    private List<Fatyol> fatyolLista(ResultSet rs) throws SQLException {
         List<Fatyol> fatyol = new ArrayList<Fatyol>();
         while (rs.next()) {
             Fatyol k = new Fatyol();
@@ -390,13 +394,14 @@ private List<Fatyol> fatyolLista(ResultSet rs) throws SQLException {
             k.setFazon(rs.getString("Fazon"));
             k.setAllapot(rs.getString("Allapot"));
             k.setMegjegyzes(rs.getString("Megjegyzes"));
-            
+
             fatyol.add(k);
-            
+
         }
         return fatyol;
     }
-public List<Fatyol> searchFatyol(int id, String fazon, String allapot) {
+
+    public List<Fatyol> searchFatyol(int id, String fazon, String allapot) {
 
         try {
 
@@ -416,8 +421,9 @@ public List<Fatyol> searchFatyol(int id, String fazon, String allapot) {
             e.printStackTrace();
         }
         return null;
-    } 
-public void deleteFatyol(Fatyol k) {
+    }
+
+    public void deleteFatyol(Fatyol k) {
         con = connect();
 
         try {
@@ -433,7 +439,8 @@ public void deleteFatyol(Fatyol k) {
             e.printStackTrace();
         }
     }
-public void updateFatyol(Fatyol k) {
+
+    public void updateFatyol(Fatyol k) {
         con = connect();
 
         try {
@@ -450,9 +457,10 @@ public void updateFatyol(Fatyol k) {
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
-}
-}
-public void addRuha(Ruha k) {
+        }
+    }
+
+    public void addRuha(Ruha k) {
         con = connect();
 
         try {
@@ -470,6 +478,42 @@ public void addRuha(Ruha k) {
         } catch (Exception e) {
             e.printStackTrace();
         }
-}
-}
+    }
 
+    public void updateRuha(Ruha k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("UPDATE menyasszonyiruha SET Leiras=?, Kep=?, Meret=?, Ar=?,Fazon=?, Allapot=?, Megjegyzes=? WHERE MenyasszonyiruhaId=?");
+            st.setString(1, k.getLeiras());
+            st.setString(2, k.getKep());
+            st.setInt(3, k.getMeret());
+            st.setInt(4, k.getAr());
+            st.setString(5, k.getFazon());
+            st.setString(6, k.getAllapot());
+            st.setString(7, k.getMegjegyzes());
+            st.setInt(8, k.getId());
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteRuha(Ruha k) {
+        con = connect();
+
+        try {
+
+            PreparedStatement st = con.prepareStatement("DELETE FROM menyasszonyiruha WHERE MenyasszonyiruhaId=?");
+            st.setInt(1, k.getId());
+
+            st.execute();
+
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+}

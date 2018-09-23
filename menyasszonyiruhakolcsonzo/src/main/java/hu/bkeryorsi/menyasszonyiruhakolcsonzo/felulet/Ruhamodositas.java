@@ -5,7 +5,9 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ruha;
+import java.awt.Color;
 
 /**
  *
@@ -21,6 +23,37 @@ private final Ruha ruha;
         this.szulo=szulo;
         this.ruha=ruha;
         initComponents();
+        azonosito.setEditable(false);
+        azonosito.setBackground(Color.LIGHT_GRAY);
+        leiras.setEditable(false);
+         leiras.setBackground(Color.LIGHT_GRAY);
+         meret.setEditable(false);
+         meret.setBackground(Color.LIGHT_GRAY);
+        ar.setEditable(false);
+        ar.setBackground(Color.LIGHT_GRAY);
+        allapot.setEditable(false);
+        allapot.setBackground(Color.LIGHT_GRAY);
+        fazon.setEditable(false);
+        fazon.setBackground(Color.LIGHT_GRAY);
+        fazonComboBox1.setSelectedItem(ruha.getFazon());
+        fazonComboBox1.setEnabled(false);
+        fazonComboBox1.setBackground(Color.LIGHT_GRAY);
+        allapotComboBox1.setSelectedItem(ruha.getAllapot());
+        allapotComboBox1.setEnabled(false);
+        allapotComboBox1.setBackground(Color.LIGHT_GRAY);
+        megjegyzes.setEditable(false);
+        megjegyzes.setBackground(Color.LIGHT_GRAY);
+        bongeszes_gomb.setEnabled(false);
+        mentes_gomb.setEnabled(false);
+        megse_gomb.setEnabled(false);
+        
+        azonosito.setText(String.valueOf(ruha.getId()));
+        leiras.setText(ruha.getLeiras());
+        meret.setText(String.valueOf(ruha.getMeret()));
+        ar.setText(String.valueOf(ruha.getAr()));
+        fazon.setText(String.valueOf(ruha.getFazon()));
+        allapot.setText(ruha.getAllapot());
+        megjegyzes.setText(ruha.getMegjegyzes());
     }
 
     /**
@@ -36,7 +69,7 @@ private final Ruha ruha;
         jLabel2 = new javax.swing.JLabel();
         azonosito = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        fazon = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         meret = new javax.swing.JTextField();
         fazonComboBox1 = new javax.swing.JComboBox<>();
@@ -47,7 +80,7 @@ private final Ruha ruha;
         allapotComboBox1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        megjegyzes = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         leiras = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -57,6 +90,9 @@ private final Ruha ruha;
         megse_gomb = new javax.swing.JButton();
         torles_gomb = new javax.swing.JButton();
         mentes_gomb = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        ar = new javax.swing.JTextField();
+        bezar_gomb = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
@@ -86,9 +122,9 @@ private final Ruha ruha;
 
         jLabel8.setText("Megjegyzés:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        megjegyzes.setColumns(20);
+        megjegyzes.setRows(5);
+        jScrollPane1.setViewportView(megjegyzes);
 
         jLabel9.setText("Leírás:");
 
@@ -99,12 +135,41 @@ private final Ruha ruha;
         bongeszes_gomb.setText("Böngészés");
 
         szerkesztes_gomb.setText("Szerkesztés");
+        szerkesztes_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                szerkesztes_gombActionPerformed(evt);
+            }
+        });
 
         megse_gomb.setText("Mégse");
+        megse_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                megse_gombActionPerformed(evt);
+            }
+        });
 
         torles_gomb.setText("Törlés");
+        torles_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                torles_gombActionPerformed(evt);
+            }
+        });
 
         mentes_gomb.setText("Mentés");
+        mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mentes_gombActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Ár:");
+
+        bezar_gomb.setText("Bezár");
+        bezar_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bezar_gombActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,105 +191,127 @@ private final Ruha ruha;
                                 .addGap(74, 74, 74)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(azonosito, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel5)
+                                        .addGap(185, 185, 185))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel6))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(185, 185, 185)))
+                                    .addComponent(jLabel12)
+                                    .addGap(205, 205, 205)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(meret, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(allapot, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(allapotComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 146, Short.MAX_VALUE)
                                 .addComponent(fazonComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(azonosito, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(fazon, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ar)))))
                 .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(torles_gomb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mentes_gomb))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(szerkesztes_gomb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(megse_gomb))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(bongeszes_gomb))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel11)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(torles_gomb)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(mentes_gomb))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(szerkesztes_gomb)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(megse_gomb))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(60, 60, 60)
+                                    .addComponent(bongeszes_gomb))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel11)))))
+                    .addComponent(bezar_gomb))
                 .addContainerGap(311, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel11)
-                .addGap(52, 52, 52)
-                .addComponent(bongeszes_gomb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(allapot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(allapotComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(31, 31, 31))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel11)
+                        .addGap(52, 52, 52)
+                        .addComponent(bongeszes_gomb)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(azonosito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(leiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(fazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(fazonComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(meret, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(szerkesztes_gomb)
+                                    .addComponent(megse_gomb))
+                                .addGap(33, 33, 33))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(ar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(allapot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(allapotComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(azonosito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(leiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(fazonComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
                         .addGap(31, 31, 31))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(meret, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(szerkesztes_gomb)
-                    .addComponent(megse_gomb))
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(torles_gomb)
-                    .addComponent(mentes_gomb))
-                .addGap(145, 145, 145))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(torles_gomb)
+                            .addComponent(mentes_gomb))
+                        .addGap(63, 63, 63)
+                        .addComponent(bezar_gomb)
+                        .addGap(50, 50, 50))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -232,16 +319,86 @@ private final Ruha ruha;
         // TODO add your handling code here:
     }//GEN-LAST:event_meretActionPerformed
 
+    private void szerkesztes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szerkesztes_gombActionPerformed
+       mentes_gomb.setEnabled(true);
+        megse_gomb.setEnabled(true);
+        bongeszes_gomb.setEnabled(true);
+        leiras.setEditable(true);
+        leiras.setBackground(Color.WHITE);
+        ar.setEditable(true);
+        ar.setBackground(Color.WHITE);
+        meret.setEditable(true);
+        meret.setBackground(Color.WHITE);
+        allapotComboBox1.setEnabled(true);
+        allapotComboBox1.setBackground(Color.WHITE);
+        fazonComboBox1.setEnabled(true);
+        fazonComboBox1.setBackground(Color.WHITE);
+        megjegyzes.setEditable(true);
+        megjegyzes.setBackground(Color.WHITE);
+    }//GEN-LAST:event_szerkesztes_gombActionPerformed
+
+    private void torles_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torles_gombActionPerformed
+        SQL sql = new SQL();
+
+        this.ruha.getId();
+
+        sql.deleteRuha(this.ruha);
+        Ruhaink ruhaink = new Ruhaink(szulo);
+        szulo.panelmutat(ruhaink);
+    }//GEN-LAST:event_torles_gombActionPerformed
+
+    private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
+       SQL sql = new SQL();
+        this.ruha.setKep(jLabel9.getText());
+        this.ruha.setLeiras((String)leiras.getText());
+        this.ruha.setAr((Integer.parseInt(ar.getText())));
+        this.ruha.setMeret(Integer.parseInt( meret.getText()));
+        this.ruha.setFazon((String)fazonComboBox1.getSelectedItem());
+        this.ruha.setAllapot((String)allapotComboBox1.getSelectedItem());
+        this.ruha.setMegjegyzes((String)megjegyzes.getText());
+        sql.updateRuha(this.ruha);
+        Ruhaink ruhaink = new Ruhaink(szulo);
+        szulo.panelmutat(ruhaink);
+    }//GEN-LAST:event_mentes_gombActionPerformed
+
+    private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
+         ar.setText(String.valueOf(ruha.getAr()));
+        allapot.setText(ruha.getAllapot());
+        fazonComboBox1.setEnabled(false);
+        allapotComboBox1.setEnabled(false);
+        leiras.setEditable(false);
+        leiras.setBackground(Color.LIGHT_GRAY);
+        meret.setEditable(false);
+        meret.setBackground(Color.LIGHT_GRAY);
+        megjegyzes.setText(ruha.getMegjegyzes());
+        bongeszes_gomb.setEnabled(false);
+        ar.setEditable(false);
+        ar.setBackground(Color.LIGHT_GRAY);
+        megjegyzes.setEditable(false);
+        megjegyzes.setBackground(Color.LIGHT_GRAY);
+        megse_gomb.setEnabled(false);
+        mentes_gomb.setEnabled(false);
+    }//GEN-LAST:event_megse_gombActionPerformed
+
+    private void bezar_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bezar_gombActionPerformed
+              Ruhaink ruhaink = new Ruhaink(szulo);
+        szulo.panelmutat(ruhaink); 
+    }//GEN-LAST:event_bezar_gombActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField allapot;
     private javax.swing.JComboBox<String> allapotComboBox1;
+    private javax.swing.JTextField ar;
     private javax.swing.JTextField azonosito;
+    private javax.swing.JButton bezar_gomb;
     private javax.swing.JButton bongeszes_gomb;
+    private javax.swing.JTextField fazon;
     private javax.swing.JComboBox<String> fazonComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -251,9 +408,8 @@ private final Ruha ruha;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField leiras;
+    private javax.swing.JTextArea megjegyzes;
     private javax.swing.JButton megse_gomb;
     private javax.swing.JButton mentes_gomb;
     private javax.swing.JTextField meret;
