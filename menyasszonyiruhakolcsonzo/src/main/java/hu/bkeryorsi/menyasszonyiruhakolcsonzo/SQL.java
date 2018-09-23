@@ -327,6 +327,41 @@ public void deleteKesztyu(Kesztyu k) {
             e.printStackTrace();
         }
     }
+private List<Kesztyu> kesztyuLista(ResultSet rs) throws SQLException {
+        List<Kesztyu> kesztyu = new ArrayList<Kesztyu>();
+        while (rs.next()) {
+            Kesztyu k = new Kesztyu();
+            k.setId(rs.getInt("Kesztyuid"));
+            k.setKep(rs.getString("Kep"));
+            k.setAr(rs.getInt("Ar"));
+            k.setAllapot(rs.getString("Allapot"));
+            k.setMegjegyzes(rs.getString("Megjegyzes"));
+            
+            kesztyu.add(k);
+            
+        }
+        return kesztyu;
+    }
+
+public List<Kesztyu> searchKesztyu(int id, String allapot) {
+
+        try {
+
+            con = connect();
+
+            PreparedStatement st = con.prepareStatement("select * from kesztyu where Kesztyuid=? or Allapot=?");
+            st.setInt(1, id);
+            st.setString(2, allapot);
+            ResultSet rs = st.executeQuery();
+
+            List<Kesztyu> kesztyu = kesztyuLista(rs);
+            st.close();
+            con.close();
+            return kesztyu;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    } 
 }
- 
 

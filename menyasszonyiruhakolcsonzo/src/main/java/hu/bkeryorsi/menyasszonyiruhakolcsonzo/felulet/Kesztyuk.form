@@ -29,13 +29,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" pref="68" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="kesztyuAzonosito" max="32767" attributes="0"/>
+                      <Component id="id" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="kesztyuComboBox" min="-2" pref="161" max="-2" attributes="0"/>
+              <Component id="allapotComboBox" min="-2" pref="161" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="kesztyu_szures_gomb" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
@@ -65,9 +65,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="kesztyuAzonosito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="kesztyu_szures_gomb" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="kesztyuComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="allapotComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
@@ -97,9 +97,9 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
-    <Component class="javax.swing.JTextField" name="kesztyuAzonosito">
+    <Component class="javax.swing.JTextField" name="id">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kesztyuAzonositoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="uj_kesztyu_gomb">
@@ -118,19 +118,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kesztyu_megnyitasa_gombActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="kesztyuComboBox">
+    <Component class="javax.swing.JComboBox" name="allapotComboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="K&#xf6;lcs&#xf6;n&#xf6;zhet&#x151;"/>
-            <StringItem index="1" value="K&#xf6;lcs&#xf6;n&#xf6;zve"/>
-            <StringItem index="2" value="Tiszt&#xed;t&#xf3;"/>
-            <StringItem index="3" value="S&#xe9;r&#xfc;lt"/>
+          <StringArray count="5">
+            <StringItem index="0" value=" "/>
+            <StringItem index="1" value="K&#xf6;lcs&#xf6;n&#xf6;zhet&#x151;"/>
+            <StringItem index="2" value="K&#xf6;lcs&#xf6;n&#xf6;zve"/>
+            <StringItem index="3" value="Tiszt&#xed;t&#xf3;"/>
+            <StringItem index="4" value="S&#xe9;r&#xfc;lt"/>
           </StringArray>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kesztyuComboBoxActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="allapotComboBoxActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -138,7 +139,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="kesztyu_szures_gomb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sz&#x171;r&#xe9;s"/>
+        <Property name="text" type="java.lang.String" value="Keres"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kesztyu_szures_gombActionPerformed"/>
