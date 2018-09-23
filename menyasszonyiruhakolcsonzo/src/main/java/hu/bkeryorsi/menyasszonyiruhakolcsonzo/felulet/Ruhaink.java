@@ -27,6 +27,11 @@ private FoPanel szulo;
         initComponents();
         SQL sql = new SQL();
         List<Ruha> ruha = sql.getRuha();
+        ruhaBetolt(ruha);
+
+    }
+
+    private void ruhaBetolt(List<Ruha> ruha) {
         Object o[][] = new Object[ruha.size()][8];
         for (int i = 0; i < ruha.size(); i++) {
             Ruha k = new Ruha();
@@ -54,7 +59,6 @@ private FoPanel szulo;
         };
         jTable1.setRowHeight(100);
         jTable1.setModel(model);
-
     }
 
     /**
@@ -68,14 +72,14 @@ private FoPanel szulo;
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ruhaAzonosito = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        fazonComboBox1 = new javax.swing.JComboBox<>();
         meret = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        allapotComboBox2 = new javax.swing.JComboBox<>();
+        szures_gomb = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -92,7 +96,7 @@ private FoPanel szulo;
 
         jLabel4.setText("Fazon:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Sellő", "Félsellő", "Hercegnős" }));
+        fazonComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Sellő", "Félsellő", "Hercegnős" }));
 
         meret.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,12 +106,12 @@ private FoPanel szulo;
 
         jLabel5.setText("Állapot:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Kölcsönözhető", "Kölcsönözve", "Tisztító", "Sérült" }));
+        allapotComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Kölcsönözhető", "Kölcsönözve", "Tisztító", "Sérült" }));
 
-        jButton1.setText("Szűrés");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        szures_gomb.setText("Szűrés");
+        szures_gomb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                szures_gombActionPerformed(evt);
             }
         });
 
@@ -153,13 +157,13 @@ private FoPanel szulo;
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ruhaAzonosito)
+                            .addComponent(id)
                             .addComponent(meret, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fazonComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(uj_ruha_gomb))
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,9 +173,9 @@ private FoPanel szulo;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(allapotComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
-                                .addComponent(jButton1)
+                                .addComponent(szures_gomb)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
@@ -186,12 +190,12 @@ private FoPanel szulo;
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(ruhaAzonosito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fazonComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(allapotComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(szures_gomb))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -210,9 +214,33 @@ private FoPanel szulo;
         // TODO add your handling code here:
     }//GEN-LAST:event_meretActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void szures_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szures_gombActionPerformed
+    int beirtId;
+        if (this.id.getText()!=null && !this.id.getText().equals("")){
+        
+    
+         beirtId = (Integer.parseInt(this.id.getText()));
+    } else {
+            beirtId = 0;
+            
+            }
+    int beirtMeret;
+        if (this.meret.getText()!=null && !this.meret.getText().equals("")){
+        
+    
+         beirtMeret = (Integer.parseInt(this.meret.getText()));
+    } else {
+            beirtMeret = 0;
+            
+            }
+        
+        String allapot = (String.valueOf(this.allapotComboBox2.getSelectedItem()));
+        String fazon = (String.valueOf(this.fazonComboBox1.getSelectedItem()));
+        
+        SQL sql = new SQL();
+        List<Ruha> ruha = sql.searchRuha(beirtId, fazon, allapot, beirtMeret);
+        ruhaBetolt(ruha); 
+    }//GEN-LAST:event_szures_gombActionPerformed
 
     private void uj_ruha_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_ruha_gombActionPerformed
      Ruhafelvetel ruhafelvetel = new Ruhafelvetel(szulo);
@@ -241,9 +269,9 @@ private FoPanel szulo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> allapotComboBox2;
+    private javax.swing.JComboBox<String> fazonComboBox1;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -253,8 +281,8 @@ private FoPanel szulo;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField meret;
-    private javax.swing.JTextField ruhaAzonosito;
     private javax.swing.JButton ruha_megnyitasa_gomb;
+    private javax.swing.JButton szures_gomb;
     private javax.swing.JButton uj_ruha_gomb;
     // End of variables declaration//GEN-END:variables
 }

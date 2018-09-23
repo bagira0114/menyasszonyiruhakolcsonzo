@@ -516,4 +516,45 @@ public class SQL {
             e.printStackTrace();
         }
 }
+    private List<Ruha> ruhaLista(ResultSet rs) throws SQLException {
+        List<Ruha> ruha = new ArrayList<Ruha>();
+        while (rs.next()) {
+            Ruha k = new Ruha();
+            k.setId(rs.getInt("MenyasszonyiruhaId"));
+            k.setLeiras(rs.getString("Leiras"));
+            k.setKep(rs.getString("Kep"));
+            k.setMeret(rs.getInt("Meret"));
+            k.setAr(rs.getInt("Ar"));
+            k.setFazon(rs.getString("Fazon"));
+            k.setAllapot(rs.getString("Allapot"));
+            k.setMegjegyzes(rs.getString("Megjegyzes"));
+
+            ruha.add(k);
+
+        }
+        return ruha;
+    }
+    
+    public List<Ruha> searchRuha(int id, String fazon, String allapot, int meret) {
+
+        try {
+
+            con = connect();
+
+            PreparedStatement st = con.prepareStatement("select * from menyasszonyiruha where MenyasszonyiruhaId=? or Fazon=? or Allapot=? or Meret=?");
+            st.setInt(1, id);
+            st.setString(2, fazon);
+            st.setString(3, allapot);
+            st.setInt(4, meret);
+            ResultSet rs = st.executeQuery();
+
+            List<Ruha> ruha = ruhaLista(rs);
+            st.close();
+            con.close();
+            return ruha;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
