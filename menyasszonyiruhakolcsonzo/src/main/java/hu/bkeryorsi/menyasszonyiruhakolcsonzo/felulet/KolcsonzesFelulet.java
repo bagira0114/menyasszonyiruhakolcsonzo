@@ -56,6 +56,11 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
         });
 
         kesztyukolcs_gomb.setText("Új kesztyű kölcsönzése");
+        kesztyukolcs_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kesztyukolcs_gombActionPerformed(evt);
+            }
+        });
 
         ruhavisszav_gomb.setText("Ruha visszavétel");
 
@@ -111,6 +116,11 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
         UjFatyolKolcsonzes ujFatyolKolcsonzes = new UjFatyolKolcsonzes(szulo);
         szulo.panelmutat(ujFatyolKolcsonzes);
     }//GEN-LAST:event_fatyolkolcs_gombActionPerformed
+
+    private void kesztyukolcs_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kesztyukolcs_gombActionPerformed
+      UjKesztyuKolcsonzes ujKesztyuKolcsonzes = new UjKesztyuKolcsonzes(szulo);
+        szulo.panelmutat(ujKesztyuKolcsonzes);
+    }//GEN-LAST:event_kesztyukolcs_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
