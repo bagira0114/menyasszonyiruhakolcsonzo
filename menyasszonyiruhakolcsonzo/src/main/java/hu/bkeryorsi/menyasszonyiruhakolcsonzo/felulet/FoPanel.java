@@ -619,7 +619,7 @@ public class FoPanel extends javax.swing.JFrame {
     private void kolcsonzesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kolcsonzesMouseClicked
   active="kolcsonzes";
        kolcsonzes.setBackground(new Color(0,102,102));
-        panelmutat(new Kolcsonzes());
+        panelmutat(new KolcsonzesFelulet(this));
     }//GEN-LAST:event_kolcsonzesMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -673,13 +673,13 @@ active="ugyfelek";
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
   active="kolcsonzes";
        kolcsonzes.setBackground(new Color(0,102,102));
-        panelmutat(new Kolcsonzes());
+        panelmutat(new KolcsonzesFelulet(this));
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
    active="kolcsonzes";
        kolcsonzes.setBackground(new Color(0,102,102));
-        panelmutat(new Kolcsonzes());
+        panelmutat(new KolcsonzesFelulet(this));
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked

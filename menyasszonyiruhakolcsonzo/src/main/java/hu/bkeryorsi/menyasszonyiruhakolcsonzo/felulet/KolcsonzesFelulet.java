@@ -9,12 +9,14 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
  *
  * @author keryo
  */
-public class Kolcsonzes extends javax.swing.JPanel {
+public class KolcsonzesFelulet extends javax.swing.JPanel {
 
     /**
      * Creates new form KolcsonzesKezeles
      */
-    public Kolcsonzes() {
+    private FoPanel szulo;
+    public KolcsonzesFelulet(FoPanel szulo) {
+        this.szulo = szulo;
         initComponents();
     }
 
@@ -40,6 +42,11 @@ public class Kolcsonzes extends javax.swing.JPanel {
         jLabel1.setText("Kölcsönzések kezelése");
 
         ruhakolcs_gomb.setText("Új ruha kölcsönzése");
+        ruhakolcs_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ruhakolcs_gombActionPerformed(evt);
+            }
+        });
 
         fatyolkolcs_gomb.setText("Új fátyol kölcsönzése");
 
@@ -89,6 +96,11 @@ public class Kolcsonzes extends javax.swing.JPanel {
                 .addContainerGap(283, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ruhakolcs_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruhakolcs_gombActionPerformed
+         UjRuhaKolcsonzes ujRuhaKolcsonzes = new UjRuhaKolcsonzes(szulo);
+        szulo.panelmutat(ujRuhaKolcsonzes);
+    }//GEN-LAST:event_ruhakolcs_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
