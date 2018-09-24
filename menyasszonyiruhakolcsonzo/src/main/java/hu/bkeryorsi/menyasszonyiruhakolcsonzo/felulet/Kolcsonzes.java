@@ -12,7 +12,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 public class Kolcsonzes extends javax.swing.JPanel {
 
     /**
-     * Creates new form Kolcsonzes
+     * Creates new form KolcsonzesKezeles
      */
     public Kolcsonzes() {
         initComponents();
@@ -28,31 +28,76 @@ public class Kolcsonzes extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        ruhakolcs_gomb = new javax.swing.JButton();
+        fatyolkolcs_gomb = new javax.swing.JButton();
+        kesztyukolcs_gomb = new javax.swing.JButton();
+        ruhavisszav_gomb = new javax.swing.JButton();
+        fatyolvisszav_gomb = new javax.swing.JButton();
+        kesztyuvisszav_gomb = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
-        jLabel1.setText("Kölcsönzés");
+        jLabel1.setText("Kölcsönzések kezelése");
+
+        ruhakolcs_gomb.setText("Új ruha kölcsönzése");
+
+        fatyolkolcs_gomb.setText("Új fátyol kölcsönzése");
+
+        kesztyukolcs_gomb.setText("Új kesztyű kölcsönzése");
+
+        ruhavisszav_gomb.setText("Ruha visszavétel");
+
+        fatyolvisszav_gomb.setText("Fátyol visszavétel");
+
+        kesztyuvisszav_gomb.setText("Kesztyű visszavétel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addContainerGap(845, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(ruhakolcs_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fatyolkolcs_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kesztyukolcs_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
+                .addGap(138, 138, 138)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(kesztyuvisszav_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ruhavisszav_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fatyolvisszav_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(473, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ruhakolcs_gomb)
+                    .addComponent(ruhavisszav_gomb))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fatyolkolcs_gomb)
+                    .addComponent(fatyolvisszav_gomb))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kesztyukolcs_gomb)
+                    .addComponent(kesztyuvisszav_gomb))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton fatyolkolcs_gomb;
+    private javax.swing.JButton fatyolvisszav_gomb;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton kesztyukolcs_gomb;
+    private javax.swing.JButton kesztyuvisszav_gomb;
+    private javax.swing.JButton ruhakolcs_gomb;
+    private javax.swing.JButton ruhavisszav_gomb;
     // End of variables declaration//GEN-END:variables
 }
