@@ -8,6 +8,8 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -24,6 +26,8 @@ public class Kesztyufelvetel extends javax.swing.JPanel {
        this.szulo = szulo;
    
         initComponents();
+        PlainDocument doc = (PlainDocument) ar.getDocument();
+        doc.setDocumentFilter(new SzamFilter());
     }
 
       

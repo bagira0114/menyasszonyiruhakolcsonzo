@@ -7,7 +7,9 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ruha;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
 import java.awt.Color;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -23,6 +25,10 @@ private final Ruha ruha;
         this.szulo=szulo;
         this.ruha=ruha;
         initComponents();
+        PlainDocument doc = (PlainDocument) meret.getDocument();
+        doc.setDocumentFilter(new SzamFilter());
+        PlainDocument doc2 = (PlainDocument) ar.getDocument();
+        doc2.setDocumentFilter(new SzamFilter());
         azonosito.setEditable(false);
         azonosito.setBackground(Color.LIGHT_GRAY);
         leiras.setEditable(false);

@@ -8,8 +8,10 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
 import java.awt.Color;
 import javax.swing.JCheckBox;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -25,6 +27,8 @@ public class Kesztyumodositas extends javax.swing.JPanel {
      */
     public Kesztyumodositas(FoPanel szulo, Kesztyu kesztyu) {
         initComponents();
+        PlainDocument doc = (PlainDocument) ar.getDocument();
+        doc.setDocumentFilter(new SzamFilter());
         this.szulo = szulo;
         this.kesztyu = kesztyu;
         azonosito.setEditable(false);

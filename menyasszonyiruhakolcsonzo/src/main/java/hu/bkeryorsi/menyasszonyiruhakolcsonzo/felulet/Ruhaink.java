@@ -8,10 +8,12 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ruha;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -25,6 +27,10 @@ private FoPanel szulo;
     public Ruhaink(FoPanel szulo) {
         this.szulo=szulo;
         initComponents();
+        PlainDocument doc = (PlainDocument) id.getDocument();
+        doc.setDocumentFilter(new SzamFilter());
+        PlainDocument doc2 = (PlainDocument) meret.getDocument();
+        doc2.setDocumentFilter(new SzamFilter());
         SQL sql = new SQL();
         List<Ruha> ruha = sql.getRuha();
         ruhaBetolt(ruha);

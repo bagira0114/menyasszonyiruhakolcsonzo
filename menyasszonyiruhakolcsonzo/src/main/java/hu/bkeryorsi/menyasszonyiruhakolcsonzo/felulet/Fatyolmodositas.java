@@ -7,7 +7,9 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
 import java.awt.Color;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -24,6 +26,9 @@ public class Fatyolmodositas extends javax.swing.JPanel {
         this.szulo = szulo;
         this.fatyol = fatyol;
         initComponents();
+        PlainDocument doc = (PlainDocument) ar.getDocument();
+        doc.setDocumentFilter(new SzamFilter());
+        
         azonosito.setEditable(false);
         azonosito.setBackground(Color.LIGHT_GRAY);
         ar.setEditable(false);

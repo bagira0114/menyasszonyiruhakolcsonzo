@@ -8,6 +8,8 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ruha;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -22,6 +24,10 @@ private FoPanel szulo;
     public Ruhafelvetel( FoPanel szulo) {
         this.szulo=szulo;
         initComponents();
+        PlainDocument doc = (PlainDocument) meret.getDocument();
+        doc.setDocumentFilter(new SzamFilter());
+        PlainDocument doc2 = (PlainDocument) ar.getDocument();
+        doc2.setDocumentFilter(new SzamFilter());
     }
 
     /**

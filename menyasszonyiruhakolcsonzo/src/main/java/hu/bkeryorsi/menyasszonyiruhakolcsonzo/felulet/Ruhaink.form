@@ -46,7 +46,7 @@
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="ruha_megnyitasa_gomb" pref="167" max="32767" attributes="0"/>
+                              <Component id="ruha_megnyitasa_gomb" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="406" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
