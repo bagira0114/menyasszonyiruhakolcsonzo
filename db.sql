@@ -4,6 +4,7 @@ Vezeteknev VARCHAR(50) NOT NULL,
 Keresztnev VARCHAR(50) NOT NULL,
 EmailCim VARCHAR(50) NOT NULL
 );
+ALTER TABLE ugyfel ADD UNIQUE (EmailCim);
 
 CREATE TABLE menyasszonyiruha (
 MenyasszonyiRuhaId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -20,8 +21,8 @@ CREATE TABLE fatyol (
 FatyolId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 Kep VARCHAR(255),
 Ar INT NOT NULL,
-Fazon ENUM('rövid', 'hosszú', 'pironkodó') NOT NULL,
-Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') NOT NULL,
+Fazon ENUM('rövid', 'hosszú', 'pironkodó')  CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült')  CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
 Megjegyzes VARCHAR(255)
 );
 
@@ -29,17 +30,16 @@ CREATE TABLE kesztyu (
 Kesztyuid INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 Kep VARCHAR(255),
 Ar INT NOT NULL,
-Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') NOT NULL,
+Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,,
 Megjegyzes VARCHAR(255)
 );
 
 CREATE TABLE kolcsonzes (
 KolcsonzesId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') NOT NULL,
+Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
 KolcsonzesEleje DATE NOT NULL,
 Hatarido DATE NOT NULL,
 VisszahozatalDatuma DATE ,
-TisztitasVege DATE,
 Megjegyzes VARCHAR(255),
 MenyasszonyiRuhaId INT,
 FatyolId INT,

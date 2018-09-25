@@ -8,13 +8,16 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Fatyol;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Felhasznalo;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ruha;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -500,6 +503,7 @@ public class SQL {
             e.printStackTrace();
         }
     }
+
     public void deleteRuha(Ruha k) {
         con = connect();
 
@@ -515,7 +519,8 @@ public class SQL {
         } catch (Exception e) {
             e.printStackTrace();
         }
-}
+    }
+
     private List<Ruha> ruhaLista(ResultSet rs) throws SQLException {
         List<Ruha> ruha = new ArrayList<Ruha>();
         while (rs.next()) {
@@ -534,7 +539,7 @@ public class SQL {
         }
         return ruha;
     }
-    
+
     public List<Ruha> searchRuha(int id, String fazon, String allapot, int meret) {
 
         try {
@@ -557,4 +562,145 @@ public class SQL {
         }
         return null;
     }
+
+    public void addKolcsonzes(Kolcsonzes k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("insert into kolcsonzes (KolcsonzesEleje, Hatarido, Megjegyzes, MenyasszonyiRuhaId, FatyolId, KesztyuId, UgyfelId) values (?,?,?,?,?,?,?)");
+            st.setDate(1, new java.sql.Date(k.getKolcsonzesEleje().getTime()));
+            st.setDate(2, new java.sql.Date(k.getHatarido().getTime()));
+            st.setString(3, k.getMegjegyzes());
+
+            if (k.getMenyasszonyiRuhaId() != null) {
+                st.setInt(4, k.getMenyasszonyiRuhaId());
+            } else {
+                st.setNull(4, Types.INTEGER);
+            }
+
+            if (k.getFatyolId() != null) {
+                st.setInt(5, k.getFatyolId());
+            } else {
+                st.setNull(5, Types.INTEGER);
+            }
+            if (k.getKesztyuId() != null) {
+                st.setInt(6, k.getKesztyuId());
+            } else {
+                st.setNull(6, Types.INTEGER);
+            }
+            st.setInt(7, k.getUgyfelId());
+
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Integer getugyfelId(String emailcim) {
+        PreparedStatement st = null;
+        try {
+            con = connect();
+            st = con.prepareStatement("select * from ugyfel where EmailCim=?");
+            st.setString(1, emailcim);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("UgyfelId");
+            } else {
+                return null;
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public boolean getKolcsonozve(Integer ruhaId, Integer fatyolId, Integer kesztyuId) {
+        PreparedStatement st = null;
+        con = connect();
+        try {
+            st = con.prepareStatement("select * from kolcsonzes where (MenyasszonyiRuhaId=? or FatyolId=? or Kesztyuid=?) and VisszahozatalDatuma is null");
+
+            if (ruhaId != null) {
+                st.setInt(1, ruhaId);
+            } else {
+                st.setNull(1, Types.INTEGER);
+            }
+            if (fatyolId != null) {
+                st.setInt(2, fatyolId);
+            } else {
+                st.setNull(2, Types.INTEGER);
+            }
+            if (kesztyuId != null) {
+                st.setInt(3, kesztyuId);
+            } else {
+                st.setNull(3, Types.INTEGER);
+            }
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+        return false;
+
+    }
+    public Kolcsonzes getKolcsonzes(int ugyfelId){
+        PreparedStatement st = null;
+        con = connect();
+        try {
+            st = con.prepareStatement("select * from kolcsonzes where UgyfelId=?  and VisszahozatalDatuma is null");
+
+            
+                st.setInt(1, ugyfelId);
+                ResultSet rs = st.executeQuery();
+                if (rs.next()) {
+                    Kolcsonzes k = new Kolcsonzes();
+                   k.setKolcsonzesEleje(rs.getDate("KolcsonzesEleje"));
+                    k.setHatarido(rs.getDate("Hatarido"));
+                    k.setMegjegyzes(rs.getString("Megjegyzes"));
+                    k.setMenyasszonyiRuhaId(rs.getInt("MenyasszonyiRuhaId"));
+                    k.setFatyolId(rs.getInt("FatyolId"));
+                    k.setKesztyuId(rs.getInt("Kesztyuid"));
+                    return k;
+                    
+                }else return null;
+                         
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+    }
+        return null;
+}
 }

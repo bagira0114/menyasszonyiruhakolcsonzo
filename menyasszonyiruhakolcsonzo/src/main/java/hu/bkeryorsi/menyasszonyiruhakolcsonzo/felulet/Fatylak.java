@@ -12,6 +12,7 @@ import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
 
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.PlainDocument;
@@ -239,9 +240,15 @@ Fatyolfelvetel fatyolfelvetel = new Fatyolfelvetel(szulo);
     }//GEN-LAST:event_uj_fatyol_gombActionPerformed
 
     private void fatyol_megnyitasa_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatyol_megnyitasa_gombActionPerformed
-    Fatyol fatyol = this.kivalasztottsor();
+    
+        Fatyol fatyol = this.kivalasztottsor();
+        if (kivalasztottsor().equals("")) {
+            JOptionPane.showMessageDialog(null,"Nincs kiválasztott sor");
+        }
+        else{
         Fatyolmodositas fatyolmodositas = new Fatyolmodositas(szulo, fatyol);
         szulo.panelmutat(fatyolmodositas);
+        }
     }//GEN-LAST:event_fatyol_megnyitasa_gombActionPerformed
 public Fatyol kivalasztottsor() {
         int i = jTable1.getSelectedRow();
