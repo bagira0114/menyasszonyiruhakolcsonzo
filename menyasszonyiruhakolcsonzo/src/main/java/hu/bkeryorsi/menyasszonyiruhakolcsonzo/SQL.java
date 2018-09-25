@@ -704,24 +704,29 @@ public class SQL {
         return null;
     }
 
-  /*  public void updateKolcsonzes(Kolcsonzes k) {
+    public void updateKolcsonzes(Kolcsonzes k) {
         PreparedStatement st = null;
         con = connect();
 
         try {
-            st = con.prepareStatement("UPDATE kolcsonzes SET Megjegyzes=?, MenyasszonyiRuhaId=?, FatyolId=?,Kesztyuid=?, WHERE KolcsonzesId=?");
+            st = con.prepareStatement("UPDATE kolcsonzes SET Megjegyzes=?, MenyasszonyiRuhaId=?, FatyolId=?,Kesztyuid=? WHERE KolcsonzesId=?");
             st.setString(1, k.getMegjegyzes());
             if (k.getMenyasszonyiRuhaId() != null) {
-                st.setInt(1, k.getMenyasszonyiRuhaId());
+                st.setInt(2, k.getMenyasszonyiRuhaId());}
                 else {
-                st.setNull(1, Types.INTEGER);
+                st.setNull(2, Types.INTEGER);
                         }
                 if(k.getFatyolId() !=null) {
-                    st.setInt(2, k.getFatyolId());
+                    st.setInt(3, k.getFatyolId());
                 }
-            st.setInt(2, k.getMenyasszonyiRuhaId());
-            st.setInt(3, k.getFatyolId());
-            st.setInt(4, k.getKesztyuId());
+                else {
+                    st.setNull(3, Types.INTEGER);
+                }
+                if(k.getKesztyuId() != null){
+                    st.setInt(4, k.getKesztyuId());
+                }else {st.setNull(4, Types.INTEGER);
+                }
+            
             st.setInt(5, k.getKolcsonzesid());
             st.execute();
             st.close();
@@ -729,5 +734,5 @@ public class SQL {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }

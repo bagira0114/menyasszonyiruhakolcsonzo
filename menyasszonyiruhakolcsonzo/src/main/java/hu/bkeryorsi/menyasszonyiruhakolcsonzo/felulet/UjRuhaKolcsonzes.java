@@ -28,7 +28,7 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         this.szulo = szulo;
 
         initComponents();
-        jCalendar2.setMinSelectableDate(new Date()); 
+        jCalendar2.setMinSelectableDate(new Date());
         PlainDocument doc = (PlainDocument) ruhaId.getDocument();
         doc.setDocumentFilter(new SzamFilter());
         kolcsKezd.setText(new Date().toString());
@@ -179,15 +179,29 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         k.setHatarido(jCalendar2.getDate());
         k.setKolcsonzesEleje(new Date());
         k.setMegjegyzes(megjegyzes.getText());
-        if(!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
-        sql.addKolcsonzes(k);
-         KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-        szulo.panelmutat(kolcsonzesFelulet);
-    }else {
-            JOptionPane.showMessageDialog(null,"Már kölcsönzött tétel"); 
+         Kolcsonzes meglevo = sql.getKolcsonzes(sql.getugyfelId(email.getText()));
+         if (meglevo != null) {
+            k.setKolcsonzesid(meglevo.getKolcsonzesid()); //itt beállítod az id-t
+            k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
+            if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
+                sql.updateKolcsonzes(k);
+                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                szulo.panelmutat(kolcsonzesFelulet);
+            } else {
+                JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
+
+            }
         }
-        
-       
+            if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
+            
+                sql.addKolcsonzes(k);
+          
+            KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+            szulo.panelmutat(kolcsonzesFelulet);
+        } else {
+            JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
+        }
+
 
     }//GEN-LAST:event_kolcsonzes_gombActionPerformed
 
