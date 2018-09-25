@@ -681,20 +681,19 @@ public class SQL {
                 k.setKolcsonzesEleje(rs.getDate("KolcsonzesEleje"));
                 k.setHatarido(rs.getDate("Hatarido"));
                 k.setMegjegyzes(rs.getString("Megjegyzes"));
-                if(rs.getInt("MenyasszonyiRuhaId")>0){
+                if (rs.getInt("MenyasszonyiRuhaId") > 0) {
                     k.setMenyasszonyiRuhaId(rs.getInt("MenyasszonyiRuhaId"));
-                }
-                else {
+                } else {
                     k.setMenyasszonyiRuhaId(null);
                 }
                 if (rs.getInt("FatyolId") > 0) {  //itt szar, itt ellenőrizd le hogy csak akkortegye bele ha > 0
                     k.setFatyolId(rs.getInt("FatyolId"));
                 } else {
-                   k.setFatyolId(null);
+                    k.setFatyolId(null);
                 }
-                if (rs.getInt("Kesztyuid")>0){
-                k.setKesztyuId(rs.getInt("Kesztyuid"));
-                }else {
+                if (rs.getInt("Kesztyuid") > 0) {
+                    k.setKesztyuId(rs.getInt("Kesztyuid"));
+                } else {
                     k.setKesztyuId(null);
                 }
                 k.setKolcsonzesid(rs.getInt("KolcsonzesId"));
@@ -746,6 +745,46 @@ public class SQL {
             st.execute();
             st.close();
             con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ruhaStatuszModositas(int ruhaid, String statusz) {
+        PreparedStatement st = null;
+        con = connect();
+        try {
+            st = con.prepareStatement("UPDATE menyasszonyiruha SET Allapot=? WHERE MenyasszonyiRuhaId=?");
+            st.setString(1, statusz);
+            st.setInt(2, ruhaid);
+            st.execute();
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void fatyolStatuszModositas(int fatyolid, String statusz) {
+        PreparedStatement st = null;
+        con = connect();
+        try {
+            st = con.prepareStatement("UPDATE fatyol SET Allapot=? WHERE FatyolId=?");
+            st.setString(1, statusz);
+            st.setInt(2, fatyolid);
+            st.execute();
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void kesztyuStatuszModositas(int kesztyuid, String statusz) {
+        PreparedStatement st = null;
+        con = connect();
+        try {
+            st = con.prepareStatement("UPDATE kesztyu SET Allapot=? WHERE Kesztyuid=?");
+            st.setString(1, statusz);
+            st.setInt(2, kesztyuid);
+            st.execute();
+            st.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

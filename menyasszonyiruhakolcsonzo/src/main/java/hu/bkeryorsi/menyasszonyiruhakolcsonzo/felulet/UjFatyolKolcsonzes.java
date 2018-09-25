@@ -182,8 +182,9 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
             k.setMenyasszonyiRuhaId(meglevo.getMenyasszonyiRuhaId());
             k.setKesztyuId(meglevo.getKesztyuId());
-            if (!sql.getKolcsonozve(Integer.parseInt(fatyolId.getText()), null, null)) {
+            if (!sql.getKolcsonozve( null, Integer.parseInt(fatyolId.getText()),null)) {
                 sql.updateKolcsonzes(k);
+                sql.fatyolStatuszModositas(Integer.parseInt(fatyolId.getText()), "kölcsönözve");
                 KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
                 szulo.panelmutat(kolcsonzesFelulet);
             } else {
@@ -191,10 +192,10 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
 
             }
         } else {
-            if (!sql.getKolcsonozve(Integer.parseInt(fatyolId.getText()), null, null)) {
+            if (!sql.getKolcsonozve(null, Integer.parseInt(fatyolId.getText()), null)) {
 
                 sql.addKolcsonzes(k);
-
+                sql.fatyolStatuszModositas(Integer.parseInt(fatyolId.getText()), "kölcsönözve");
                 KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
                 szulo.panelmutat(kolcsonzesFelulet);
             } else {

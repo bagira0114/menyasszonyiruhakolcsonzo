@@ -187,6 +187,7 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
             k.setKesztyuId(meglevo.getKesztyuId());
             if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
                 sql.updateKolcsonzes(k);
+                sql.ruhaStatuszModositas(Integer.parseInt(ruhaId.getText()), "kölcsönözve");
                 KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
                 szulo.panelmutat(kolcsonzesFelulet);
             } else {
@@ -197,7 +198,7 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
             if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
 
                 sql.addKolcsonzes(k);
-
+                sql.ruhaStatuszModositas(Integer.parseInt(ruhaId.getText()), "kölcsönözve");
                 KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
                 szulo.panelmutat(kolcsonzesFelulet);
             } else {

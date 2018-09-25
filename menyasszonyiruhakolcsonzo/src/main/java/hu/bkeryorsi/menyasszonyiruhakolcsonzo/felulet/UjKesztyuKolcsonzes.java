@@ -5,7 +5,11 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.text.PlainDocument;
 
 /**
@@ -21,8 +25,11 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
     public UjKesztyuKolcsonzes(FoPanel szulo) {
         this.szulo = szulo;
         initComponents();
+        jCalendar1.setMinSelectableDate(new Date());
         PlainDocument doc = (PlainDocument) kesztyuId.getDocument();
         doc.setDocumentFilter(new SzamFilter());
+        kolcskezd.setText(new Date().toString());
+        kolcskezd.setEnabled(false);
     }
 
     /**
@@ -44,10 +51,10 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
         email = new javax.swing.JTextField();
         kesztyuId = new javax.swing.JTextField();
         kolcskezd = new javax.swing.JTextField();
-        hatarido = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         megjegyzes = new javax.swing.JTextArea();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
@@ -62,6 +69,11 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
         jLabel5.setText("Határidő:");
 
         mentes_gomb.setText("Mentés");
+        mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mentes_gombActionPerformed(evt);
+            }
+        });
 
         megse_gomb.setText("Mégse");
         megse_gomb.addActionListener(new java.awt.event.ActionListener() {
@@ -86,59 +98,68 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(327, 327, 327)
                                 .addComponent(jLabel5)
-                                .addGap(32, 32, 32))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addGap(86, 86, 86)
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel2)
-                                                .addComponent(jLabel3))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(kolcskezd, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(email)
-                                                    .addComponent(kesztyuId, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)))
-                        .addComponent(hatarido, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(mentes_gomb)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(megse_gomb)))
+                        .addGap(96, 96, 96))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(mentes_gomb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(megse_gomb)))
-                .addGap(96, 96, 96))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(86, 86, 86)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(kolcskezd, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(email)
+                                            .addComponent(kesztyuId, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(kesztyuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(kolcskezd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hatarido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel5)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(kesztyuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(kolcskezd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mentes_gomb)
@@ -152,10 +173,50 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
         szulo.panelmutat(kolcsonzesFelulet);   
     }//GEN-LAST:event_megse_gombActionPerformed
 
+    private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
+         SQL sql = new SQL();
+        Kolcsonzes k = new Kolcsonzes();
+        k.setUgyfelId(sql.getugyfelId(email.getText()));
+        k.setKesztyuId(Integer.parseInt(kesztyuId.getText()));
+        k.setHatarido(jCalendar1.getDate());
+        k.setKolcsonzesEleje(new Date());
+        k.setMegjegyzes(megjegyzes.getText());
+        Kolcsonzes meglevo = sql.getKolcsonzes(sql.getugyfelId(email.getText())); //kikéred a meglévőt
+        if (meglevo != null) {
+            k.setKolcsonzesid(meglevo.getKolcsonzesid()); //itt beállítod az id-t
+            k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
+            k.setMenyasszonyiRuhaId(meglevo.getMenyasszonyiRuhaId());
+            k.setFatyolId(meglevo.getFatyolId());
+            if (!sql.getKolcsonozve( null, Integer.parseInt(kesztyuId.getText()),null)) {
+                sql.updateKolcsonzes(k);
+                sql.kesztyuStatuszModositas(Integer.parseInt(kesztyuId.getText()), "kölcsönözve");
+                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                szulo.panelmutat(kolcsonzesFelulet);
+            } else {
+                JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
+
+            }
+        } else {
+            if (!sql.getKolcsonozve(null, Integer.parseInt(kesztyuId.getText()), null)) {
+
+                sql.addKolcsonzes(k);
+                sql.kesztyuStatuszModositas(Integer.parseInt(kesztyuId.getText()), "kölcsönözve");
+                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                szulo.panelmutat(kolcsonzesFelulet);
+            } else {
+                JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
+            }
+
+        }
+
+
+                 
+    }//GEN-LAST:event_mentes_gombActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email;
-    private javax.swing.JTextField hatarido;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
