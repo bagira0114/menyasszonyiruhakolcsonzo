@@ -487,7 +487,7 @@ public class SQL {
         con = connect();
 
         try {
-            PreparedStatement st = con.prepareStatement("UPDATE menyasszonyiruha SET Leiras=?, Kep=?, Meret=?, Ar=?,Fazon=?, Allapot=?, Megjegyzes=? WHERE MenyasszonyiruhaId=?");
+            PreparedStatement st = con.prepareStatement("UPDATE menyasszonyiruha SET Leiras=?, Kep=?, Meret=?, Ar=?,Fazon=?, Allapot=?, Megjegyzes=? WHERE MenyasszonyiRuhaId=?");
             st.setString(1, k.getLeiras());
             st.setString(2, k.getKep());
             st.setInt(3, k.getMeret());
@@ -667,29 +667,29 @@ public class SQL {
         return false;
 
     }
-    public Kolcsonzes getKolcsonzes(int ugyfelId){
+
+    public Kolcsonzes getKolcsonzes(int ugyfelId) {
         PreparedStatement st = null;
         con = connect();
         try {
             st = con.prepareStatement("select * from kolcsonzes where UgyfelId=?  and VisszahozatalDatuma is null");
 
-            
-                st.setInt(1, ugyfelId);
-                ResultSet rs = st.executeQuery();
-                if (rs.next()) {
-                    Kolcsonzes k = new Kolcsonzes();
-                   k.setKolcsonzesEleje(rs.getDate("KolcsonzesEleje"));
-                    k.setHatarido(rs.getDate("Hatarido"));
-                    k.setMegjegyzes(rs.getString("Megjegyzes"));
-                    k.setMenyasszonyiRuhaId(rs.getInt("MenyasszonyiRuhaId"));
-                    k.setFatyolId(rs.getInt("FatyolId"));
-                    k.setKesztyuId(rs.getInt("Kesztyuid"));
-                    return k;
-                    
-                }else return null;
-                         
-           
-            
+            st.setInt(1, ugyfelId);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Kolcsonzes k = new Kolcsonzes();
+                k.setKolcsonzesEleje(rs.getDate("KolcsonzesEleje"));
+                k.setHatarido(rs.getDate("Hatarido"));
+                k.setMegjegyzes(rs.getString("Megjegyzes"));
+                k.setMenyasszonyiRuhaId(rs.getInt("MenyasszonyiRuhaId"));
+                k.setFatyolId(rs.getInt("FatyolId"));
+                k.setKesztyuId(rs.getInt("Kesztyuid"));
+                return k;
+
+            } else {
+                return null;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -700,7 +700,34 @@ public class SQL {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-    }
+        }
         return null;
-}
+    }
+
+  /*  public void updateKolcsonzes(Kolcsonzes k) {
+        PreparedStatement st = null;
+        con = connect();
+
+        try {
+            st = con.prepareStatement("UPDATE kolcsonzes SET Megjegyzes=?, MenyasszonyiRuhaId=?, FatyolId=?,Kesztyuid=?, WHERE KolcsonzesId=?");
+            st.setString(1, k.getMegjegyzes());
+            if (k.getMenyasszonyiRuhaId() != null) {
+                st.setInt(1, k.getMenyasszonyiRuhaId());
+                else {
+                st.setNull(1, Types.INTEGER);
+                        }
+                if(k.getFatyolId() !=null) {
+                    st.setInt(2, k.getFatyolId());
+                }
+            st.setInt(2, k.getMenyasszonyiRuhaId());
+            st.setInt(3, k.getFatyolId());
+            st.setInt(4, k.getKesztyuId());
+            st.setInt(5, k.getKolcsonzesid());
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 }
