@@ -6,6 +6,8 @@
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
+import java.util.Date;
 
 /**
  *
@@ -17,6 +19,7 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
      * Creates new form KolcsonzesKezeles
      */
     private FoPanel szulo;
+
     public KolcsonzesFelulet(FoPanel szulo) {
         this.szulo = szulo;
         initComponents();
@@ -93,6 +96,11 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
         jLabel4.setText("Figyelem! Visszavételkor az összes terméket vissza kell hozni.");
 
         visszavesz_gomb.setText("Az összeset visszavesz");
+        visszavesz_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visszavesz_gombActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -173,7 +181,7 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ruhakolcs_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruhakolcs_gombActionPerformed
-         UjRuhaKolcsonzes ujRuhaKolcsonzes = new UjRuhaKolcsonzes(szulo);
+        UjRuhaKolcsonzes ujRuhaKolcsonzes = new UjRuhaKolcsonzes(szulo);
         szulo.panelmutat(ujRuhaKolcsonzes);
     }//GEN-LAST:event_ruhakolcs_gombActionPerformed
 
@@ -183,22 +191,40 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
     }//GEN-LAST:event_fatyolkolcs_gombActionPerformed
 
     private void kesztyukolcs_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kesztyukolcs_gombActionPerformed
-      UjKesztyuKolcsonzes ujKesztyuKolcsonzes = new UjKesztyuKolcsonzes(szulo);
+        UjKesztyuKolcsonzes ujKesztyuKolcsonzes = new UjKesztyuKolcsonzes(szulo);
         szulo.panelmutat(ujKesztyuKolcsonzes);
     }//GEN-LAST:event_kesztyukolcs_gombActionPerformed
 
     private void kereses_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kereses_gombActionPerformed
-     SQL sql = new SQL();
-     int ugyfelid = sql.getugyfelId(emailCim.getText());
-     
-     kolcsonzesek.setText(Eszkozok.formaz(sql.getKolcsonzes(ugyfelid)));
+        SQL sql = new SQL();
+        int ugyfelid = sql.getugyfelId(emailCim.getText());
+
+        kolcsonzesek.setText(Eszkozok.formaz(sql.getKolcsonzes(ugyfelid)));
     }//GEN-LAST:event_kereses_gombActionPerformed
 
     private void emailCimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailCimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailCimActionPerformed
 
+    private void visszavesz_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visszavesz_gombActionPerformed
+        SQL sql = new SQL();
+        int ugyfelid = sql.getugyfelId(emailCim.getText());
+        Kolcsonzes k = sql.getKolcsonzes(ugyfelid);
+        if (k.getMenyasszonyiRuhaId() != null) {
+            sql.ruhaStatuszModositas(k.getMenyasszonyiRuhaId(), "tisztító");
+            
+        }
+        if (k.getFatyolId() != null) {
+            sql.fatyolStatuszModositas(k.getFatyolId(), "tisztító");
+         
 
+    }//GEN-LAST:event_visszavesz_gombActionPerformed
+        if (k.getKesztyuId() != null) {
+            sql.kesztyuStatuszModositas(k.getKesztyuId(), "tisztító");
+         
+        }
+        sql.visszavetel(k.getKolcsonzesid());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField emailCim;
     private javax.swing.JButton fatyolkolcs_gomb;

@@ -763,6 +763,7 @@ public class SQL {
             e.printStackTrace();
         }
     }
+
     public void fatyolStatuszModositas(int fatyolid, String statusz) {
         PreparedStatement st = null;
         con = connect();
@@ -776,6 +777,7 @@ public class SQL {
             e.printStackTrace();
         }
     }
+
     public void kesztyuStatuszModositas(int kesztyuid, String statusz) {
         PreparedStatement st = null;
         con = connect();
@@ -783,6 +785,19 @@ public class SQL {
             st = con.prepareStatement("UPDATE kesztyu SET Allapot=? WHERE Kesztyuid=?");
             st.setString(1, statusz);
             st.setInt(2, kesztyuid);
+            st.execute();
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void visszavetel(int kolcsonzesid) {
+        PreparedStatement st = null;
+        con = connect();
+        try {
+            st = con.prepareStatement("UPDATE kolcsonzes SET VisszahozatalDatuma=NOW() where KolcsonzesId=?");
+            st.setInt(1, kolcsonzesid);
             st.execute();
             st.close();
         } catch (Exception e) {

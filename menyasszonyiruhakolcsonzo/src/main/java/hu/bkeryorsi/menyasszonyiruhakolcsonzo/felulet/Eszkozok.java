@@ -12,12 +12,15 @@ import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
  * @author keryo
  */
 public class Eszkozok {
-    
-    public static String formaz(Kolcsonzes k){
-    return "A ruhaazonosító: "+k.getMenyasszonyiRuhaId()+"\n"
-              + "a fátyolazonosító: "+k.getFatyolId()+"\n"
-              + "a kesztyűazonosító "+k.getKesztyuId();
-      
+
+    public static String formaz(Kolcsonzes k) {
+        if (k == null) {
+            return "";
+        } else {
+            return "A ruhaazonosító: " + k.getMenyasszonyiRuhaId() + "\n"
+                    + "a fátyolazonosító: " + k.getFatyolId() + "\n"
+                    + "a kesztyűazonosító " + k.getKesztyuId();
+        }
+
     }
-    
 }
