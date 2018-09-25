@@ -5,6 +5,8 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+
 /**
  *
  * @author keryo
@@ -33,9 +35,14 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
         ruhakolcs_gomb = new javax.swing.JButton();
         fatyolkolcs_gomb = new javax.swing.JButton();
         kesztyukolcs_gomb = new javax.swing.JButton();
-        ruhavisszav_gomb = new javax.swing.JButton();
-        fatyolvisszav_gomb = new javax.swing.JButton();
-        kesztyuvisszav_gomb = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        kereses_gomb = new javax.swing.JButton();
+        emailCim = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        kolcsonzesek = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        visszavesz_gomb = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
@@ -62,11 +69,30 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
             }
         });
 
-        ruhavisszav_gomb.setText("Ruha visszavétel");
+        jLabel2.setText("A visszavételhez adja meg az ügyfél e-mail címét:");
 
-        fatyolvisszav_gomb.setText("Fátyol visszavétel");
+        kereses_gomb.setText("Keresés");
+        kereses_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kereses_gombActionPerformed(evt);
+            }
+        });
 
-        kesztyuvisszav_gomb.setText("Kesztyű visszavétel");
+        emailCim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailCimActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Az ügyfélnél kint lévő termékek:");
+
+        kolcsonzesek.setColumns(20);
+        kolcsonzesek.setRows(5);
+        jScrollPane1.setViewportView(kolcsonzesek);
+
+        jLabel4.setText("Figyelem! Visszavételkor az összes terméket vissza kell hozni.");
+
+        visszavesz_gomb.setText("Az összeset visszavesz");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,31 +105,70 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
                     .addComponent(ruhakolcs_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(fatyolkolcs_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(kesztyukolcs_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
-                .addGap(138, 138, 138)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(kesztyuvisszav_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ruhavisszav_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fatyolvisszav_gomb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(209, 209, 209))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(emailCim, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(101, 101, 101)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(197, 197, 197)
+                                    .addComponent(kereses_gomb))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(visszavesz_gomb)
+                        .addGap(322, 322, 322))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(220, 220, 220))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ruhakolcs_gomb)
-                    .addComponent(ruhavisszav_gomb))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fatyolkolcs_gomb)
-                    .addComponent(fatyolvisszav_gomb))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kesztyukolcs_gomb)
-                    .addComponent(kesztyuvisszav_gomb))
-                .addContainerGap(283, Short.MAX_VALUE))
+                    .addComponent(emailCim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(fatyolkolcs_gomb))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(kereses_gomb)))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(kesztyukolcs_gomb))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(visszavesz_gomb)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,14 +187,30 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
         szulo.panelmutat(ujKesztyuKolcsonzes);
     }//GEN-LAST:event_kesztyukolcs_gombActionPerformed
 
+    private void kereses_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kereses_gombActionPerformed
+     SQL sql = new SQL();
+     int ugyfelid = sql.getugyfelId(emailCim.getText());
+     
+     kolcsonzesek.setText(Eszkozok.formaz(sql.getKolcsonzes(ugyfelid)));
+    }//GEN-LAST:event_kereses_gombActionPerformed
+
+    private void emailCimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailCimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailCimActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField emailCim;
     private javax.swing.JButton fatyolkolcs_gomb;
-    private javax.swing.JButton fatyolvisszav_gomb;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton kereses_gomb;
     private javax.swing.JButton kesztyukolcs_gomb;
-    private javax.swing.JButton kesztyuvisszav_gomb;
+    private javax.swing.JTextArea kolcsonzesek;
     private javax.swing.JButton ruhakolcs_gomb;
-    private javax.swing.JButton ruhavisszav_gomb;
+    private javax.swing.JButton visszavesz_gomb;
     // End of variables declaration//GEN-END:variables
 }
