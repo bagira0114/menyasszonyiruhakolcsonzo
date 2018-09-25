@@ -40,6 +40,9 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
         vezeteknev.setText(ugyfel.getVezeteknev());
         keresztnev.setText(ugyfel.getKeresztnev());
         emailcim.setText(ugyfel.getEmailcim());
+        SQL sql = new SQL();
+        int ugyfelid = sql.getugyfelId(emailcim.getText());
+        kolcsonzesek.setText(Eszkozok.formaz(sql.getKolcsonzes(ugyfelid)));
     }
 
     /**
