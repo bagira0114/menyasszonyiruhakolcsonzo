@@ -22,10 +22,11 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
      * Creates new form UjFatyolKolcsonzes
      */
     private FoPanel szulo;
+
     public UjFatyolKolcsonzes(FoPanel szulo) {
         this.szulo = szulo;
         initComponents();
-        jCalendar1.setMinSelectableDate(new Date()); 
+        jCalendar1.setMinSelectableDate(new Date());
         PlainDocument doc = (PlainDocument) fatyolId.getDocument();
         doc.setDocumentFilter(new SzamFilter());
         kolcsKezd.setText(new Date().toString());
@@ -162,13 +163,13 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
-       KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-        szulo.panelmutat(kolcsonzesFelulet);   
-       
+        KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+        szulo.panelmutat(kolcsonzesFelulet);
+
     }//GEN-LAST:event_megse_gombActionPerformed
 
     private void kolcsonzes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonzes_gombActionPerformed
-     SQL sql = new SQL();
+        SQL sql = new SQL();
         Kolcsonzes k = new Kolcsonzes();
         k.setUgyfelId(sql.getugyfelId(email.getText()));
         k.setFatyolId(Integer.parseInt(fatyolId.getText()));
@@ -179,29 +180,30 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
         if (meglevo != null) {
             k.setKolcsonzesid(meglevo.getKolcsonzesid()); //itt beállítod az id-t
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
-            if (!sql.getKolcsonozve(null, Integer.parseInt(fatyolId.getText()),  null)) {
+            k.setMenyasszonyiRuhaId(meglevo.getMenyasszonyiRuhaId());
+            k.setKesztyuId(meglevo.getKesztyuId());
+            if (!sql.getKolcsonozve(Integer.parseInt(fatyolId.getText()), null, null)) {
                 sql.updateKolcsonzes(k);
                 KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
                 szulo.panelmutat(kolcsonzesFelulet);
             } else {
                 JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
 
-            } if (!sql.getKolcsonozve(Integer.parseInt(fatyolId.getText()), null, null)) {
-            
-                sql.addKolcsonzes(k);
-          
-            KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-            szulo.panelmutat(kolcsonzesFelulet);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
+            if (!sql.getKolcsonozve(Integer.parseInt(fatyolId.getText()), null, null)) {
+
+                sql.addKolcsonzes(k);
+
+                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                szulo.panelmutat(kolcsonzesFelulet);
+            } else {
+                JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
+            }
+
         }
 
 
-    }            
-              
-       
-
-                                                 
     }//GEN-LAST:event_kolcsonzes_gombActionPerformed
 
 

@@ -193,21 +193,21 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
 
             }
-        }
-        if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
-
-            sql.addKolcsonzes(k);
-
-            KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-            szulo.panelmutat(kolcsonzesFelulet);
         } else {
-            JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
-        }
+            if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
+
+                sql.addKolcsonzes(k);
+
+                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                szulo.panelmutat(kolcsonzesFelulet);
+            } else {
+                JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
+            }
 
 
     }//GEN-LAST:event_kolcsonzes_gombActionPerformed
 
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email;
     private com.toedter.calendar.JCalendar jCalendar1;
