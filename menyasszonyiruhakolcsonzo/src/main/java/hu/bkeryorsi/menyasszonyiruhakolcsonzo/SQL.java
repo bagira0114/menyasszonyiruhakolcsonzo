@@ -681,9 +681,23 @@ public class SQL {
                 k.setKolcsonzesEleje(rs.getDate("KolcsonzesEleje"));
                 k.setHatarido(rs.getDate("Hatarido"));
                 k.setMegjegyzes(rs.getString("Megjegyzes"));
-                k.setMenyasszonyiRuhaId(rs.getInt("MenyasszonyiRuhaId"));
-                k.setFatyolId(rs.getInt("FatyolId"));
+                if(rs.getInt("MenyasszonyiRuhaId")>0){
+                    k.setMenyasszonyiRuhaId(rs.getInt("MenyasszonyiRuhaId"));
+                }
+                else {
+                    k.setMenyasszonyiRuhaId(null);
+                }
+                if (rs.getInt("FatyolId") > 0) {  //itt szar, itt ellenőrizd le hogy csak akkortegye bele ha > 0
+                    k.setFatyolId(rs.getInt("FatyolId"));
+                } else {
+                   k.setFatyolId(null);
+                }
+                if (rs.getInt("Kesztyuid")>0){
                 k.setKesztyuId(rs.getInt("Kesztyuid"));
+                }else {
+                    k.setKesztyuId(null);
+                }
+                k.setKolcsonzesid(rs.getInt("KolcsonzesId"));
                 return k;
 
             } else {
@@ -710,23 +724,24 @@ public class SQL {
 
         try {
             st = con.prepareStatement("UPDATE kolcsonzes SET Megjegyzes=?, MenyasszonyiRuhaId=?, FatyolId=?,Kesztyuid=? WHERE KolcsonzesId=?");
+
             st.setString(1, k.getMegjegyzes());
             if (k.getMenyasszonyiRuhaId() != null) {
-                st.setInt(2, k.getMenyasszonyiRuhaId());}
-                else {
+                st.setInt(2, k.getMenyasszonyiRuhaId());
+            } else {
                 st.setNull(2, Types.INTEGER);
-                        }
-                if(k.getFatyolId() !=null) {
-                    st.setInt(3, k.getFatyolId());
-                }
-                else {
-                    st.setNull(3, Types.INTEGER);
-                }
-                if(k.getKesztyuId() != null){
-                    st.setInt(4, k.getKesztyuId());
-                }else {st.setNull(4, Types.INTEGER);
-                }
-            
+            }
+            if (k.getFatyolId() != null) {
+                st.setInt(3, k.getFatyolId());
+            } else {
+                st.setNull(3, Types.INTEGER);
+            }
+            if (k.getKesztyuId() != null) {
+                st.setInt(4, k.getKesztyuId());
+            } else {
+                st.setNull(4, Types.INTEGER);
+            }
+
             st.setInt(5, k.getKolcsonzesid());
             st.execute();
             st.close();

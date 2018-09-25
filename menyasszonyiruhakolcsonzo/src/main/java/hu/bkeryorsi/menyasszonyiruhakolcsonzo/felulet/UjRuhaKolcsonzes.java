@@ -179,10 +179,12 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         k.setHatarido(jCalendar2.getDate());
         k.setKolcsonzesEleje(new Date());
         k.setMegjegyzes(megjegyzes.getText());
-         Kolcsonzes meglevo = sql.getKolcsonzes(sql.getugyfelId(email.getText()));
-         if (meglevo != null) {
+        Kolcsonzes meglevo = sql.getKolcsonzes(sql.getugyfelId(email.getText()));
+        if (meglevo != null) {
             k.setKolcsonzesid(meglevo.getKolcsonzesid()); //itt beállítod az id-t
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
+            k.setFatyolId(meglevo.getFatyolId());
+            k.setKesztyuId(meglevo.getKesztyuId());
             if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
                 sql.updateKolcsonzes(k);
                 KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
@@ -192,10 +194,10 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
 
             }
         }
-            if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
-            
-                sql.addKolcsonzes(k);
-          
+        if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
+
+            sql.addKolcsonzes(k);
+
             KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
             szulo.panelmutat(kolcsonzesFelulet);
         } else {
