@@ -38,23 +38,22 @@ private FoPanel szulo;
     }
 
     private void ruhaBetolt(List<Ruha> ruha) {
-        Object o[][] = new Object[ruha.size()][8];
+        Object o[][] = new Object[ruha.size()][7];
         for (int i = 0; i < ruha.size(); i++) {
             Ruha k = new Ruha();
             k = ruha.get(i);
 
             o[i][0] = k.getId();
             o[i][1] = k.getLeiras();
-            o[i][2] = new ImageIcon("icons/" + k.getKep());
-            o[i][3] = k.getMeret();
-            o[i][4] = k.getAr();
-            o[i][5] = k.getFazon();
-            o[i][6] = k.getAllapot();
-            o[i][7] = k.getMegjegyzes();
+            o[i][2] = k.getMeret();
+            o[i][3] = k.getAr();
+            o[i][4] = k.getFazon();
+            o[i][5] = k.getAllapot();
+            o[i][6] = k.getMegjegyzes();
         }
 
-        String[] columnNames = {"Id", "Leírás", "Kép","Méret", "Ár", "Fazon", "Állapot", "Megjegyzés"};
-        Class[] columnClass = {Integer.class, String.class, Integer.class, String.class, Integer.class, String.class, String.class, String.class};
+        String[] columnNames = {"Id", "Leírás","Méret", "Ár", "Fazon", "Állapot", "Megjegyzés"};
+        Class[] columnClass = {Integer.class, String.class, String.class, Integer.class, String.class, String.class, String.class};
         DefaultTableModel model = new DefaultTableModel(o, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
