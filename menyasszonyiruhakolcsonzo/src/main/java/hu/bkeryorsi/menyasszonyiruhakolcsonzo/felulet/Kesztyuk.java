@@ -41,13 +41,12 @@ public class Kesztyuk extends javax.swing.JPanel {
             k = kesztyu.get(i);
 
             o[i][0] = k.getId();
-            o[i][1] = new ImageIcon("icons/" + k.getKep());
-            o[i][2] = k.getAr();
-            o[i][3] = k.getAllapot();
-            o[i][4] = k.getMegjegyzes();
+            o[i][1] = k.getAr();
+            o[i][2] = k.getAllapot();
+            o[i][3] = k.getMegjegyzes();
         }
-           String[] columnNames = {"Id", "Kép", "Ár", "Állapot", "Megjegyzés"};
-        Class[] columnClass = {Integer.class, String.class, Integer.class, String.class, String.class};
+           String[] columnNames = {"Id", "Ár", "Állapot", "Megjegyzés"};
+        Class[] columnClass = {Integer.class, Integer.class, String.class, String.class};
         DefaultTableModel model = new DefaultTableModel(o, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
@@ -235,10 +234,9 @@ public class Kesztyuk extends javax.swing.JPanel {
         TableModel model = jTable1.getModel();
         Kesztyu k = new Kesztyu();
         k.setId((Integer) model.getValueAt(i, 0));
-        k.setKep(model.getValueAt(i, 1).toString());
-        k.setAr((Integer) model.getValueAt(i, 2));
-        k.setAllapot((String) model.getValueAt(i, 3));
-        k.setMegjegyzes((String) model.getValueAt(i, 4));
+        k.setAr((Integer) model.getValueAt(i, 1));
+        k.setAllapot((String) model.getValueAt(i, 2));
+        k.setMegjegyzes((String) model.getValueAt(i, 3));
         return k;
     }
     /*public static void main(String args[]) {

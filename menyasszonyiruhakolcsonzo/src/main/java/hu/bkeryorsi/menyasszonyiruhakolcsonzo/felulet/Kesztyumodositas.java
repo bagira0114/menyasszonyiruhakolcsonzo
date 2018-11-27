@@ -42,7 +42,6 @@ public class Kesztyumodositas extends javax.swing.JPanel {
         jComboBox1.setBackground(Color.LIGHT_GRAY);
         megjegyzes.setEditable(false);
         megjegyzes.setBackground(Color.LIGHT_GRAY);
-        bongeszes_gomb.setEnabled(false);
         mentes_gomb.setEnabled(false);
         megse_gomb.setEnabled(false);
 
@@ -67,9 +66,6 @@ public class Kesztyumodositas extends javax.swing.JPanel {
         azonosito = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         ar = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        bongeszes_gomb = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         allapot = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -102,12 +98,6 @@ public class Kesztyumodositas extends javax.swing.JPanel {
                 arActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Kép");
-
-        jLabel6.setText("Kép módosítása");
-
-        bongeszes_gomb.setText("Böngészés");
 
         jLabel7.setText("Állapot:");
 
@@ -183,12 +173,7 @@ public class Kesztyumodositas extends javax.swing.JPanel {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel3))
                                         .addComponent(ar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(64, 64, 64)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(bongeszes_gomb, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(345, 345, 345))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(allapot, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,31 +194,19 @@ public class Kesztyumodositas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(azonosito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(ar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(allapot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel6)
-                        .addGap(33, 33, 33)
-                        .addComponent(bongeszes_gomb)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(azonosito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(ar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(allapot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
@@ -253,7 +226,7 @@ public class Kesztyumodositas extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(szerkesztes_gomb)
                             .addComponent(megse_gomb))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(bezar_gomb)
                 .addGap(78, 78, 78))
         );
@@ -272,7 +245,6 @@ public class Kesztyumodositas extends javax.swing.JPanel {
         allapot.setText(kesztyu.getAllapot());
         jComboBox1.setEnabled(false);
         megjegyzes.setText(kesztyu.getMegjegyzes());
-        bongeszes_gomb.setEnabled(false);
         ar.setEditable(false);
         ar.setBackground(Color.LIGHT_GRAY);
         megjegyzes.setEditable(false);
@@ -288,7 +260,6 @@ public class Kesztyumodositas extends javax.swing.JPanel {
     private void szerkesztes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szerkesztes_gombActionPerformed
         mentes_gomb.setEnabled(true);
         megse_gomb.setEnabled(true);
-        bongeszes_gomb.setEnabled(true);
         ar.setEditable(true);
         ar.setBackground(Color.WHITE);
         jComboBox1.setEnabled(true);
@@ -304,7 +275,6 @@ public class Kesztyumodositas extends javax.swing.JPanel {
 
     private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
         SQL sql = new SQL();
-        this.kesztyu.setKep(jLabel5.getText());
         this.kesztyu.setAr((Integer.parseInt(ar.getText())));
         this.kesztyu.setAllapot((String)jComboBox1.getSelectedItem());
         this.kesztyu.setMegjegyzes(megjegyzes.getText());
@@ -329,14 +299,11 @@ public class Kesztyumodositas extends javax.swing.JPanel {
     private javax.swing.JTextField ar;
     private javax.swing.JTextField azonosito;
     private javax.swing.JButton bezar_gomb;
-    private javax.swing.JButton bongeszes_gomb;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
