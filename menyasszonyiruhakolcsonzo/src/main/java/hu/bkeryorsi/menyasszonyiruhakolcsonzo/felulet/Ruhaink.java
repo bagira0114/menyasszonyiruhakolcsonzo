@@ -264,12 +264,11 @@ private FoPanel szulo;
         Ruha k = new Ruha();
         k.setId((Integer) model.getValueAt(i, 0));
         k.setLeiras((String)model.getValueAt(i, 1));
-        k.setKep(model.getValueAt(i, 2).toString());
-        k.setMeret((Integer) model.getValueAt(i, 3));
-        k.setAr((Integer) model.getValueAt(i, 4));
-        k.setFazon((String)model.getValueAt(i, 5));
-        k.setAllapot((String) model.getValueAt(i, 6));
-        k.setMegjegyzes((String) model.getValueAt(i, 7));
+        k.setMeret((Integer) model.getValueAt(i, 2));
+        k.setAr((Integer) model.getValueAt(i, 3));
+        k.setFazon((String)model.getValueAt(i, 4));
+        k.setAllapot((String) model.getValueAt(i, 5));
+        k.setMegjegyzes((String) model.getValueAt(i, 6));
         return k;
     }
 

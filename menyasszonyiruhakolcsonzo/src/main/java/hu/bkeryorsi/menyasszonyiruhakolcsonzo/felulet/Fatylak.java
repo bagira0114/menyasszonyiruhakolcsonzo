@@ -39,21 +39,20 @@ public class Fatylak extends javax.swing.JPanel {
     }
 
     private void fatyolBetolt(List<Fatyol> fatyol) {
-        Object o[][] = new Object[fatyol.size()][6];
+        Object o[][] = new Object[fatyol.size()][5];
         for (int i = 0; i < fatyol.size(); i++) {
             Fatyol k = new Fatyol();
             k = fatyol.get(i);
 
             o[i][0] = k.getId();
-            o[i][1] = new ImageIcon("icons/" + k.getKep());
-            o[i][2] = k.getAr();
-            o[i][3] = k.getFazon();
-            o[i][4] = k.getAllapot();
-            o[i][5] = k.getMegjegyzes();
+            o[i][1] = k.getAr();
+            o[i][2] = k.getFazon();
+            o[i][3] = k.getAllapot();
+            o[i][4] = k.getMegjegyzes();
         }
 
-        String[] columnNames = {"Id", "Kép", "Ár", "Fazon", "Állapot", "Megjegyzés"};
-        Class [] columnClass = {Integer.class, String.class, Integer.class, String.class, String.class, String.class};
+        String[] columnNames = {"Id", "Ár", "Fazon", "Állapot", "Megjegyzés"};
+        Class [] columnClass = {Integer.class, Integer.class, String.class, String.class, String.class};
         DefaultTableModel model = new DefaultTableModel(o, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
@@ -255,11 +254,10 @@ public Fatyol kivalasztottsor() {
         TableModel model = jTable1.getModel();
         Fatyol k = new Fatyol();
         k.setId((Integer) model.getValueAt(i, 0));
-        k.setKep(model.getValueAt(i, 1).toString());
-        k.setAr((Integer) model.getValueAt(i, 2));
-        k.setFazon(model.getValueAt(i, 3).toString());
-        k.setAllapot((String) model.getValueAt(i, 4));
-        k.setMegjegyzes((String) model.getValueAt(i, 5));
+        k.setAr((Integer) model.getValueAt(i, 1));
+        k.setFazon(model.getValueAt(i, 2).toString());
+        k.setAllapot((String) model.getValueAt(i, 3));
+        k.setMegjegyzes((String) model.getValueAt(i, 4));
         return k;
 }
 
