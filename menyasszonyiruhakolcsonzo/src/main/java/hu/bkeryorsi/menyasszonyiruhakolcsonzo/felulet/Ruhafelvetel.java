@@ -69,6 +69,11 @@ private FoPanel szulo;
         jLabel5.setText("Ár:");
 
         megse_gomb.setText("Mégse");
+        megse_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                megse_gombActionPerformed(evt);
+            }
+        });
 
         mentes_gomb.setText("Mentés");
         mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
@@ -112,9 +117,8 @@ private FoPanel szulo;
                         .addGap(201, 201, 201)
                         .addComponent(megse_gomb)
                         .addGap(95, 95, 95)
-                        .addComponent(mentes_gomb)
-                        .addGap(33, 33, 33)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                        .addComponent(mentes_gomb)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,6 +170,11 @@ private FoPanel szulo;
         Ruhaink ruhaink = new Ruhaink(szulo);
           szulo.panelmutat(ruhaink);
     }//GEN-LAST:event_mentes_gombActionPerformed
+
+    private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
+Ruhaink ruhaink = new Ruhaink(szulo);
+          szulo.panelmutat(ruhaink);           // TODO add your handling code here:
+    }//GEN-LAST:event_megse_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

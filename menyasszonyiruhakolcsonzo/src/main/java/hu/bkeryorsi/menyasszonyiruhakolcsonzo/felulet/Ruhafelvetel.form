@@ -52,10 +52,9 @@
                       <Component id="megse_gomb" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                       <Component id="mentes_gomb" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <EmptySpace pref="109" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -156,6 +155,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="M&#xe9;gse"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="megse_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mentes_gomb">
       <Properties>
