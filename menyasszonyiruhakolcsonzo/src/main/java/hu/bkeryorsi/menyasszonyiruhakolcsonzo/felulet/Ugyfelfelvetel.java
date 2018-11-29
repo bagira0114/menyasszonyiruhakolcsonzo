@@ -7,6 +7,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -122,6 +123,7 @@ public class Ugyfelfelvetel extends javax.swing.JPanel {
     private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
         SQL sql = new SQL();
         Ugyfel k = new Ugyfel();
+        
         k.setVezeteknev(vezetetknev.getText());
         k.setKeresztnev(keresztnev.getText());
         k.setEmailcim(emailcim.getText());

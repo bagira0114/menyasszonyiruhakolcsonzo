@@ -177,9 +177,21 @@ public class SQL {
 
         try {
             PreparedStatement st = con.prepareStatement("insert into ugyfel (Vezeteknev, Keresztnev, EmailCim) values (?,?,?)");
-            st.setString(1, k.getVezeteknev());
-            st.setString(2, k.getKeresztnev());
-            st.setString(3, k.getEmailcim());
+            String veznev = k.getVezeteknev();
+            if ("".equals(veznev)){
+                veznev = null;
+            }
+            String kernev = k.getKeresztnev();
+            if ("".equals(kernev)){
+                kernev = null;
+            }
+            String email = k.getEmailcim();
+            if ("".equals(email)){
+                email = null;
+            }
+            st.setString(1, veznev);
+            st.setString(2, kernev);
+            st.setString(3, email);
             st.execute();
             st.close();
             con.close();

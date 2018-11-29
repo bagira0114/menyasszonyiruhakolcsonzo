@@ -186,10 +186,14 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
             k.setFatyolId(meglevo.getFatyolId());
             k.setKesztyuId(meglevo.getKesztyuId());
             if (!sql.getKolcsonozve(Integer.parseInt(ruhaId.getText()), null, null)) {
-                sql.updateKolcsonzes(k);
-                sql.ruhaStatuszModositas(Integer.parseInt(ruhaId.getText()), "kölcsönözve");
-                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-                szulo.panelmutat(kolcsonzesFelulet);
+                if (meglevo.getMenyasszonyiRuhaId() != null) {
+                    JOptionPane.showMessageDialog(null, "Már van kint ruha.");
+                } else {
+                    sql.updateKolcsonzes(k);
+                    sql.ruhaStatuszModositas(Integer.parseInt(ruhaId.getText()), "kölcsönözve");
+                    KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                    szulo.panelmutat(kolcsonzesFelulet);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
 
