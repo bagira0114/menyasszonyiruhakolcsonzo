@@ -127,9 +127,15 @@ public class Ugyfelfelvetel extends javax.swing.JPanel {
         k.setVezeteknev(vezetetknev.getText());
         k.setKeresztnev(keresztnev.getText());
         k.setEmailcim(emailcim.getText());
+        try{
         sql.addUgyfel(k);
         Ugyfelek ugyfelek = new Ugyfelek(szulo);
           szulo.panelmutat(ugyfelek);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Az összes mezőt ki kell tölteni.");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_mentes_gombActionPerformed
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
