@@ -612,6 +612,7 @@ public class SQL {
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
+            throw new IllegalArgumentException(e);
         }
     }
 
