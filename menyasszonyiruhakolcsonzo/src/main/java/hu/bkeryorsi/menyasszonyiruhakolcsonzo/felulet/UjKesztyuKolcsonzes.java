@@ -202,7 +202,7 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
 
             }
         } else {
-            if (!sql.getKolcsonozve(null, Integer.parseInt(kesztyuId.getText()), null)) {
+            if (!sql.getKolcsonozve(null, null, Integer.parseInt(kesztyuId.getText()))) {
 
                 sql.addKolcsonzes(k);
                 sql.kesztyuStatuszModositas(Integer.parseInt(kesztyuId.getText()), "kölcsönözve");
