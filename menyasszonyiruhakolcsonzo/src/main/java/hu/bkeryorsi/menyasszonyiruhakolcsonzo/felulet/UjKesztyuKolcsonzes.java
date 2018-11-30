@@ -22,6 +22,7 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
      * Creates new form UjKesztyuKolcsonzes
      */
     private FoPanel szulo;
+
     public UjKesztyuKolcsonzes(FoPanel szulo) {
         this.szulo = szulo;
         initComponents();
@@ -169,12 +170,12 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void megse_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_megse_gombActionPerformed
-    KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-        szulo.panelmutat(kolcsonzesFelulet);   
+        KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+        szulo.panelmutat(kolcsonzesFelulet);
     }//GEN-LAST:event_megse_gombActionPerformed
 
     private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
-         SQL sql = new SQL();
+        SQL sql = new SQL();
         Kolcsonzes k = new Kolcsonzes();
         k.setUgyfelId(sql.getugyfelId(email.getText()));
         k.setKesztyuId(Integer.parseInt(kesztyuId.getText()));
@@ -187,11 +188,15 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
             k.setMenyasszonyiRuhaId(meglevo.getMenyasszonyiRuhaId());
             k.setFatyolId(meglevo.getFatyolId());
-            if (!sql.getKolcsonozve( null, Integer.parseInt(kesztyuId.getText()),null)) {
-                sql.updateKolcsonzes(k);
-                sql.kesztyuStatuszModositas(Integer.parseInt(kesztyuId.getText()), "kölcsönözve");
-                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-                szulo.panelmutat(kolcsonzesFelulet);
+            if (!sql.getKolcsonozve(Integer.parseInt(kesztyuId.getText()), null, null)) {
+                if (meglevo.getKesztyuId() != null) {
+                    JOptionPane.showMessageDialog(null, "Már van kint kesztyű");
+                } else {
+                    sql.updateKolcsonzes(k);
+                    sql.kesztyuStatuszModositas(Integer.parseInt(kesztyuId.getText()), "kölcsönözve");
+                    KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                    szulo.panelmutat(kolcsonzesFelulet);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
 
@@ -210,7 +215,6 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
         }
 
 
-                 
     }//GEN-LAST:event_mentes_gombActionPerformed
 
 
