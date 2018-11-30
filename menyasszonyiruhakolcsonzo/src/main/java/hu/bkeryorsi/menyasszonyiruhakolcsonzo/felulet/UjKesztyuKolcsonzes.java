@@ -188,7 +188,7 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
             k.setMenyasszonyiRuhaId(meglevo.getMenyasszonyiRuhaId());
             k.setFatyolId(meglevo.getFatyolId());
-            if (!sql.getKolcsonozve(Integer.parseInt(kesztyuId.getText()), null, null)) {
+            if (!sql.getKolcsonozve(null, null, Integer.parseInt(kesztyuId.getText()))) {
                 if (meglevo.getKesztyuId() != null) {
                     JOptionPane.showMessageDialog(null, "Már van kint kesztyű");
                 } else {
