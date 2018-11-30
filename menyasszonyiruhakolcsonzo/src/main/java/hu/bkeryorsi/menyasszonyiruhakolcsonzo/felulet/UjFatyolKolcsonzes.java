@@ -182,11 +182,15 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
             k.setMenyasszonyiRuhaId(meglevo.getMenyasszonyiRuhaId());
             k.setKesztyuId(meglevo.getKesztyuId());
-            if (!sql.getKolcsonozve( null, Integer.parseInt(fatyolId.getText()),null)) {
-                sql.updateKolcsonzes(k);
-                sql.fatyolStatuszModositas(Integer.parseInt(fatyolId.getText()), "kölcsönözve");
-                KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
-                szulo.panelmutat(kolcsonzesFelulet);
+            if (!sql.getKolcsonozve(null, Integer.parseInt(fatyolId.getText()), null)) {
+                if (meglevo.getFatyolId()!= null) {
+                    JOptionPane.showMessageDialog(null, "Már van kint fátyol.");
+                } else {
+                    sql.updateKolcsonzes(k);
+                    sql.fatyolStatuszModositas(Integer.parseInt(fatyolId.getText()), "kölcsönözve");
+                    KolcsonzesFelulet kolcsonzesFelulet = new KolcsonzesFelulet(szulo);
+                    szulo.panelmutat(kolcsonzesFelulet);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Már kölcsönzött tétel");
 
