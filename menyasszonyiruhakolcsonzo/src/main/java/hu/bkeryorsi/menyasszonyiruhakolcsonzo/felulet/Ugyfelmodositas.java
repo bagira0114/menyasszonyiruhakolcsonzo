@@ -8,6 +8,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
 /**
@@ -247,12 +248,16 @@ public class Ugyfelmodositas extends javax.swing.JPanel {
         SQL sql = new SQL();
 
         this.ugyfel.getId();
-
+try {
         sql.deleteUgyfel(this.ugyfel);
         Ugyfelek ugyfelek = new Ugyfelek(szulo);
         szulo.panelmutat(ugyfelek);
+}
+catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Van kint termék, előbb vissza kell hozni.");
+            e.printStackTrace();
     }//GEN-LAST:event_torles_gombActionPerformed
-
+    }
     private void vezeteknevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vezeteknevActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_vezeteknevActionPerformed
