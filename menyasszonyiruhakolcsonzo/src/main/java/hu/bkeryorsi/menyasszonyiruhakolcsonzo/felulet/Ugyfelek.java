@@ -18,9 +18,9 @@ import javax.swing.table.TableModel;
  * @author keryo
  */
 public class Ugyfelek extends javax.swing.JPanel {
-    
+
     private FoPanel szulo;
-    
+
     public Ugyfelek(FoPanel szulo) {
         this.szulo = szulo;
         initComponents();
@@ -28,22 +28,21 @@ public class Ugyfelek extends javax.swing.JPanel {
         List<Ugyfel> ugyfel = sql.getUgyfel();
         ugyfelBetolt(ugyfel);
     }
-    
+
     private void ugyfelBetolt(List<Ugyfel> ugyfel) {
         Object o[][] = new Object[ugyfel.size()][4];
         for (int i = 0; i < ugyfel.size(); i++) {
             Ugyfel k = new Ugyfel();
             k = ugyfel.get(i);
-            
-            o[i][0] = k.getId();
-            o[i][1] = k.getVezeteknev();
-            o[i][2] = k.getKeresztnev();
-            o[i][3] = k.getEmailcim();
-            
+
+            o[i][0] = k.getVezeteknev();
+            o[i][1] = k.getKeresztnev();
+            o[i][2] = k.getEmailcim();
+
         }
-        
-        String[] columnNames = {"Id", "Vezetéknév", "Keresztnév", "E-mail cím"};
-        Class[] columnClass = {Integer.class, String.class, String.class, String.class};
+
+        String[] columnNames = {"Vezetéknév", "Keresztnév", "E-mail cím"};
+        Class[] columnClass = {String.class, String.class, String.class};
         DefaultTableModel model = new DefaultTableModel(o, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
@@ -198,17 +197,17 @@ public class Ugyfelek extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void vezeteknev_kereses_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vezeteknev_kereses_gombActionPerformed
-        String vezeteknev = this.vezeteknev.getText();        
+        String vezeteknev = this.vezeteknev.getText();
         SQL sql = new SQL();
         List<Ugyfel> ugyfel = sql.searchUgyfelVezeteknev(vezeteknev);
         ugyfelBetolt(ugyfel);
-        
+
     }//GEN-LAST:event_vezeteknev_kereses_gombActionPerformed
 
     private void uj_ugyfel_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_ugyfel_gombActionPerformed
         Ugyfelfelvetel ugyfelfelvetel = new Ugyfelfelvetel(szulo);
         szulo.panelmutat(ugyfelfelvetel);
-        
+
     }//GEN-LAST:event_uj_ugyfel_gombActionPerformed
 
     private void ugyfel_megynyitas_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ugyfel_megynyitas_gombActionPerformed
@@ -229,12 +228,12 @@ public class Ugyfelek extends javax.swing.JPanel {
     }//GEN-LAST:event_ugyfel_megynyitas_gombActionPerformed
 
     private void vezeteknevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vezeteknevActionPerformed
-        
+
 
     }//GEN-LAST:event_vezeteknevActionPerformed
 
     private void keresztnev_kereses_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keresztnev_kereses_gombActionPerformed
-  String keresztnev = this.keresztnev.getText();        
+        String keresztnev = this.keresztnev.getText();
         SQL sql = new SQL();
         List<Ugyfel> ugyfel = sql.searchUgyfelKeresztnev(keresztnev);
         ugyfelBetolt(ugyfel);
