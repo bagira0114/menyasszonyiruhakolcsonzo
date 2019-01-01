@@ -704,7 +704,7 @@ public class SQL {
                 } else {
                     k.setMenyasszonyiRuhaId(null);
                 }
-                if (rs.getInt("FatyolId") > 0) {  //itt szar, itt ellenőrizd le hogy csak akkortegye bele ha > 0
+                if (rs.getInt("FatyolId") > 0) {  
                     k.setFatyolId(rs.getInt("FatyolId"));
                 } else {
                     k.setFatyolId(null);
