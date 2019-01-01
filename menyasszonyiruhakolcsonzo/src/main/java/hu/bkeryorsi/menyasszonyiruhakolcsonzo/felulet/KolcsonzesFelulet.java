@@ -7,6 +7,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.EmailEllenorzo;
 import java.util.Date;
 
 /**
@@ -23,6 +24,7 @@ public class KolcsonzesFelulet extends javax.swing.JPanel {
     public KolcsonzesFelulet(FoPanel szulo) {
         this.szulo = szulo;
         initComponents();
+        emailCim.setInputVerifier(new EmailEllenorzo());
     }
 
     /**

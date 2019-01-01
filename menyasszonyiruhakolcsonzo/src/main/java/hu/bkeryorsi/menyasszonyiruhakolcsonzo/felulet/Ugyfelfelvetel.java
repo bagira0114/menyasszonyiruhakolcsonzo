@@ -7,6 +7,7 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.EmailEllenorzo;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,7 @@ public class Ugyfelfelvetel extends javax.swing.JPanel {
     public Ugyfelfelvetel(FoPanel szulo) {
          this.szulo = szulo;
         initComponents();
+        emailcim.setInputVerifier(new EmailEllenorzo());
 
     }
 
