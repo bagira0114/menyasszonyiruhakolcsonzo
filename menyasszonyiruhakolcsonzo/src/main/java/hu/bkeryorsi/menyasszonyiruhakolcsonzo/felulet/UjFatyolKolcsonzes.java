@@ -7,8 +7,10 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.PlainDocument;
 
@@ -31,6 +33,7 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
         doc.setDocumentFilter(new SzamFilter());
         kolcsKezd.setText(new Date().toString());
         kolcsKezd.setEnabled(false);
+        initComboBox();
     }
 
     /**
@@ -46,7 +49,6 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
         fatyolId = new javax.swing.JTextField();
         kolcsKezd = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -56,12 +58,13 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         megjegyzes = new javax.swing.JTextArea();
         jCalendar1 = new com.toedter.calendar.JCalendar();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
         jLabel1.setText("Új fátyol kölcsönzés");
 
-        jLabel2.setText("Ügyfél azonosítója (e-mail címe):");
+        jLabel2.setText("Ügyfél:");
 
         jLabel3.setText("Fátyol azonosítója:");
 
@@ -89,6 +92,8 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
         megjegyzes.setRows(5);
         jScrollPane1.setViewportView(megjegyzes);
 
+        jComboBox1.setSelectedItem(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,10 +120,10 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(email)
                                     .addComponent(fatyolId)
-                                    .addComponent(kolcsKezd, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))))
-                        .addGap(66, 66, 66)
+                                    .addComponent(kolcsKezd, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -135,11 +140,11 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
                         .addComponent(jLabel5)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(fatyolId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,12 +176,12 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
     private void kolcsonzes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonzes_gombActionPerformed
         SQL sql = new SQL();
         Kolcsonzes k = new Kolcsonzes();
-        k.setUgyfelId(sql.getugyfelId(email.getText()));
+        k.setUgyfelId(getugyfelId());
         k.setFatyolId(Integer.parseInt(fatyolId.getText()));
         k.setHatarido(jCalendar1.getDate());
         k.setKolcsonzesEleje(new Date());
         k.setMegjegyzes(megjegyzes.getText());
-        Kolcsonzes meglevo = sql.getKolcsonzes(sql.getugyfelId(email.getText())); //kikéred a meglévőt
+        Kolcsonzes meglevo = sql.getKolcsonzes(getugyfelId()); //kikéred a meglévőt
         if (meglevo != null) {
             k.setKolcsonzesid(meglevo.getKolcsonzesid()); //itt beállítod az id-t
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
@@ -213,9 +218,9 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField email;
     private javax.swing.JTextField fatyolId;
     private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JComboBox<Ugyfel> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -228,4 +233,18 @@ public class UjFatyolKolcsonzes extends javax.swing.JPanel {
     private javax.swing.JTextArea megjegyzes;
     private javax.swing.JButton megse_gomb;
     // End of variables declaration//GEN-END:variables
+private void initComboBox() {
+        SQL sql = new SQL();
+        List<Ugyfel> ugyfelek = sql.getUgyfel();
+        for (int i = 0; i < ugyfelek.size(); i++) {
+            jComboBox1.addItem(ugyfelek.get(i));
+        }
+
+    }
+
+    private int getugyfelId() {
+        Ugyfel ugyfel = (Ugyfel) jComboBox1.getSelectedItem();
+
+        return ugyfel.getId();
+    }
 }

@@ -34,15 +34,15 @@ public class Ugyfelek extends javax.swing.JPanel {
         for (int i = 0; i < ugyfel.size(); i++) {
             Ugyfel k = new Ugyfel();
             k = ugyfel.get(i);
-
-            o[i][0] = k.getVezeteknev();
-            o[i][1] = k.getKeresztnev();
-            o[i][2] = k.getEmailcim();
+            o[i][0] = k.getId();
+            o[i][1] = k.getVezeteknev();
+            o[i][2] = k.getKeresztnev();
+            o[i][3] = k.getEmailcim();
 
         }
 
-        String[] columnNames = {"Vezetéknév", "Keresztnév", "E-mail cím"};
-        Class[] columnClass = {String.class, String.class, String.class};
+        String[] columnNames = {"Id", "Vezetéknév", "Keresztnév", "E-mail cím"};
+        Class[] columnClass = {Integer.class, String.class, String.class, String.class};
         DefaultTableModel model = new DefaultTableModel(o, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
@@ -53,6 +53,7 @@ public class Ugyfelek extends javax.swing.JPanel {
         };
         jTable1.setRowHeight(100);
         jTable1.setModel(model);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
     }
 
     /**
@@ -190,8 +191,8 @@ public class Ugyfelek extends javax.swing.JPanel {
                     .addComponent(uj_ugyfel_gomb))
                 .addGap(42, 42, 42)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
