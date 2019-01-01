@@ -8,8 +8,10 @@ package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.PlainDocument;
 
@@ -33,6 +35,7 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         doc.setDocumentFilter(new SzamFilter());
         kolcsKezd.setText(new Date().toString());
         kolcsKezd.setEnabled(false);
+        initComboBox();
 
     }
 
@@ -52,7 +55,6 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         kolcsonzes_gomb = new javax.swing.JButton();
-        email = new javax.swing.JTextField();
         ruhaId = new javax.swing.JTextField();
         kolcsKezd = new javax.swing.JTextField();
         megse_gomb = new javax.swing.JButton();
@@ -60,12 +62,13 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         megjegyzes = new javax.swing.JTextArea();
         jCalendar2 = new com.toedter.calendar.JCalendar();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(890, 600));
 
         jLabel1.setText("Új ruha kölcsönzés");
 
-        jLabel2.setText("Ügyfél azonosítója (e-mail címe):");
+        jLabel2.setText("Ügyfél:");
 
         jLabel3.setText("Ruha azonosítója:");
 
@@ -93,6 +96,8 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         megjegyzes.setRows(5);
         jScrollPane1.setViewportView(megjegyzes);
 
+        jComboBox1.setSelectedItem(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,7 +113,7 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,10 +121,10 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addGap(45, 45, 45)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(ruhaId, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(kolcsKezd, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(ruhaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                            .addComponent(kolcsKezd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,21 +134,21 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(megse_gomb)))
                         .addGap(161, 161, 161)))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(44, 44, 44)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(30, 30, 30)
+                            .addComponent(jLabel5)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(ruhaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -155,14 +160,14 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addGap(59, 59, 59))
+                        .addGap(4, 4, 4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kolcsonzes_gomb)
                     .addComponent(megse_gomb))
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -174,12 +179,12 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
     private void kolcsonzes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolcsonzes_gombActionPerformed
         SQL sql = new SQL();
         Kolcsonzes k = new Kolcsonzes();
-        k.setUgyfelId(sql.getugyfelId(email.getText()));
+        k.setUgyfelId(getugyfelId());
         k.setMenyasszonyiRuhaId(Integer.parseInt(ruhaId.getText()));
         k.setHatarido(jCalendar2.getDate());
         k.setKolcsonzesEleje(new Date());
         k.setMegjegyzes(megjegyzes.getText());
-        Kolcsonzes meglevo = sql.getKolcsonzes(sql.getugyfelId(email.getText()));
+        Kolcsonzes meglevo = sql.getKolcsonzes(getugyfelId());
         if (meglevo != null) {
             k.setKolcsonzesid(meglevo.getKolcsonzesid()); //itt beállítod az id-t
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
@@ -214,9 +219,9 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField email;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
+    private javax.swing.JComboBox<Ugyfel> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -230,4 +235,19 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
     private javax.swing.JButton megse_gomb;
     private javax.swing.JTextField ruhaId;
     // End of variables declaration//GEN-END:variables
+
+    private void initComboBox() {
+        SQL sql = new SQL();
+        List<Ugyfel> ugyfelek = sql.getUgyfel();
+        for (int i = 0; i < ugyfelek.size(); i++) {
+            jComboBox1.addItem(ugyfelek.get(i));
+        }
+
+    }
+
+    private int getugyfelId() {
+        Ugyfel ugyfel = (Ugyfel) jComboBox1.getSelectedItem();
+
+        return ugyfel.getId();
+    }
 }

@@ -71,4 +71,9 @@ public class Ugyfel {
         this.emailcim = emailcim;
     }
     
+    @Override
+    public String toString() {
+        return vezeteknev + " "+keresztnev + " ("+emailcim+")";
+    } 
+    
 }
