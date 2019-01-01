@@ -10,8 +10,10 @@ import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kolcsonzes;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
 import hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet.eszkozok.SzamFilter;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.text.PlainDocument;
 
@@ -33,7 +35,7 @@ public class UjRuhaKolcsonzes extends javax.swing.JPanel {
         jCalendar2.setMinSelectableDate(new Date());
         PlainDocument doc = (PlainDocument) ruhaId.getDocument();
         doc.setDocumentFilter(new SzamFilter());
-        kolcsKezd.setText(new Date().toString());
+        kolcsKezd.setText(DateFormat.getDateInstance(DateFormat.LONG, new Locale("hu", "HU")).format(new Date()));
         kolcsKezd.setEnabled(false);
         initComboBox();
 
