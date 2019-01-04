@@ -224,8 +224,8 @@ public class Fatylak extends javax.swing.JPanel {
         String fazon = (String.valueOf(this.fazonComboBox.getSelectedItem()));
         SQL sql = new SQL();
         List<Fatyol> fatyol = sql.searchFatyol(beirtId, fazon, allapot);
-        fatyolBetolt(fatyol);   // String kivalasztottAllap = (String) allapotComboBox.getSelectedItem(); //ez majd később kell, kiszedni a választást
-        //  int kesztyuAzon =  Integer.parseInt(kesztyuAzonosito.getText());
+        fatyolBetolt(fatyol);   
+        
                                                 
     }//GEN-LAST:event_fatyol_kereses_gombActionPerformed
 

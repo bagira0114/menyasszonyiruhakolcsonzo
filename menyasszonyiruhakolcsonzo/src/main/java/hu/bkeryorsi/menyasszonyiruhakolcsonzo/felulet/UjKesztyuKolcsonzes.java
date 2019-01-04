@@ -190,9 +190,9 @@ public class UjKesztyuKolcsonzes extends javax.swing.JPanel {
         k.setHatarido(jCalendar1.getDate());
         k.setKolcsonzesEleje(new Date());
         k.setMegjegyzes(megjegyzes.getText());
-        Kolcsonzes meglevo = sql.getKolcsonzes(getugyfelId()); //kikéred a meglévőt
+        Kolcsonzes meglevo = sql.getKolcsonzes(getugyfelId()); 
         if (meglevo != null) {
-            k.setKolcsonzesid(meglevo.getKolcsonzesid()); //itt beállítod az id-t
+            k.setKolcsonzesid(meglevo.getKolcsonzesid()); 
             k.setKolcsonzesEleje(meglevo.getKolcsonzesEleje());
             k.setMenyasszonyiRuhaId(meglevo.getMenyasszonyiRuhaId());
             k.setFatyolId(meglevo.getFatyolId());

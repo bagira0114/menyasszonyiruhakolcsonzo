@@ -1,4 +1,4 @@
-CREATE TABLE ugyfel (
+﻿CREATE TABLE ugyfel (
 UgyfelId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 Vezeteknev VARCHAR(50) NOT NULL,
 Keresztnev VARCHAR(50) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE kesztyu (
 Kesztyuid INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 Kep VARCHAR(255),
 Ar INT NOT NULL,
-Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,,
+Allapot ENUM('kölcsönözhető','kölcsönözve','tisztító','sérült') CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
 Megjegyzes VARCHAR(255)
 );
 
@@ -57,7 +57,7 @@ FelhasznaloId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 Felhasznalonev VARCHAR(50) NOT NULL,
 Jelszo VARCHAR(255) NOT NULL
 );
-
+INSERT INTO felhasznalo (Felhasznalonev, Jelszo) VALUES ('admin', 'kacsa');
 
 
 
