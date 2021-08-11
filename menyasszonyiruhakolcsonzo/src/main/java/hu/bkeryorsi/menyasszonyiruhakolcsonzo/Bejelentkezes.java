@@ -149,6 +149,8 @@ public class Bejelentkezes extends javax.swing.JFrame {
                 new Bejelentkezes().setVisible(true);
             }
         });
+        SQL sql = new SQL();
+        sql.connect();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
