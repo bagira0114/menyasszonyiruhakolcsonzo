@@ -90,6 +90,11 @@ private FoPanel szulo;
         });
 
         uj_kesztyu_gomb.setText("Új kesztyű felvétele");
+        uj_kesztyu_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uj_kesztyu_gombActionPerformed(evt);
+            }
+        });
 
         kesztyu_megnyitasa_gomb.setText("Kijelölt kesztyű megnyitása");
         kesztyu_megnyitasa_gomb.addActionListener(new java.awt.event.ActionListener() {
@@ -202,6 +207,11 @@ private FoPanel szulo;
         Kesztyumodositas kesztyumodositas = new Kesztyumodositas(szulo, kesztyu);
         szulo.panelmutat(kesztyumodositas);
     }//GEN-LAST:event_kesztyu_megnyitasa_gombActionPerformed
+
+    private void uj_kesztyu_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uj_kesztyu_gombActionPerformed
+Kesztyufelvetel kesztyufelvetel = new Kesztyufelvetel(szulo);
+        szulo.panelmutat(kesztyufelvetel);        // TODO add your handling code here:
+    }//GEN-LAST:event_uj_kesztyu_gombActionPerformed
  public Kesztyu kivalasztottsor() {
         int i = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();

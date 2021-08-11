@@ -106,6 +106,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xda;j keszty&#x171; felv&#xe9;tele"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uj_kesztyu_gombActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="kesztyu_megnyitasa_gomb">
       <Properties>

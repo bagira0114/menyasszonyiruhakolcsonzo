@@ -275,6 +275,24 @@ public class SQL {
         }
         return ugyfel;
     }
+    
+    public void addKesztyu(Kesztyu k) {
+        con = connect();
+
+        try {
+            PreparedStatement st = con.prepareStatement("insert into kesztyu (Kep, Ar, Allapot, Megjegyzes) values (?,?,?,?)");
+            st.setString(1, k.getKep());
+            st.setInt(2, k.getAr());
+            st.setString(3, k.getAllapot());
+            st.setString(4, k.getMegjegyzes());
+            st.execute();
+            st.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void updateKesztyu(Kesztyu k) {
         con = connect();
 

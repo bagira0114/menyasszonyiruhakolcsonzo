@@ -5,6 +5,10 @@
  */
 package hu.bkeryorsi.menyasszonyiruhakolcsonzo.felulet;
 
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.SQL;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Kesztyu;
+import hu.bkeryorsi.menyasszonyiruhakolcsonzo.adatbazis.Ugyfel;
+
 /**
  *
  * @author keryo
@@ -13,10 +17,16 @@ public class Kesztyufelvetel extends javax.swing.JPanel {
 
     /**
      * Creates new form Kesztyufelvetel
+    
      */
-    public Kesztyufelvetel() {
+     private FoPanel szulo;
+   public Kesztyufelvetel(FoPanel szulo) {
+       this.szulo = szulo;
+   
         initComponents();
     }
+
+      
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,6 +76,11 @@ public class Kesztyufelvetel extends javax.swing.JPanel {
         megse_gomb.setText("Mégse");
 
         mentes_gomb.setText("Mentés");
+        mentes_gomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mentes_gombActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -137,6 +152,18 @@ public class Kesztyufelvetel extends javax.swing.JPanel {
     private void arActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_arActionPerformed
+
+    private void mentes_gombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentes_gombActionPerformed
+       SQL sql = new SQL();
+        Kesztyu k = new Kesztyu();
+        k.setKep(jLabel4.getText());
+        k.setAr(Integer.parseInt(ar.getText()));
+        k.setAllapot("kölcsönözhető");
+        k.setMegjegyzes(megjegyzes.getText());
+        sql.addKesztyu(k);
+        Kesztyuk kesztyuk = new Kesztyuk(szulo);
+          szulo.panelmutat(kesztyuk);
+    }//GEN-LAST:event_mentes_gombActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
